@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sermonkeeper.app/sitemap.xml
