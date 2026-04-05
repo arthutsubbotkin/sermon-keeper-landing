@@ -1,4 +1,31 @@
+# SermonKeeper.app - robots.txt
+
 User-agent: *
+Allow: /
+
+# AI Search Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://sermonkeeper.app/sitemap.xml

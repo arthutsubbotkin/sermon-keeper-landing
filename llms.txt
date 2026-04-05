@@ -1,0 +1,41 @@
+# Sermon Keeper
+
+> AI-powered sermon notes app for iOS. Record sermons, take timestamped notes, get automatic transcription with summary and key points. Built specifically for churchgoers.
+
+## About
+
+Sermon Keeper is an iOS app designed for church-going Christians who want to capture, remember, and reflect on sermons. It combines audio recording, timestamped note-taking, Bible verse autocomplete, and AI-powered transcription in one simple app.
+
+## Key Features
+
+- One-tap sermon recording in high quality audio
+- Timestamped notes — each note saves the exact moment in the sermon
+- Autocomplete Bible verses — type a reference like John 3:16 and see the full verse
+- AI-powered speech-to-text transcription with organized summary and key points
+- iCloud sync — recordings and notes stay on your device and sync to your personal iCloud
+- Works in English and Spanish
+- No account required — download and start recording immediately
+
+## Pricing
+
+- 3 free recordings included
+- $6.99/month or $64.99/year for unlimited recordings
+
+## Who It's For
+
+- Busy church-goers who want to remember the sermon but can't take detailed notes during service
+- Bible study groups who want to share accurate sermon notes without retyping everything
+- New believers who want to catch every Bible reference the pastor mentions
+
+## Links
+
+- Website: https://sermonkeeper.app
+- App Store: https://apps.apple.com/app/sermon-keeper-smart-notes/id6758739935
+- Contact: hello@sermonkeeper.app
+
+## Technical Details
+
+- Platform: iOS (iPhone)
+- Bible Version: King James Version (KJV), more translations coming
+- Data Storage: On-device + iCloud sync
+- Languages: English, Spanish

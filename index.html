@@ -10,7 +10,7 @@
 	<meta name="description" content="Record sermons, take timestamped notes, and get automatic AI transcription with summary. The best sermon recording app for iPhone. Works in English and Spanish. Free to try!">
 	<meta name="keywords" content="sermon notes app, sermon recording app, church notes app, Bible study app, sermon transcription, AI sermon notes, iPhone sermon app, record sermons, timestamped notes, KJV Bible app, Christian app, church app iOS">
 	<meta name="author" content="Sermon Keeper">
-	<meta name="robots" content="index, follow">
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	<link rel="canonical" href="https://sermonkeeper.app/" />
 
 	<!-- Open Graph / Facebook -->
@@ -42,33 +42,67 @@
 	<!-- Styles -->
 	<link rel="stylesheet" href="scss/style.css" type="text/css" />
 
-	<!-- Structured Data (JSON-LD) -->
+	<!-- Structured Data (JSON-LD) — SoftwareApplication -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
-		"@type": "MobileApplication",
+		"@type": "SoftwareApplication",
 		"name": "Sermon Keeper",
-		"description": "Record sermons, take timestamped notes, and get automatic AI transcription with summary. Works in English and Spanish.",
+		"alternateName": "Sermon Keeper - Smart Notes",
+		"description": "AI-powered sermon notes app for iOS. Record sermons, take timestamped notes, get automatic transcription with summary and key points. Built specifically for churchgoers who want to remember every sermon.",
+		"url": "https://sermonkeeper.app",
 		"operatingSystem": "iOS",
-		"applicationCategory": "LifestyleApplication",
-		"offers": {
-			"@type": "Offer",
-			"price": "0",
-			"priceCurrency": "USD",
-			"description": "3 free recordings, then $6.99/month or $64.99/year"
-		},
+		"applicationCategory": "ReligionApplication",
+		"offers": [
+			{
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD",
+				"description": "3 free recordings included"
+			},
+			{
+				"@type": "Offer",
+				"price": "6.99",
+				"priceCurrency": "USD",
+				"description": "Monthly subscription for unlimited recordings"
+			},
+			{
+				"@type": "Offer",
+				"price": "64.99",
+				"priceCurrency": "USD",
+				"description": "Annual subscription for unlimited recordings"
+			}
+		],
+		"featureList": [
+			"One-tap sermon recording in high quality audio",
+			"Timestamped notes synced to audio playback",
+			"Bible verse autocomplete (KJV)",
+			"AI-powered speech-to-text transcription",
+			"Automatic sermon summary with key points",
+			"iCloud sync across devices",
+			"English and Spanish support",
+			"No account required"
+		],
+		"screenshot": "https://sermonkeeper.app/scss/image/og-image.png",
+		"installUrl": "https://apps.apple.com/app/sermon-keeper-smart-notes/id6758739935",
 		"aggregateRating": {
 			"@type": "AggregateRating",
 			"ratingValue": "5",
-			"ratingCount": "1"
+			"ratingCount": "1",
+			"bestRating": "5",
+			"worstRating": "1"
 		},
 		"author": {
 			"@type": "Organization",
-			"name": "Sermon Keeper"
-		}
+			"name": "Sermon Keeper",
+			"url": "https://sermonkeeper.app",
+			"email": "hello@sermonkeeper.app"
+		},
+		"inLanguage": ["en", "es"]
 	}
 	</script>
 
+	<!-- Structured Data (JSON-LD) — FAQPage (all 9 questions) -->
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
@@ -79,7 +113,7 @@
 				"name": "What is Sermon Keeper?",
 				"acceptedAnswer": {
 					"@type": "Answer",
-					"text": "An iOS app that records sermons, adds timestamps to your notes, and gives you automatic transcription with summary."
+					"text": "Sermon Keeper is an iOS app that records sermons, adds timestamps to your notes, autocompletes Bible verses, and gives you automatic AI-powered transcription with a summary and key points."
 				}
 			},
 			{
@@ -87,7 +121,7 @@
 				"name": "Is Sermon Keeper free?",
 				"acceptedAnswer": {
 					"@type": "Answer",
-					"text": "You get 3 free recordings. Then $6.99/month or $64.99/year for unlimited."
+					"text": "You get 3 free recordings. Then $6.99/month or $64.99/year for unlimited recordings and transcriptions."
 				}
 			},
 			{
@@ -95,15 +129,47 @@
 				"name": "What languages are supported?",
 				"acceptedAnswer": {
 					"@type": "Answer",
-					"text": "English and Spanish — both the app and AI transcription."
+					"text": "English and Spanish — both the app interface and AI transcription work in both languages."
 				}
 			},
 			{
 				"@type": "Question",
-				"name": "Best app to record sermons on iPhone?",
+				"name": "What Bible version is used?",
 				"acceptedAnswer": {
 					"@type": "Answer",
-					"text": "Sermon Keeper is built specifically for church — with timestamped notes, Bible verses, and AI summaries."
+					"text": "King James Version (KJV) for now. More translations are coming soon."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "Can I share my notes?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Yes — you can export your sermon notes and transcription via email or plain text to share with your Bible study group or friends."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "What is the best app to record sermons on iPhone?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Sermon Keeper is built specifically for church — with timestamped notes, automatic Bible verse lookup, and AI-powered transcription with summary. Unlike general recording apps, it is designed around the sermon experience."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "Will I lose my recordings?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "No — everything syncs to iCloud automatically. Your recordings and notes are stored on your device and backed up to your personal iCloud account."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "Do I need an account to use Sermon Keeper?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "No sign-up required. Just download from the App Store and start recording your first sermon immediately."
 				}
 			},
 			{
@@ -111,10 +177,30 @@
 				"name": "Is my data secure?",
 				"acceptedAnswer": {
 					"@type": "Answer",
-					"text": "Yes — all recordings and notes stay on your device and sync only to your personal iCloud. We don't have access to your data."
+					"text": "Yes — all recordings and notes stay on your device and sync only to your personal iCloud. Sermon Keeper does not have access to your data and does not sell any user information."
 				}
 			}
 		]
+	}
+	</script>
+
+	<!-- Structured Data (JSON-LD) — WebSite -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"name": "Sermon Keeper",
+		"url": "https://sermonkeeper.app",
+		"description": "AI-powered sermon notes app for iOS. Record, transcribe, and never miss an insight from your church sermons.",
+		"publisher": {
+			"@type": "Organization",
+			"name": "Sermon Keeper",
+			"url": "https://sermonkeeper.app",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://sermonkeeper.app/apple-touch-icon.png"
+			}
+		}
 	}
 	</script>
 
