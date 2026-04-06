@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3a8f"/>
+      <stop offset="100%" style="stop-color:#5b8df5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Brain/memory icon -->
+  <g transform="translate(480, 80)" opacity="0.15">
+    <circle cx="120" cy="120" r="110" fill="white" stroke="white" stroke-width="4"/>
+    <path d="M80 120 C80 80, 120 60, 140 80 C160 60, 200 80, 200 120 C200 160, 140 200, 140 200 C140 200, 80 160, 80 120Z" fill="white" opacity="0.5"/>
+  </g>
+  <!-- Retention curve visualization -->
+  <g opacity="0.2">
+    <path d="M100 350 Q300 200 500 320 Q700 200 900 280 Q1000 250 1100 260" stroke="white" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+    <circle cx="100" cy="350" r="6" fill="white"/>
+    <circle cx="500" cy="320" r="6" fill="white"/>
+    <circle cx="900" cy="280" r="6" fill="white"/>
+  </g>
+  <!-- Text -->
+  <text x="600" y="420" font-family="Inter, -apple-system, sans-serif" font-size="52" font-weight="700" fill="white" text-anchor="middle">How to Remember Sermons Better</text>
+  <text x="600" y="480" font-family="Inter, -apple-system, sans-serif" font-size="28" font-weight="400" fill="white" opacity="0.8" text-anchor="middle">Science-Backed Techniques That Actually Work</text>
+  <text x="600" y="580" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="500" fill="white" opacity="0.5" text-anchor="middle">sermonkeeper.app</text>
+</svg>
