@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0C2882"/>
+      <stop offset="100%" style="stop-color:#3E7AF5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- App icons grid -->
+  <g opacity="0.15">
+    <rect x="80" y="180" width="80" height="80" rx="18" fill="white"/>
+    <rect x="200" y="180" width="80" height="80" rx="18" fill="white"/>
+    <rect x="320" y="180" width="80" height="80" rx="18" fill="white"/>
+    <rect x="440" y="180" width="80" height="80" rx="18" fill="white"/>
+    <rect x="560" y="180" width="80" height="80" rx="18" fill="white"/>
+  </g>
+  <!-- Star/trophy icon -->
+  <g transform="translate(900, 200)">
+    <circle cx="60" cy="60" r="80" fill="white" opacity="0.1"/>
+    <path d="M60 15 L72 45 L105 48 L80 70 L87 103 L60 88 L33 103 L40 70 L15 48 L48 45 Z" fill="white" opacity="0.3"/>
+  </g>
+  <!-- Text -->
+  <text x="600" y="420" font-family="Inter, -apple-system, sans-serif" font-size="52" font-weight="700" fill="white" text-anchor="middle">5 Best Apps for Sermon Notes</text>
+  <text x="600" y="480" font-family="Inter, -apple-system, sans-serif" font-size="28" font-weight="400" fill="white" opacity="0.8" text-anchor="middle">A Comprehensive Comparison for 2026</text>
+  <!-- Sermon Keeper branding -->
+  <text x="600" y="580" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="500" fill="white" opacity="0.5" text-anchor="middle">sermonkeeper.app</text>
+</svg>
