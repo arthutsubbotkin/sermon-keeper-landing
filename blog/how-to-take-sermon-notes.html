@@ -66,6 +66,69 @@
 	}
 	</script>
 
+	<!-- Structured Data — FAQPage -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"mainEntity": [
+			{
+				"@type": "Question",
+				"name": "What is the best way to take sermon notes?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "The best way depends on your learning style. The Outline Method works well for structured thinkers, the Cornell Method is best for long-term retention thanks to its built-in review step, and the Timestamp Method lets you stay fully present by recording audio and adding short notes at key moments. Start with the method that matches how you naturally process information."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "Should I take sermon notes on my phone or paper?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Both work well, but each has advantages. Paper reduces distractions and suits methods like the Cornell and Outline approaches. A phone lets you record audio, add timestamped notes, and use AI transcription to get a full text of the sermon afterward. If you find yourself distracted by notifications, paper may be better. If you want a complete searchable record, a phone or tablet with a sermon notes app is the way to go."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "How do I remember sermons better?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "The most effective way to remember sermons is to review your notes shortly after the service — even five minutes in the car makes a big difference. The Cornell Method is specifically designed for this, with a built-in review step where you write key words and a summary after church. Writing notes in your own words rather than copying the pastor verbatim also improves retention significantly."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "What should I write down during a sermon?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Focus on the sermon's main points, supporting Scripture references, and any illustrations or stories that resonate with you. You don't need to write everything — capturing the big ideas in your own words is more valuable than a word-for-word transcript. Also write down any personal questions or applications that come to mind, as these represent the moments the sermon connected with you personally."
+				}
+			},
+			{
+				"@type": "Question",
+				"name": "Can I use an app to take sermon notes?",
+				"acceptedAnswer": {
+					"@type": "Answer",
+					"text": "Yes. Sermon note-taking apps like Sermon Keeper let you record the audio while adding timestamped notes at key moments. This means you can stay focused on listening and only jot a few words when something stands out. After the service, you can jump back to any marked moment in the recording, and AI transcription can convert the full sermon into readable text with a summary and key points."
+				}
+			}
+		]
+	}
+	</script>
+
+	<!-- Structured Data — BreadcrumbList -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sermonkeeper.app/" },
+			{ "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sermonkeeper.app/blog/" },
+			{ "@type": "ListItem", "position": 3, "name": "How to Take Sermon Notes: 5 Methods That Actually Work" }
+		]
+	}
+	</script>
+
 	<!-- Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M8FJDVHNCY"></script>
 	<script>
@@ -128,7 +191,9 @@
 	<!-- Article Body -->
 	<div class="article-body">
 		<div class="article-content">
-			<p>You sit down in the pew, pull out your phone or notebook, and the pastor starts preaching. Twenty minutes later, you look down and realize you have three half-finished sentences and a doodle. Sound familiar?</p>
+			<p>The five most effective sermon note-taking methods are: the Outline Method, the Cornell Method, the Timestamp Method, the Question Method, and the One-Sentence Summary. Each balances listening and writing differently — the best choice depends on your learning style and how much effort you want to invest during and after the service.</p>
+
+		<p>You sit down in the pew, pull out your phone or notebook, and the pastor starts preaching. Twenty minutes later, you look down and realize you have three half-finished sentences and a doodle. Sound familiar?</p>
 
 			<p>You're not alone. Most churchgoers struggle with the same thing: you want to capture what the pastor is saying, but you also want to actually <em>listen</em>. Writing too much means you miss the message. Writing too little means you forget it by Monday.</p>
 
@@ -211,7 +276,26 @@
 
 			<p>The most important thing isn't which method you pick — it's that you actually use it consistently. A simple method you stick with every Sunday will serve you far better than a complex system you abandon after two weeks.</p>
 
-			<div class="article-cta article-cta-final">
+			<h2>Frequently Asked Questions</h2>
+
+		<div class="article-faq">
+			<h3>What is the best way to take sermon notes?</h3>
+			<p>The best way depends on your learning style. The Outline Method works well for structured thinkers, the Cornell Method is best for long-term retention thanks to its built-in review step, and the Timestamp Method lets you stay fully present by recording audio and adding short notes at key moments. Start with the method that matches how you naturally process information.</p>
+
+			<h3>Should I take sermon notes on my phone or paper?</h3>
+			<p>Both work well, but each has advantages. Paper reduces distractions and suits methods like the Cornell and Outline approaches. A phone lets you record audio, add timestamped notes, and use AI transcription to get a full text of the sermon afterward. If you find yourself distracted by notifications, paper may be better. If you want a complete searchable record, a phone or tablet with a sermon notes app is the way to go.</p>
+
+			<h3>How do I remember sermons better?</h3>
+			<p>The most effective way to remember sermons is to review your notes shortly after the service — even five minutes in the car makes a big difference. The Cornell Method is specifically designed for this, with a built-in review step where you write key words and a summary after church. Writing notes in your own words rather than copying the pastor verbatim also improves retention significantly.</p>
+
+			<h3>What should I write down during a sermon?</h3>
+			<p>Focus on the sermon's main points, supporting Scripture references, and any illustrations or stories that resonate with you. You don't need to write everything — capturing the big ideas in your own words is more valuable than a word-for-word transcript. Also write down any personal questions or applications that come to mind, as these represent the moments the sermon connected with you personally.</p>
+
+			<h3>Can I use an app to take sermon notes?</h3>
+			<p>Yes. Sermon note-taking apps like Sermon Keeper let you record the audio while adding timestamped notes at key moments. This means you can stay focused on listening and only jot a few words when something stands out. After the service, you can jump back to any marked moment in the recording, and AI transcription can convert the full sermon into readable text with a summary and key points.</p>
+		</div>
+
+		<div class="article-cta article-cta-final">
 				<h3>Never Miss a Sermon Insight Again</h3>
 				<p>Sermon Keeper combines recording, timestamped notes, Bible verse autocomplete, and AI transcription in one simple app. Try it free — 3 recordings included.</p>
 				<a href="https://apps.apple.com/app/sermon-keeper-smart-notes/id6758739935" class="app-store-btn app-store-btn-sm">
