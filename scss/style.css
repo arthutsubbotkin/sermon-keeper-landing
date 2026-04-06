@@ -104,10 +104,16 @@ img {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 1rem;
+}
+
+.header a:first-child {
+	flex-shrink: 0;
 }
 
 .header-logo {
 	height: 44px;
+	width: auto;
 }
 
 /* Hero Section */
@@ -487,14 +493,17 @@ img {
 /* Header Nav */
 .header-nav {
 	display: flex;
-	gap: 2rem;
+	gap: 1.5rem;
 	align-items: center;
+	flex-shrink: 0;
 }
 
 .header-nav a {
 	font-size: 0.9375rem;
 	font-weight: 500;
 	color: #0C2882;
+	white-space: nowrap;
+	text-decoration: none;
 }
 
 .header-nav a:hover {
@@ -506,17 +515,155 @@ img {
 }
 
 .header-download-btn {
+	display: inline-flex;
+	align-items: center;
 	background: #0C2882;
 	color: var(--white) !important;
 	padding: 0.5rem 1.25rem;
 	border-radius: 20px;
 	font-size: 0.875rem !important;
+	white-space: nowrap;
+	flex-shrink: 0;
 	font-weight: 600;
 	transition: background 0.2s;
 }
 
+.header-download-mobile {
+	display: none;
+	background: #0C2882;
+	color: var(--white) !important;
+	padding: 0.5rem 1.25rem;
+	border-radius: 20px;
+	font-size: 0.875rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	text-decoration: none;
+	font-weight: 600;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.header-download-mobile svg {
+	width: 16px;
+	height: 16px;
+	fill: white;
+}
+
 .header-download-btn:hover {
 	background: var(--primary-blue);
+}
+
+/* Burger Menu */
+.burger-menu {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	width: 28px;
+	height: 28px;
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 0;
+	z-index: 1001;
+}
+
+.burger-menu span {
+	display: block;
+	width: 100%;
+	height: 2.5px;
+	background: #0C2882;
+	border-radius: 2px;
+	transition: transform 0.3s, opacity 0.3s;
+}
+
+.burger-menu.open span:nth-child(1) {
+	transform: translateY(7.5px) rotate(45deg);
+}
+
+.burger-menu.open span:nth-child(2) {
+	opacity: 0;
+}
+
+.burger-menu.open span:nth-child(3) {
+	transform: translateY(-7.5px) rotate(-45deg);
+}
+
+.mobile-nav-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 999;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.mobile-nav-overlay.open {
+	opacity: 1;
+}
+
+.mobile-nav {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: -280px;
+	width: 280px;
+	height: 100%;
+	background: var(--white);
+	z-index: 1000;
+	padding: 5rem 2rem 2rem;
+	flex-direction: column;
+	gap: 0;
+	box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+	transition: right 0.3s ease;
+}
+
+.mobile-nav.open {
+	right: 0;
+}
+
+.mobile-nav a {
+	display: block;
+	font-size: 1.125rem;
+	font-weight: 500;
+	color: #0C2882;
+	padding: 1rem 0;
+	border-bottom: 1px solid #E5E7EB;
+	text-decoration: none;
+}
+
+.mobile-nav a:last-child {
+	border-bottom: none;
+}
+
+.mobile-nav a.active {
+	color: var(--primary-blue);
+}
+
+.mobile-nav .mobile-nav-download {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: #0C2882;
+	color: var(--white);
+	padding: 0.75rem 1.5rem;
+	border-radius: 24px;
+	font-size: 1rem;
+	font-weight: 600;
+	margin-top: 1.5rem;
+	text-align: center;
+	justify-content: center;
+	border-bottom: none;
+}
+
+.mobile-nav .mobile-nav-download svg {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
 }
 
 /* Blog Hero */
@@ -773,8 +920,29 @@ img {
 		margin: 0 1rem;
 	}
 
+	.header-section {
+		padding: 0.75rem 1rem;
+	}
+
 	.header-nav {
-		gap: 1rem;
+		display: none;
+	}
+
+	.header-download-mobile {
+		display: inline-flex;
+	}
+
+	.burger-menu {
+		display: flex;
+	}
+
+	.mobile-nav-overlay,
+	.mobile-nav {
+		display: block;
+	}
+
+	.header-logo {
+		height: 36px;
 	}
 
 	.blog-hero h1 {
@@ -787,6 +955,14 @@ img {
 }
 
 @media (max-width: 480px) {
+	.header-section {
+		padding: 0.625rem 0.75rem;
+	}
+
+	.header-logo {
+		height: 32px;
+	}
+
 	.hero-subtitle {
 		font-size: 1rem;
 	}
@@ -806,5 +982,17 @@ img {
 	.app-store-btn {
 		padding: 0.875rem 1.5rem;
 		font-size: 1rem;
+	}
+
+	.blog-hero h1 {
+		font-size: 1.625rem;
+	}
+
+	.blog-hero-subtitle {
+		font-size: 0.9375rem;
+	}
+
+	.article-hero h1 {
+		font-size: 1.5rem;
 	}
 }
