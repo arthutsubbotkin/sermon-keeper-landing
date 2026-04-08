@@ -1614,21 +1614,25 @@ img {
 
 .article-hero-image {
 
-	max-width: 720px;
+	max-width: 100%;
 
-	margin: 0 auto;
+	padding: 0 0 2rem;
 
-	padding: 0 2rem;
+	background: #F8FAFC;
 
 }
 
-
-
 .article-hero-image img {
+
+	display: block;
 
 	width: 100%;
 
+	max-width: 720px;
+
 	height: 320px;
+
+	margin: 0 auto;
 
 	object-fit: cover;
 
@@ -1728,11 +1732,14 @@ img {
 
 .article-table {
 	width: 100%;
-	border-collapse: collapse;
+	border-collapse: separate;
+	border-spacing: 0;
 	margin: 2rem 0;
 	font-size: 0.9375rem;
 	line-height: 1.6;
 	background: var(--white);
+	border-radius: 16px;
+	overflow: hidden;
 }
 
 .article-table thead {
