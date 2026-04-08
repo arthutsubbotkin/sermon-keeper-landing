@@ -286,9 +286,17 @@ img {
 
 
 
-.hero-image {
+.hero-title {
 
-	width: 100%;
+	font-family: "Inter", sans-serif;
+
+	font-weight: 600;
+
+	font-size: 65px;
+
+	line-height: 1.15;
+
+	color: #0C2882;
 
 	max-width: 700px;
 
@@ -298,11 +306,15 @@ img {
 
 
 
-.hero-image img {
+.gradient-text {
 
-	width: 100%;
+	background: linear-gradient(135deg, #3E7AF5 0%, #0C2882 50%, #3E7AF5 100%);
 
-	height: auto;
+	-webkit-background-clip: text;
+
+	-webkit-text-fill-color: transparent;
+
+	background-clip: text;
 
 }
 
@@ -1542,7 +1554,7 @@ img {
 
 	padding: 3rem 2rem 2rem;
 
-	background: var(--white);
+	background: #F8FAFC;
 
 }
 
@@ -1630,7 +1642,7 @@ img {
 
 	padding: 2rem 2rem 4rem;
 
-	background: var(--white);
+	background: #F8FAFC;
 
 }
 
@@ -1682,7 +1694,33 @@ img {
 
 	font-weight: 600;
 
-	color: #0C2882;
+	color: #1a1a1a;
+
+}
+
+
+
+.article-content ul {
+
+	margin-bottom: 1.25rem;
+
+	padding-left: 1.5rem;
+
+	color: #1a1a1a;
+
+}
+
+
+
+.article-content li {
+
+	font-size: 1.0625rem;
+
+	line-height: 1.8;
+
+	color: #1a1a1a;
+
+	margin-bottom: 0.25rem;
 
 }
 
@@ -1694,6 +1732,7 @@ img {
 	margin: 2rem 0;
 	font-size: 0.9375rem;
 	line-height: 1.6;
+	background: var(--white);
 }
 
 .article-table thead {
@@ -1734,7 +1773,7 @@ img {
 
 .article-cta {
 
-	background: var(--bg-light);
+	background: var(--white);
 
 	border-radius: 20px;
 
@@ -1750,7 +1789,7 @@ img {
 
 .article-cta-final {
 
-	background: linear-gradient(135deg, #EFF6FF, #F8FAFC);
+	background: var(--white);
 
 }
 
@@ -1878,6 +1917,14 @@ img {
 	.hero-section {
 
 		padding: 2rem 1.5rem 3rem;
+
+	}
+
+
+
+	.hero-title {
+
+		font-size: 42px;
 
 	}
 
@@ -2028,6 +2075,14 @@ img {
 	.header-logo {
 
 		height: 32px;
+
+	}
+
+
+
+	.hero-title {
+
+		font-size: 32px;
 
 	}
 
