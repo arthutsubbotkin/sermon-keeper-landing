@@ -47,12 +47,20 @@
 	</script>
 
 	<!-- Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-M8FJDVHNCY"></script>
 	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-M8FJDVHNCY');
+		if (new URLSearchParams(window.location.search).has('disable_analytics')) {
+			localStorage.setItem('disable_analytics', 'true');
+		}
+		if (!localStorage.getItem('disable_analytics')) {
+			var s = document.createElement('script');
+			s.async = true;
+			s.src = 'https://www.googletagmanager.com/gtag/js?id=G-M8FJDVHNCY';
+			document.head.appendChild(s);
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-M8FJDVHNCY');
+		}
 	</script>
 </head>
 <body>
