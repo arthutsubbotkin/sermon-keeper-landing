@@ -30,7 +30,7 @@ Sermon Keeper is an iOS app designed for church-going Christians who want to cap
 ## Links
 
 - Website: https://sermonkeeper.app
-- App Store: https://apps.apple.com/app/sermon-keeper-smart-notes/id6758739935
+- App Store: https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&ct=landing_page&mt=8
 - Contact: hello@sermonkeeper.app
 
 ## Technical Details
