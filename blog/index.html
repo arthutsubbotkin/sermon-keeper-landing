@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="apple-itunes-app" content="app-id=6758739935">
 
 	<!-- Primary Meta Tags -->
 	<title>Sermon Keeper Blog — Tips for Better Sermon Notes & Bible Study</title>
@@ -175,12 +176,12 @@
 			</a>
 			<a href="/blog/best-sermon-notes-apps" class="blog-card">
 				<div class="blog-card-image">
-					<img src="../scss/image/blog/photos/best-sermon-notes-apps.jpg" alt="5 Best Apps for Sermon Notes" />
+					<img src="../scss/image/blog/photos/best-sermon-notes-apps.jpg" alt="7 Best Sermon Notes Apps in 2026" />
 				</div>
 				<div class="blog-card-content">
-					<div class="blog-card-meta">April 6, 2026 &middot; 10 min read</div>
-					<h3>5 Best Apps for Sermon Notes in 2026</h3>
-					<p>Compare the top 5 sermon note-taking apps — Sermon Keeper, Evernote, Notion, Apple Notes, and Otter.ai. Find the best fit for your church experience.</p>
+					<div class="blog-card-meta">June 26, 2026 &middot; 11 min read</div>
+					<h3>7 Best Sermon Notes Apps in 2026</h3>
+					<p>Compare the 7 best sermon notes apps of 2026 — Sermon Keeper, Sermon Scribe, Church Notes, Bible Note Journal, biblenote.ai, YouVersion Notes, and Apple Notes. Find the right fit for how you take notes in church.</p>
 					<span class="blog-card-tag">App Reviews</span>
 				</div>
 			</a>
@@ -252,5 +253,29 @@
 			</div>
 		</div>
 	</div>
+	<!-- Sticky mobile CTA bar -->
+	<a class="sticky-cta" id="stickyCta" href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_sticky_bar&amp;mt=8" aria-label="Start free with Sermon Keeper">
+		<span class="sticky-cta-left">
+			<img class="sticky-cta-icon" src="../apple-touch-icon.png" alt="" width="40" height="40" />
+			<span class="sticky-cta-text">
+				<strong>Sermon Keeper</strong>
+				<span>Free trial</span>
+			</span>
+		</span>
+		<span class="sticky-cta-btn">Start free</span>
+	</a>
+	<script>
+	(function () {
+		var bar = document.getElementById('stickyCta');
+		var footer = document.querySelector('.footer-section');
+		if (!bar || !footer || !('IntersectionObserver' in window)) return;
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (e) {
+				bar.classList.toggle('is-hidden', e.isIntersecting);
+			});
+		}, { rootMargin: '0px 0px -72px 0px' });
+		io.observe(footer);
+	})();
+	</script>
 </body>
 </html>

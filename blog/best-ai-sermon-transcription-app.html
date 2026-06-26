@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="apple-itunes-app" content="app-id=6758739935">
 
 	<!-- Primary Meta Tags -->
 	<title>7 Best AI Sermon Transcription Apps in 2026 (Compared) | Sermon Keeper</title>
@@ -463,5 +464,29 @@
 			</div>
 		</div>
 	</div>
+	<!-- Sticky mobile CTA bar -->
+	<a class="sticky-cta" id="stickyCta" href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_sticky_bar&amp;mt=8" aria-label="Start free with Sermon Keeper">
+		<span class="sticky-cta-left">
+			<img class="sticky-cta-icon" src="../apple-touch-icon.png" alt="" width="40" height="40" />
+			<span class="sticky-cta-text">
+				<strong>Sermon Keeper</strong>
+				<span>Free trial</span>
+			</span>
+		</span>
+		<span class="sticky-cta-btn">Start free</span>
+	</a>
+	<script>
+	(function () {
+		var bar = document.getElementById('stickyCta');
+		var footer = document.querySelector('.footer-section');
+		if (!bar || !footer || !('IntersectionObserver' in window)) return;
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (e) {
+				bar.classList.toggle('is-hidden', e.isIntersecting);
+			});
+		}, { rootMargin: '0px 0px -72px 0px' });
+		io.observe(footer);
+	})();
+	</script>
 </body>
 </html>
