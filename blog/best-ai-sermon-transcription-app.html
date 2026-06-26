@@ -22,6 +22,7 @@
 	<meta property="og:image" content="https://sermonkeeper.app/scss/image/og-image.png" />
 	<meta property="og:site_name" content="Sermon Keeper" />
 	<meta property="article:published_time" content="2026-04-08" />
+	<meta property="article:modified_time" content="2026-06-26" />
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
@@ -36,6 +37,10 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 
 	<!-- Styles -->
+	<!-- Preload critical fonts (LCP text is bold Inter) -->
+	<link rel="preload" href="../scss/font/inter/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="preload" href="../scss/font/inter/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin />
+
 	<link rel="stylesheet" href="../scss/style.css" type="text/css" />
 
 	<!-- Structured Data — Article -->
@@ -46,7 +51,7 @@
 		"headline": "7 Best AI Sermon Transcription Apps in 2026",
 		"description": "Compare sermon-specific and general-purpose AI transcription tools for converting sermons to text. Honest pros, cons, pricing, and accuracy for each.",
 		"datePublished": "2026-04-08",
-		"dateModified": "2026-04-08",
+		"dateModified": "2026-06-26",
 		"author": {
 			"@type": "Organization",
 			"name": "Sermon Keeper",
@@ -158,9 +163,9 @@
 			<nav class="header-nav">
 				<a href="/">Home</a>
 				<a href="/blog/" class="active">Blog</a>
-				<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog&amp;mt=8" class="header-download-btn"><svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:white;vertical-align:middle;margin-right:4px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>Download App</a>
+				<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_best_ai_header&amp;mt=8" class="header-download-btn"><svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:white;vertical-align:middle;margin-right:4px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>Download App</a>
 			</nav>
-			<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog&amp;mt=8" class="header-download-mobile"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>Download App</a>
+			<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_best_ai_header&amp;mt=8" class="header-download-mobile"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>Download App</a>
 			<button class="burger-menu" onclick="toggleMenu()" aria-label="Menu">
 				<span></span><span></span><span></span>
 			</button>
@@ -170,7 +175,7 @@
 	<nav class="mobile-nav" id="mobileNav">
 		<a href="/">Home</a>
 		<a href="/blog/" class="active">Blog</a>
-		<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog&amp;mt=8" class="mobile-nav-download">
+		<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_best_ai_nav&amp;mt=8" class="mobile-nav-download">
 			<svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
 			Download App
 		</a>
@@ -189,14 +194,16 @@
 		<div class="article-hero-inner">
 			<div class="article-breadcrumb"><a href="/blog/">Blog</a> &rarr; App Reviews</div>
 			<h1>7 Best AI Sermon Transcription Apps in 2026</h1>
-			<div class="article-meta">April 8, 2026 &middot; 12 min read</div>
+			<div class="article-meta">Updated June 26, 2026 &middot; 12 min read</div>
 		</div>
 	</div>
 
-	<!-- Article Hero Image -->
-	<div class="article-hero-image">
-		<img src="../scss/image/blog/photos/best-ai-sermon-transcription-app.jpg" alt="AI sermon transcription app on a smartphone" />
-	</div>
+	<!-- Article Lead Image -->
+	<figure class="article-lead">
+		<picture>
+			<img src="../scss/image/blog/photos/best-ai-sermon-transcription-app.jpg" alt="AI sermon transcription app converting a sermon to text on a smartphone" width="940" height="682" fetchpriority="high" decoding="async" />
+		</picture>
+	</figure>
 
 	<!-- Article Body -->
 	<div class="article-body">
@@ -299,7 +306,7 @@
 			<div class="article-cta">
 				<h3>Try Sermon Keeper Free — 3-Day Trial with AI Transcription</h3>
 				<p>Record, transcribe, and summarize sermons with Bible verse detection. No subscription required to start.</p>
-				<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog&amp;mt=8" class="app-store-btn app-store-btn-sm">
+				<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_best_ai_cta2&amp;mt=8" class="app-store-btn app-store-btn-sm">
 					<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
 					Download on App Store
 				</a>
@@ -318,6 +325,22 @@
 			<p><strong>Pros:</strong> Deep Bible integration. Theme analysis goes beyond basic transcription. Growth tracking is unique.</p>
 
 			<p><strong>Cons:</strong> Pricing is opaque. Less established than general tools. No timestamped notes during recording.</p>
+
+			<figure class="article-banner">
+				<picture>
+					<source srcset="../scss/image/blog/best-sermon-notes-apps/catch-every-sermon.webp" type="image/webp" />
+					<img src="../scss/image/blog/best-sermon-notes-apps/catch-every-sermon.jpg" alt="Catch every sermon, keep every word — recording a sermon with Sermon Keeper" width="1376" height="768" loading="lazy" decoding="async" />
+				</picture>
+			</figure>
+
+			<div class="article-cta">
+				<h3>Transcribe your next sermon — free to start</h3>
+				<p>Record the message live, and Sermon Keeper turns it into a full AI transcript with a summary and Bible verse detection. Start your free 3-day trial — no subscription required.</p>
+				<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_best_ai_inline&amp;mt=8" class="app-store-btn app-store-btn-sm">
+					<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+					Try Sermon Keeper free
+				</a>
+			</div>
 
 			<h2>General-Purpose Tools That Work for Sermons</h2>
 
@@ -409,42 +432,74 @@
 
 			<h2>Frequently Asked Questions</h2>
 
-			<div class="faq-list">
-				<div class="faq-item">
-					<p class="faq-question" onclick="toggleFaq(0)">What is the best AI app for transcribing sermons?</p>
-					<p class="faq-answer">Sermon Keeper is the best AI app for transcribing sermons in 2026. It combines recording, timestamped notes, AI transcription, automatic Bible verse detection, and sermon summaries in one app built specifically for churchgoers. For existing recordings or files, TurboScribe offers the best accuracy (99.8%) with a generous free tier.</p>
+			<div class="faq-accordion">
+				<div class="faq-acc-item">
+					<button class="faq-acc-q" id="faq-q-1" aria-expanded="true" aria-controls="faq-a-1">
+						<span>What is the best AI app for transcribing sermons?</span>
+						<svg class="faq-acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+					</button>
+					<div class="faq-acc-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1">
+						<p>Sermon Keeper is the best AI app for transcribing sermons in 2026. It combines recording, timestamped notes, AI transcription, automatic Bible verse detection, and sermon summaries in one app built specifically for churchgoers. For existing recordings or files, TurboScribe offers the best accuracy (99.8%) with a generous free tier.</p>
+					</div>
 				</div>
-				<div class="faq-item">
-					<p class="faq-question" onclick="toggleFaq(1)">Is there a free AI sermon transcription app?</p>
-					<p class="faq-answer">Yes. Sermon Keeper offers a free 3-day trial with full AI transcription and summaries. TurboScribe provides 3 free transcriptions per day (up to 30 minutes each). Notta offers 200 free minutes per month. These free tiers are enough for weekly church attendance.</p>
+				<div class="faq-acc-item">
+					<button class="faq-acc-q" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2">
+						<span>Is there a free AI sermon transcription app?</span>
+						<svg class="faq-acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+					</button>
+					<div class="faq-acc-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2">
+						<p>Yes. Sermon Keeper offers a free 3-day trial with full AI transcription and summaries. TurboScribe provides 3 free transcriptions per day (up to 30 minutes each). Notta offers 200 free minutes per month. These free tiers are enough for weekly church attendance.</p>
+					</div>
 				</div>
-				<div class="faq-item">
-					<p class="faq-question" onclick="toggleFaq(2)">Should I use a sermon-specific app or a general transcription tool?</p>
-					<p class="faq-answer">Use a sermon-specific app if you want Bible verse detection, sermon summaries, and better handling of theological vocabulary. Use a general transcription tool if you already have recorded audio files (MP3, YouTube) and just need the raw text. Sermon-specific apps are better for live recording during church services; general tools are better for processing existing recordings.</p>
+				<div class="faq-acc-item">
+					<button class="faq-acc-q" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3">
+						<span>Should I use a sermon-specific app or a general transcription tool?</span>
+						<svg class="faq-acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+					</button>
+					<div class="faq-acc-a" id="faq-a-3" role="region" aria-labelledby="faq-q-3">
+						<p>Use a sermon-specific app if you want Bible verse detection, sermon summaries, and better handling of theological vocabulary. Use a general transcription tool if you already have recorded audio files (MP3, YouTube) and just need the raw text. Sermon-specific apps are better for live recording during church services; general tools are better for processing existing recordings.</p>
+					</div>
 				</div>
-				<div class="faq-item">
-					<p class="faq-question" onclick="toggleFaq(3)">Can AI transcribe a sermon from YouTube?</p>
-					<p class="faq-answer">Yes. TurboScribe, VEED, and SermonSpark accept YouTube URLs and can transcribe sermon videos directly. Paste the YouTube link, and the tool extracts the audio and converts it to text.</p>
+				<div class="faq-acc-item">
+					<button class="faq-acc-q" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4">
+						<span>Can AI transcribe a sermon from YouTube?</span>
+						<svg class="faq-acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+					</button>
+					<div class="faq-acc-a" id="faq-a-4" role="region" aria-labelledby="faq-q-4">
+						<p>Yes. Tools like TurboScribe, VEED, and SermonSpark accept YouTube URLs and can transcribe sermon videos directly. Paste the YouTube link, and the tool extracts the audio and converts it to text. This is useful for transcribing your church's online sermon archive.</p>
+					</div>
 				</div>
-				<div class="faq-item">
-					<p class="faq-question" onclick="toggleFaq(4)">How much does sermon transcription cost?</p>
-					<p class="faq-answer">AI sermon transcription ranges from free to about $20/month for unlimited use. Sermon Keeper starts with a free 3-day trial. TurboScribe costs $10/month for unlimited. Notta Pro is $8.17/month annually. Professional human transcription costs $1-2 per minute — roughly $45-90 for a 45-minute sermon.</p>
+				<div class="faq-acc-item">
+					<button class="faq-acc-q" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5">
+						<span>How much does sermon transcription cost?</span>
+						<svg class="faq-acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+					</button>
+					<div class="faq-acc-a" id="faq-a-5" role="region" aria-labelledby="faq-q-5">
+						<p>AI sermon transcription ranges from free to about $20/month for unlimited use. Sermon Keeper starts with a free 3-day trial, then paid plans for unlimited access. TurboScribe costs $10/month for unlimited transcriptions. Notta Pro costs $8.17/month annually. Professional human transcription costs $1-2 per minute of audio, making a 45-minute sermon cost $45-90.</p>
+					</div>
 				</div>
 			</div>
-			<script>
-			function toggleFaq(index) {
-				const questions = document.querySelectorAll('.faq-question');
-				questions[index].classList.toggle('expanded');
-			}
-			</script>
 
-			<div class="article-cta article-cta-final">
-				<h3>Start Free with Sermon Keeper</h3>
-				<p>Record sermons with timestamped notes, AI transcription, and Bible verse autocomplete. Start your free 3-day trial.</p>
-				<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog&amp;mt=8" class="app-store-btn app-store-btn-sm">
-					<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-					Download on App Store
-				</a>
+			<div class="article-cta-card">
+				<div class="cta-card-media">
+					<picture>
+						<source srcset="../scss/image/blog/best-sermon-notes-apps/scr1.webp" type="image/webp" />
+						<img src="../scss/image/blog/best-sermon-notes-apps/scr1.jpg" alt="Sermon Keeper app recording a Sunday service with timestamped notes" width="462" height="1000" loading="lazy" decoding="async" />
+					</picture>
+				</div>
+				<div class="cta-card-body">
+					<h3>Start Free with Sermon Keeper</h3>
+					<p>Record sermons with timestamped notes, on-device AI transcription, and Bible verse autocomplete. Start your free 3-day trial — see how it feels on Sunday.</p>
+					<ul class="cta-pills">
+						<li>✓ Free 3-day trial</li>
+						<li>✓ On-device &amp; private</li>
+						<li>✓ Built for church</li>
+					</ul>
+					<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_best_ai_final&amp;mt=8" class="app-store-btn app-store-btn-sm">
+						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+						Download on App Store
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -465,7 +520,7 @@
 		</div>
 	</div>
 	<!-- Sticky mobile CTA bar -->
-	<a class="sticky-cta" id="stickyCta" href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_sticky_bar&amp;mt=8" aria-label="Start free with Sermon Keeper">
+	<a class="sticky-cta" id="stickyCta" href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_best_ai_sticky_bar&amp;mt=8" aria-label="Start free with Sermon Keeper">
 		<span class="sticky-cta-left">
 			<img class="sticky-cta-icon" src="../apple-touch-icon.png" alt="" width="40" height="40" />
 			<span class="sticky-cta-text">
@@ -475,17 +530,52 @@
 		</span>
 		<span class="sticky-cta-btn">Start free</span>
 	</a>
+
+	<!-- Sticky desktop CTA bar (centered pill, appears after 30% scroll) -->
+	<a class="sticky-cta-desktop" id="stickyCtaDesktop" href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_best_ai_sticky_bar_desktop&amp;mt=8" aria-label="Start free with Sermon Keeper">
+		<img class="sticky-cta-desktop-icon" src="../apple-touch-icon.png" alt="" width="32" height="32" />
+		<span class="sticky-cta-desktop-text">Sermon Keeper — Free trial</span>
+		<span class="sticky-cta-desktop-btn">Start free</span>
+	</a>
+
 	<script>
+	// Sticky CTA bars: mobile shows immediately; desktop pill appears after 30% scroll. Both hide at the footer.
 	(function () {
-		var bar = document.getElementById('stickyCta');
+		var mobileBar = document.getElementById('stickyCta');
+		var desktopBar = document.getElementById('stickyCtaDesktop');
 		var footer = document.querySelector('.footer-section');
-		if (!bar || !footer || !('IntersectionObserver' in window)) return;
-		var io = new IntersectionObserver(function (entries) {
-			entries.forEach(function (e) {
-				bar.classList.toggle('is-hidden', e.isIntersecting);
+		if (!footer) return;
+		var footerVisible = false;
+		function update() {
+			if (mobileBar) mobileBar.classList.toggle('is-hidden', footerVisible);
+			if (desktopBar) {
+				var docH = document.documentElement.scrollHeight - window.innerHeight;
+				var progress = docH > 0 ? window.scrollY / docH : 0;
+				desktopBar.classList.toggle('is-visible', progress >= 0.30 && !footerVisible);
+			}
+		}
+		if ('IntersectionObserver' in window) {
+			new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) { footerVisible = e.isIntersecting; });
+				update();
+			}, { rootMargin: '0px 0px -72px 0px' }).observe(footer);
+		}
+		var ticking = false;
+		window.addEventListener('scroll', function () {
+			if (!ticking) { window.requestAnimationFrame(function () { update(); ticking = false; }); ticking = true; }
+		}, { passive: true });
+		update();
+	})();
+
+	// FAQ accordion: toggle aria-expanded; open/close is driven by CSS (max-height), so it
+	// works without JS too. First item starts open via its aria-expanded="true" in the HTML.
+	(function () {
+		var qs = document.querySelectorAll('.faq-acc-q');
+		qs.forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
 			});
-		}, { rootMargin: '0px 0px -72px 0px' });
-		io.observe(footer);
+		});
 	})();
 	</script>
 </body>
