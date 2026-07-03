@@ -2025,6 +2025,16 @@ img {
 .home-blog-card h3{font-size:1.05rem;line-height:1.35;margin:0;color:var(--text-dark);font-weight:700}
 @media(max-width:900px){.home-blog{padding:3rem 1.25rem}.home-blog-grid{grid-template-columns:1fr}.home-blog-head h2{font-size:1.6rem}}
 
+/* ===== About page: author bios ===== */
+.about-lead{font-size:1.15rem;line-height:1.7;color:var(--text-gray)}
+.about-authors{display:grid;grid-template-columns:1fr;gap:1.25rem;margin:1.5rem 0 2rem}
+.about-author-card{display:flex;gap:1.1rem;align-items:flex-start;background:var(--white);border:1px solid var(--border-gray);border-radius:16px;padding:1.35rem 1.5rem}
+.about-author-card img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.about-author-card h3{margin:0 0 0.1rem;font-size:1.1rem;color:var(--text-dark)}
+.about-author-role{color:var(--primary-blue);font-weight:600;font-size:0.875rem;margin-bottom:0.5rem}
+.about-author-card p{margin:0;color:var(--text-gray);line-height:1.6;font-size:0.95rem}
+@media(max-width:600px){.about-author-card{flex-direction:column;gap:0.75rem}}
+
 /* ===== Article media: lead image / inline banner ===== */
 .article-lead {
 	max-width: 1200px;
