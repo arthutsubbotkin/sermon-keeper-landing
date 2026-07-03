@@ -1989,6 +1989,18 @@ img {
 .article-steps li{line-height:1.65;padding-left:0.3rem}
 .article-steps li strong{color:var(--text-dark)}
 
+/* Accent-marker checklist (e.g. what SOAP stands for) */
+.article-check{list-style:none;margin:1.1rem 0 1.5rem;padding:0;display:grid;gap:0.7rem}
+.article-check li{position:relative;padding-left:1.7rem;line-height:1.6;color:var(--text-gray)}
+.article-check li::before{content:"";position:absolute;left:0;top:0.5em;width:9px;height:9px;border-radius:2px;background:var(--primary-blue)}
+.article-check li strong{color:var(--text-dark)}
+
+/* Worked-example callout (e.g. a full SOAP entry) */
+.soap-example{background:#F8FAFC;border:1px solid #E7ECF3;border-left:4px solid var(--primary-blue);border-radius:14px;padding:1.35rem 1.5rem;margin:1.5rem 0;display:grid;gap:0.9rem}
+.soap-example p{margin:0;line-height:1.65;color:var(--text-gray)}
+.soap-example p strong{color:var(--text-dark)}
+.soap-example em{font-style:italic}
+
 /* ===== Article media: lead image / inline banner ===== */
 .article-lead {
 	max-width: 1200px;
