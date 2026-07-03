@@ -426,17 +426,37 @@
 		</span>
 		<span class="sticky-cta-btn">Start free</span>
 	</a>
+	<a class="sticky-cta-desktop" id="stickyCtaDesktop" href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_blog_verse_detection_sticky_bar_desktop&amp;mt=8" aria-label="Start free with Sermon Keeper">
+		<img class="sticky-cta-desktop-icon" src="../apple-touch-icon.png" alt="" width="32" height="32" />
+		<span class="sticky-cta-desktop-text">Sermon Keeper — Free trial</span>
+		<span class="sticky-cta-desktop-btn">Start free</span>
+	</a>
 	<script>
 	(function () {
-		var bar = document.getElementById('stickyCta');
+		var mobileBar = document.getElementById('stickyCta');
+		var desktopBar = document.getElementById('stickyCtaDesktop');
 		var footer = document.querySelector('.footer-section');
-		if (!bar || !footer || !('IntersectionObserver' in window)) return;
-		var io = new IntersectionObserver(function (entries) {
-			entries.forEach(function (e) {
-				bar.classList.toggle('is-hidden', e.isIntersecting);
-			});
-		}, { rootMargin: '0px 0px -72px 0px' });
-		io.observe(footer);
+		if (!footer) return;
+		var footerVisible = false;
+		function update() {
+			if (mobileBar) mobileBar.classList.toggle('is-hidden', footerVisible);
+			if (desktopBar) {
+				var docH = document.documentElement.scrollHeight - window.innerHeight;
+				var progress = docH > 0 ? window.scrollY / docH : 0;
+				desktopBar.classList.toggle('is-visible', progress >= 0.30 && !footerVisible);
+			}
+		}
+		if ('IntersectionObserver' in window) {
+			new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) { footerVisible = e.isIntersecting; });
+				update();
+			}, { rootMargin: '0px 0px -72px 0px' }).observe(footer);
+		}
+		var ticking = false;
+		window.addEventListener('scroll', function () {
+			if (!ticking) { window.requestAnimationFrame(function () { update(); ticking = false; }); ticking = true; }
+		}, { passive: true });
+		update();
 	})();
 	</script>
 </body>
