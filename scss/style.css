@@ -1978,6 +1978,17 @@ img {
 	}
 }
 
+/* ===== Author byline ===== */
+.article-byline{display:flex;align-items:center;gap:12px;margin-top:18px}
+.byline-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.byline-meta{display:flex;flex-direction:column;line-height:1.3}
+.byline-name{font-weight:700;font-size:0.95rem;color:var(--text-dark)}
+.byline-role{font-size:0.8125rem;color:var(--text-gray)}
+
+.article-steps{margin:1.25rem 0 1.5rem;padding-left:1.4rem;display:grid;gap:0.6rem;color:var(--text-gray)}
+.article-steps li{line-height:1.65;padding-left:0.3rem}
+.article-steps li strong{color:var(--text-dark)}
+
 /* ===== Article media: lead image / inline banner ===== */
 .article-lead {
 	max-width: 1200px;
