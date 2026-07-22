@@ -2103,10 +2103,11 @@ img {
 @media(max-width:600px){.about-author-card{flex-direction:column;gap:0.75rem}}
 
 /* ===== Article media: lead image / inline banner ===== */
+/* The design places the hero inside the article column, not wider than it. */
 .article-lead {
-	max-width: 1200px;
+	max-width: 727px;
 	margin: 0 auto 2.5rem;
-	padding: 0 1.5rem;
+	padding: 0;
 }
 
 .article-lead img {
