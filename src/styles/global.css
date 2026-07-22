@@ -1582,7 +1582,7 @@ img {
 
 	padding: 3rem 2rem 2rem;
 
-	background: #F8FAFC;
+	background: var(--white);
 
 }
 
@@ -1590,7 +1590,7 @@ img {
 
 .article-hero-inner {
 
-	max-width: 840px;
+	max-width: 727px;
 
 	margin: 0 auto;
 
@@ -1626,6 +1626,10 @@ img {
 
 	line-height: 58px;
 
+	letter-spacing: 0;
+
+	color: #000;
+
 	margin-bottom: 1rem;
 
 }
@@ -1643,13 +1647,9 @@ img {
 
 
 .article-hero-image {
-
-	max-width: 100%;
-
-	padding: 0 0 2rem;
-
-	background: #F8FAFC;
-
+	max-width: 727px;
+	margin: 0 auto 2.5rem;
+	background: var(--white);
 }
 
 .article-hero-image img {
@@ -1676,7 +1676,7 @@ img {
 
 	padding: 2rem 2rem 4rem;
 
-	background: #F8FAFC;
+	background: var(--white);
 
 }
 
@@ -1739,6 +1739,8 @@ img {
 
 	font-family: 'Charis SIL', Charter, Georgia, serif;
 
+	font-weight: 400;
+
 	font-size: 21px;
 
 	line-height: 33px;
@@ -1780,6 +1782,8 @@ img {
 .article-content li {
 
 	font-family: 'Charis SIL', Charter, Georgia, serif;
+
+	font-weight: 400;
 
 	font-size: 21px;
 
