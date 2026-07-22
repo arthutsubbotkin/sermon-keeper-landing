@@ -1,0 +1,153 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import ArticleCTACard from '../components/ArticleCTACard.astro';
+import StickyBar from '../components/StickyBar.astro';
+import { SITE, AUTHORS, appStoreUrl } from '../utils/site';
+import { blogPostingSchema, faqSchema, howToSchema, breadcrumbSchema } from '../utils/seo';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	slug: string;
+}
+const { post, slug } = Astro.props;
+const d = post.data;
+
+const url = `${SITE.url}/blog/${slug}`;
+const author = AUTHORS[d.author];
+// Hero lives in public/ at a stable path, so the absolute URL is safe for og:image.
+const heroAbs = `${SITE.url}${d.heroImage}`;
+const heroWebp = d.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+
+const iso = (x: Date) => x.toISOString().slice(0, 10);
+
+const schemas: unknown[] = [
+	blogPostingSchema({
+		headline: d.title,
+		description: d.description,
+		image: heroAbs,
+		pubDate: d.pubDate,
+		updatedDate: d.updatedDate,
+		author: d.author,
+		url,
+	}),
+];
+if (d.howTo) schemas.push(howToSchema(d.howTo));
+if (d.faq.length) schemas.push(faqSchema(d.faq));
+schemas.push(
+	breadcrumbSchema([
+		{ name: 'Home', item: `${SITE.url}/` },
+		{ name: 'Blog', item: `${SITE.url}/blog/` },
+		{ name: d.shortTitle ?? d.title },
+	])
+);
+
+const categoryLabel =
+	d.category === 'reviews' ? 'Reviews' : d.category === 'comparisons' ? 'Comparisons' : 'Guides';
+---
+
+<BaseLayout
+	title={d.metaTitle}
+	description={d.description}
+	canonical={url}
+	keywords={d.keywords}
+	author={d.author}
+	ogType="article"
+	ogTitle={d.ogTitle ?? d.title}
+	ogDescription={d.ogDescription}
+	ogImage={`${heroAbs}?v=2`}
+	twitterTitle={d.twitterTitle ?? d.ogTitle ?? d.title}
+	twitterDescription={d.twitterDescription}
+	twitterImage={`${heroAbs}?v=2`}
+	publishedTime={iso(d.pubDate)}
+	modifiedTime={iso(d.updatedDate ?? d.pubDate)}
+	schemas={schemas}
+	headerHref={appStoreUrl(d.utmToken, 'header')}
+	navHref={appStoreUrl(d.utmToken, 'nav')}
+	active="blog"
+>
+	<div class="article-hero">
+		<div class="article-hero-inner">
+			<div class="article-breadcrumb"><a href="/blog/">Blog</a> &rarr; {categoryLabel}</div>
+			<h1>{d.title}</h1>
+			<div class="article-meta">{d.displayDate} &middot; {d.readingTime} min read</div>
+			<div class="article-byline">
+				<img
+					class="byline-avatar"
+					src={author.avatar}
+					alt={d.author}
+					width="44"
+					height="44"
+					loading="lazy"
+					decoding="async"
+				/>
+				<div class="byline-meta">
+					<span class="byline-name">{d.author}</span>
+					<span class="byline-role">{author.role} &middot; Sermon Keeper</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{
+		d.heroStyle === 'lead' ? (
+			<figure class="article-lead">
+				<picture>
+					<source srcset={heroWebp} type="image/webp" />
+					<img
+						src={`${d.heroImage}?v=2`}
+						alt={d.heroImageAlt}
+						width={d.heroWidth}
+						height={d.heroHeight}
+						fetchpriority="high"
+						decoding="async"
+					/>
+				</picture>
+			</figure>
+		) : (
+			<div class="article-hero-image">
+				<picture>
+					<source srcset={heroWebp} type="image/webp" />
+					<img src={`${d.heroImage}?v=2`} alt={d.heroImageAlt} fetchpriority="high" decoding="async" />
+				</picture>
+			</div>
+		)
+	}
+
+	<div class="article-body">
+		<div class="article-content">
+			<slot />
+
+			{
+				d.faq.length > 0 && (
+					<>
+						<h2>Frequently asked questions</h2>
+						<FAQAccordion faq={d.faq} />
+					</>
+				)
+			}
+
+			{
+				d.finalCta && (
+					<ArticleCTACard
+						heading={d.finalCta.heading}
+						text={d.finalCta.text}
+						pills={d.finalCta.pills}
+						imageAlt={d.finalCta.imageAlt}
+						href={appStoreUrl(d.utmToken, 'final')}
+					/>
+				)
+			}
+
+			<RelatedPosts slugs={d.related} />
+		</div>
+	</div>
+
+	<StickyBar
+		slot="after-footer"
+		mobileHref={appStoreUrl(d.utmToken, 'sticky_bar')}
+		desktopHref={appStoreUrl(d.utmToken, 'sticky_bar_desktop')}
+	/>
+</BaseLayout>

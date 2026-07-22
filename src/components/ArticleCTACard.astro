@@ -1,0 +1,39 @@
+---
+import AppleIcon from './AppleIcon.astro';
+
+interface Props {
+	heading: string;
+	text: string;
+	href: string;
+	pills?: string[];
+	imageAlt?: string;
+}
+const {
+	heading,
+	text,
+	href,
+	pills = ['Free 3-day trial', 'On-device & private', 'Built for church'],
+	imageAlt = 'Sermon Keeper app recording a Sunday service with timestamped notes',
+} = Astro.props;
+const shot = '/scss/image/blog/best-sermon-notes-apps/scr1';
+---
+
+<div class="article-cta-card">
+	<div class="cta-card-media">
+		<picture>
+			<source srcset={`${shot}.webp`} type="image/webp" />
+			<img src={`${shot}.jpg`} alt={imageAlt} width="462" height="1000" loading="lazy" decoding="async" />
+		</picture>
+	</div>
+	<div class="cta-card-body">
+		<h3>{heading}</h3>
+		<p>{text}</p>
+		<ul class="cta-pills">
+			{pills.map((p) => <li>✓ {p}</li>)}
+		</ul>
+		<a href={href} class="app-store-btn app-store-btn-sm">
+			<AppleIcon />
+			Download on App Store
+		</a>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+---
+interface Props {
+	alt?: string;
+}
+// Shared brand divider used mid-article across the blog.
+const {
+	alt = 'Catch every sermon, keep every word — recording a sermon with Sermon Keeper',
+} = Astro.props;
+const base = '/scss/image/blog/best-sermon-notes-apps/catch-every-sermon';
+---
+
+<figure class="article-banner">
+	<picture>
+		<source srcset={`${base}.webp`} type="image/webp" />
+		<img src={`${base}.jpg`} alt={alt} width="1376" height="768" loading="lazy" decoding="async" />
+	</picture>
+</figure>

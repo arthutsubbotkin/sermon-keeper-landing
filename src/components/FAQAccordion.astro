@@ -1,0 +1,59 @@
+---
+interface Props {
+	faq: { question: string; answer: string }[];
+}
+const { faq } = Astro.props;
+---
+
+{
+	faq.length > 0 && (
+		<div class="faq-accordion">
+			{faq.map((item, i) => (
+				<div class="faq-acc-item">
+					<button
+						class="faq-acc-q"
+						id={`faq-q-${i + 1}`}
+						aria-expanded={i === 0 ? 'true' : 'false'}
+						aria-controls={`faq-a-${i + 1}`}
+					>
+						<span>{item.question}</span>
+						<svg
+							class="faq-acc-chevron"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<polyline points="6 9 12 15 18 9" />
+						</svg>
+					</button>
+					<div
+						class="faq-acc-a"
+						id={`faq-a-${i + 1}`}
+						role="region"
+						aria-labelledby={`faq-q-${i + 1}`}
+					>
+						<p>{item.answer}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	)
+}
+
+<script is:inline>
+	// Open/close is driven by CSS off aria-expanded; the script only flips the attribute.
+	(function () {
+		document.querySelectorAll('.faq-acc-q').forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				btn.setAttribute(
+					'aria-expanded',
+					btn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+				);
+			});
+		});
+	})();
+</script>

@@ -1,0 +1,24 @@
+---
+import { SITE } from '../utils/site';
+// Same GA4 property and the same ?disable_analytics opt-out the legacy pages used —
+// carried over verbatim so existing traffic reporting is unaffected.
+const { gaId } = SITE;
+---
+
+<script is:inline define:vars={{ gaId }}>
+	if (new URLSearchParams(window.location.search).has('disable_analytics')) {
+		localStorage.setItem('disable_analytics', 'true');
+	}
+	if (!localStorage.getItem('disable_analytics')) {
+		var s = document.createElement('script');
+		s.async = true;
+		s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+		document.head.appendChild(s);
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', gaId);
+	}
+</script>

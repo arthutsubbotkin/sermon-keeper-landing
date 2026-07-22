@@ -1,0 +1,52 @@
+---
+import AppleIcon from './AppleIcon.astro';
+
+interface Props {
+	/** App Store URL for the desktop header button. */
+	headerHref: string;
+	/** App Store URL for the mobile/burger nav button. */
+	navHref: string;
+	/** Which top-level nav item is current. */
+	active?: 'home' | 'blog' | null;
+}
+const { headerHref, navHref, active = null } = Astro.props;
+---
+
+<div class="header-section">
+	<div class="header">
+		<a href="/">
+			<img class="header-logo" src="/scss/image/logo.png" alt="Sermon Keeper" />
+		</a>
+		<nav class="header-nav">
+			<a href="/" class={active === 'home' ? 'active' : undefined}>Home</a>
+			<a href="/blog/" class={active === 'blog' ? 'active' : undefined}>Blog</a>
+			<a href={headerHref} class="header-download-btn"
+				><AppleIcon style="width:16px;height:16px;fill:white;vertical-align:middle;margin-right:4px" />Download App</a
+			>
+		</nav>
+		<a href={navHref} class="header-download-mobile"><AppleIcon />Download App</a>
+		<button class="burger-menu" onclick="toggleMenu()" aria-label="Menu">
+			<span></span><span></span><span></span>
+		</button>
+	</div>
+</div>
+<div class="mobile-nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<nav class="mobile-nav" id="mobileNav">
+	<a href="/" class={active === 'home' ? 'active' : undefined}>Home</a>
+	<a href="/blog/" class={active === 'blog' ? 'active' : undefined}>Blog</a>
+	<a href={navHref} class="mobile-nav-download">
+		<AppleIcon />
+		Download App
+	</a>
+</nav>
+
+<script is:inline>
+	function toggleMenu() {
+		document.querySelector('.burger-menu').classList.toggle('open');
+		document.getElementById('mobileNav').classList.toggle('open');
+		document.getElementById('navOverlay').classList.toggle('open');
+		document.body.style.overflow = document.getElementById('mobileNav').classList.contains('open')
+			? 'hidden'
+			: '';
+	}
+</script>

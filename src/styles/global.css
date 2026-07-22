@@ -30,7 +30,7 @@
 
 	font-family: "Inter";
 
-	src: url("font/inter/Inter-Regular.woff2") format("woff2"), url("font/inter/Inter-Regular.ttf") format("truetype");
+	src: url("/scss/font/inter/Inter-Regular.woff2") format("woff2"), url("/scss/font/inter/Inter-Regular.ttf") format("truetype");
 
 	font-weight: 400;
 
@@ -44,7 +44,7 @@
 
 	font-family: "Inter";
 
-	src: url("font/inter/Inter-Medium.woff2") format("woff2"), url("font/inter/Inter-Medium.ttf") format("truetype");
+	src: url("/scss/font/inter/Inter-Medium.woff2") format("woff2"), url("/scss/font/inter/Inter-Medium.ttf") format("truetype");
 
 	font-weight: 500;
 
@@ -58,7 +58,7 @@
 
 	font-family: "Inter";
 
-	src: url("font/inter/Inter-SemiBold.woff2") format("woff2"), url("font/inter/Inter-SemiBold.ttf") format("truetype");
+	src: url("/scss/font/inter/Inter-SemiBold.woff2") format("woff2"), url("/scss/font/inter/Inter-SemiBold.ttf") format("truetype");
 
 	font-weight: 600;
 
@@ -72,7 +72,7 @@
 
 	font-family: "Inter";
 
-	src: url("font/inter/Inter-Bold.woff2") format("woff2"), url("font/inter/Inter-Bold.ttf") format("truetype");
+	src: url("/scss/font/inter/Inter-Bold.woff2") format("woff2"), url("/scss/font/inter/Inter-Bold.ttf") format("truetype");
 
 	font-weight: 700;
 

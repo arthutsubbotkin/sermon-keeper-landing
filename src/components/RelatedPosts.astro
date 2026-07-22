@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+	/** Sibling slugs from the post's `related` frontmatter. */
+	slugs: string[];
+}
+const { slugs } = Astro.props;
+
+const all = await getCollection('blog');
+const posts = slugs
+	.map((slug) => all.find((p) => p.id === slug))
+	.filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+// A missing slug means the cluster graph points at a post that no longer exists.
+// Fail the build rather than silently shipping a short "Keep reading" block.
+if (posts.length !== slugs.length) {
+	const missing = slugs.filter((s) => !all.some((p) => p.id === s));
+	throw new Error(`RelatedPosts: unknown slug(s): ${missing.join(', ')}`);
+}
+---
+
+<div class="article-related">
+	<h2>Keep reading</h2>
+	<div class="article-related-list">
+		{
+			posts.map((p) => (
+				<a href={`/blog/${p.id}`}>
+					{p.data.shortTitle ?? p.data.title}
+					<span aria-hidden="true">&rarr;</span>
+				</a>
+			))
+		}
+	</div>
+</div>

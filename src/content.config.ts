@@ -1,0 +1,85 @@
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+// The hand-written site had per-page <title>, og:title and twitter:title that were
+// deliberately different from the on-page H1 (shorter for the SERP, longer for social).
+// The schema keeps them separate so the migration can preserve each one exactly
+// instead of collapsing them into a single string.
+const blog = defineCollection({
+	// Content Layer glob loader: entry.id is the filename without extension,
+	// which is exactly the URL slug (/blog/<id>).
+	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
+	schema: z.object({
+		// On-page H1.
+		title: z.string(),
+		// Curated short label used in "Keep reading" cards, where the full H1 is too long.
+		shortTitle: z.string().optional(),
+		// <title> — Google truncates past ~60 rendered characters.
+		metaTitle: z.string().max(60),
+		// <meta name="description"> — keep under the SERP snippet limit.
+		description: z.string().max(158),
+		keywords: z.string().optional(),
+
+		// Social. Fall back to metaTitle/description when omitted.
+		ogTitle: z.string().optional(),
+		ogDescription: z.string().optional(),
+		twitterTitle: z.string().optional(),
+		twitterDescription: z.string().optional(),
+
+		pubDate: z.coerce.date(),
+		updatedDate: z.coerce.date().optional(),
+		// Visible date line, e.g. "Updated July 4, 2026" vs plain "April 9, 2026".
+		displayDate: z.string(),
+		readingTime: z.number().int().positive(),
+
+		// One of the three staff writers. Roles live in src/utils/authors.ts.
+		author: z.enum(['Maya Ellison', 'Daniel Osei', 'Grace Whitfield']),
+
+		heroImage: z.string(),
+		heroImageAlt: z.string(),
+		heroWidth: z.number().int().optional(),
+		heroHeight: z.number().int().optional(),
+		// Older posts render the hero in .article-hero-image, newer ones in .article-lead.
+		heroStyle: z.enum(['lead', 'hero-image']).default('lead'),
+
+		// Per-post campaign token: ct=landing_blog_<utmToken>_<placement>.
+		// Must stay unique per post — attribution in App Store Connect depends on it.
+		utmToken: z.string(),
+
+		category: z.enum(['reviews', 'guides', 'comparisons']).default('guides'),
+		tags: z.array(z.string()).default([]),
+		isPillar: z.boolean().default(false),
+		featured: z.boolean().default(false),
+
+		// Drives both the visible accordion and the FAQPage JSON-LD, so the two can
+		// never drift apart (Google requires the visible answer to match the schema).
+		faq: z
+			.array(z.object({ question: z.string(), answer: z.string() }))
+			.default([]),
+
+		// Optional HowTo JSON-LD (used by the record-on-iPhone and SOAP-method guides).
+		howTo: z
+			.object({
+				name: z.string(),
+				description: z.string(),
+				totalTime: z.string(),
+				steps: z.array(z.object({ name: z.string(), text: z.string() })),
+			})
+			.optional(),
+
+		// Closing conversion card. Omitted on posts that end with a plain CTA instead.
+		finalCta: z
+			.object({
+				heading: z.string(),
+				text: z.string(),
+				pills: z.array(z.string()).optional(),
+				imageAlt: z.string().optional(),
+			})
+			.optional(),
+
+		// Exactly three sibling slugs for the "Keep reading" block.
+		related: z.array(z.string()).length(3),
+	}),
+});
+
+export const collections = { blog };
