@@ -1731,6 +1731,29 @@ img {
 
 
 
+/* The opening summary is set in the sans face at body size — the design uses it
+   to separate the lead from the serif body, so it is not bold. */
+
+.article-content p.article-intro {
+
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+	font-weight: 400;
+
+	font-size: 21px;
+
+	line-height: 33px;
+
+	letter-spacing: 0;
+
+	color: #000;
+
+	margin-bottom: 32px;
+
+}
+
+
+
 .article-content p {
 
 	margin-bottom: 24px;
