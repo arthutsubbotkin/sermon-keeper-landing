@@ -442,4 +442,16 @@ const BODY_BOTTOM = `<!-- CTA Section -->
 	<Fragment set:html={BODY_TOP} />
 	<HomeBlogTeaser />
 	<Fragment set:html={BODY_BOTTOM} />
+
+	{/*
+		The homepage FAQ markup carries inline onclick="toggleFaq(i)" handlers and
+		lives inside the set:html body, which does not execute scripts — so this
+		global has to be declared here or the answers never open.
+	*/}
+	<script is:inline>
+		function toggleFaq(index) {
+			const questions = document.querySelectorAll('.faq-question');
+			questions[index].classList.toggle('expanded');
+		}
+	</script>
 </BaseLayout>

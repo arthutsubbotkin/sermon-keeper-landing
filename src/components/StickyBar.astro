@@ -1,7 +1,8 @@
 ---
 interface Props {
 	mobileHref: string;
-	desktopHref: string;
+	/** Omit to render the mobile bar only, as the blog listing has always done. */
+	desktopHref?: string;
 }
 const { mobileHref, desktopHref } = Astro.props;
 ---
@@ -19,16 +20,26 @@ const { mobileHref, desktopHref } = Astro.props;
 </a>
 
 <!-- Sticky desktop CTA bar (centered pill, appears after 30% scroll) -->
-<a
-	class="sticky-cta-desktop"
-	id="stickyCtaDesktop"
-	href={desktopHref}
-	aria-label="Start free with Sermon Keeper"
->
-	<img class="sticky-cta-desktop-icon" src="/apple-touch-icon.png" alt="" width="32" height="32" />
-	<span class="sticky-cta-desktop-text">Sermon Keeper — Free trial</span>
-	<span class="sticky-cta-desktop-btn">Start free</span>
-</a>
+{
+	desktopHref && (
+		<a
+			class="sticky-cta-desktop"
+			id="stickyCtaDesktop"
+			href={desktopHref}
+			aria-label="Start free with Sermon Keeper"
+		>
+			<img
+				class="sticky-cta-desktop-icon"
+				src="/apple-touch-icon.png"
+				alt=""
+				width="32"
+				height="32"
+			/>
+			<span class="sticky-cta-desktop-text">Sermon Keeper — Free trial</span>
+			<span class="sticky-cta-desktop-btn">Start free</span>
+		</a>
+	)
+}
 
 <script is:inline>
 	// Mobile bar shows immediately; desktop pill appears after 30% scroll. Both hide at the footer.
