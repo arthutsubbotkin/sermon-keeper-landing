@@ -2120,13 +2120,236 @@ img {
 .soap-example p strong{color:var(--text-dark)}
 .soap-example em{font-style:italic}
 
-/* Related-posts / internal-linking block ("Keep reading") */
-.article-related{margin-top:2.75rem;padding-top:1.75rem;border-top:1px solid var(--border-gray)}
-.article-related h2{font-size:1.15rem;margin:0 0 1rem}
-.article-related-list{display:grid;gap:0.65rem}
-.article-related-list a{display:flex;align-items:center;gap:0.75rem;padding:0.85rem 1.1rem;background:var(--white);border:1px solid var(--border-gray);border-radius:12px;color:var(--text-dark);font-weight:600;font-size:0.95rem;text-decoration:none;transition:border-color .15s ease,box-shadow .15s ease}
-.article-related-list a:hover{border-color:var(--primary-blue);box-shadow:0 2px 10px rgba(37,99,235,0.08)}
-.article-related-list a span{margin-left:auto;color:var(--primary-blue);font-weight:700;flex-shrink:0}
+/* Related posts. The grid deliberately breaks out of the 727px reading column —
+   three cards need more room than the article text does. */
+
+.article-related {
+
+	width: min(1100px, calc(100vw - 3rem));
+
+	margin: 4rem 0 0 50%;
+
+	transform: translateX(-50%);
+
+	padding-top: 2.5rem;
+
+	border-top: 1px solid var(--border-gray);
+
+}
+
+
+
+.article-related h2 {
+
+	font-size: 28px;
+
+	font-weight: 600;
+
+	line-height: 34px;
+
+	color: #000;
+
+	margin: 0 0 1.75rem;
+
+}
+
+
+
+.article-related-grid {
+
+	display: grid;
+
+	grid-template-columns: repeat(3, 1fr);
+
+	gap: 2rem;
+
+}
+
+
+
+.related-card {
+
+	display: flex;
+
+	flex-direction: column;
+
+	text-decoration: none;
+
+	color: inherit;
+
+}
+
+
+
+.related-card-media {
+
+	aspect-ratio: 16 / 9;
+
+	overflow: hidden;
+
+	border-radius: 12px;
+
+	background: var(--bg-light);
+
+	margin-bottom: 0.85rem;
+
+}
+
+
+
+.related-card-media img {
+
+	width: 100%;
+
+	height: 100%;
+
+	object-fit: cover;
+
+	display: block;
+
+	transition: transform 0.3s ease;
+
+}
+
+
+
+.related-card:hover .related-card-media img {
+
+	transform: scale(1.03);
+
+}
+
+
+
+.related-card-byline {
+
+	display: flex;
+
+	align-items: center;
+
+	gap: 0.45rem;
+
+	font-size: 0.8125rem;
+
+	color: var(--text-gray);
+
+	margin-bottom: 0.5rem;
+
+}
+
+
+
+.related-card-byline img {
+
+	width: 20px;
+
+	height: 20px;
+
+	border-radius: 50%;
+
+	object-fit: cover;
+
+	flex-shrink: 0;
+
+}
+
+
+
+.related-card h3 {
+
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+	font-size: 1.0625rem;
+
+	font-weight: 700;
+
+	line-height: 1.35;
+
+	color: #000;
+
+	margin: 0 0 0.4rem;
+
+	display: -webkit-box;
+
+	-webkit-line-clamp: 2;
+
+	-webkit-box-orient: vertical;
+
+	overflow: hidden;
+
+}
+
+
+
+.related-card p {
+
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+	font-size: 0.9375rem;
+
+	line-height: 1.5;
+
+	color: var(--text-gray);
+
+	margin: 0 0 0.6rem;
+
+	display: -webkit-box;
+
+	-webkit-line-clamp: 2;
+
+	-webkit-box-orient: vertical;
+
+	overflow: hidden;
+
+}
+
+
+
+.related-card-meta {
+
+	font-size: 0.8125rem;
+
+	color: var(--text-gray);
+
+	margin-top: auto;
+
+}
+
+
+
+@media (max-width: 1000px) {
+
+	.article-related-grid {
+
+		grid-template-columns: repeat(2, 1fr);
+
+	}
+
+}
+
+
+
+@media (max-width: 640px) {
+
+	.article-related {
+
+		width: 100%;
+
+		margin: 3rem 0 0;
+
+		transform: none;
+
+	}
+
+	.article-related-grid {
+
+		grid-template-columns: 1fr;
+
+		gap: 1.75rem;
+
+	}
+
+}
 
 /* ===== Homepage "Latest from blog" teaser ===== */
 .home-blog{padding:4.5rem 2rem;background:var(--bg-light)}
