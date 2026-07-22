@@ -75,21 +75,16 @@ const categoryLabel =
 	<div class="article-hero">
 		<div class="article-hero-inner">
 			<h1>{d.title}</h1>
-			<div class="article-meta">{d.displayDate} &middot; {d.readingTime} min read</div>
-			<div class="article-byline">
-				<img
-					class="byline-avatar"
-					src={author.avatar}
-					alt={d.author}
-					width="44"
-					height="44"
-					loading="lazy"
-					decoding="async"
-				/>
-				<div class="byline-meta">
-					<span class="byline-name">{d.author}</span>
-					<span class="byline-role">{author.role} &middot; Sermon Keeper</span>
-				</div>
+			{/* Single credit line: section, author, date, reading time. The section
+			    link also restores the navigation the breadcrumb used to provide. */}
+			<div class="article-credit">
+				<a class="article-credit-section" href="/blog/">{categoryLabel}</a>
+				<span class="article-credit-slash" aria-hidden="true">/</span>
+				<span class="article-credit-author">{d.author}</span>
+				<span class="article-credit-dot" aria-hidden="true"></span>
+				<span>{d.displayDate}</span>
+				<span class="article-credit-dot" aria-hidden="true"></span>
+				<span>{d.readingTime} min read</span>
 			</div>
 		</div>
 	</div>
