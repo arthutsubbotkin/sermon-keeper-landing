@@ -1662,11 +1662,55 @@ img {
 
 
 
+/* Prose and headings share a narrower measure than media: Inter's 1ch is
+   11.25px at 18px, so 57ch lands near 71 characters per line — inside the
+   comfortable 65-75 range, down from 80 at the full column width. Headings are
+   included so their left edge stays flush with the paragraphs. Tables, figures
+   and CTA blocks are excluded on purpose and keep the full 720px column. */
+
+.article-content > p,
+
+.article-content > ul,
+
+.article-content > ol,
+
+.article-content > h2,
+
+.article-content > h3,
+
+.article-content > blockquote {
+
+	max-width: 57ch;
+
+}
+
+
+
 .article-content h2 {
 
-	font-size: 1.5rem;
+	font-size: 1.875rem;
 
-	margin: 2.5rem 0 1rem;
+	line-height: 1.25;
+
+	letter-spacing: -0.01em;
+
+	margin: 3rem 0 0.85rem;
+
+}
+
+
+
+/* Direct child only, so CTA and card headings keep their own styling. */
+
+.article-content > h3 {
+
+	font-size: 1.3125rem;
+
+	line-height: 1.35;
+
+	margin: 2rem 0 0.6rem;
+
+	color: var(--text-dark);
 
 }
 
@@ -1678,9 +1722,9 @@ img {
 
 	color: #1a1a1a;
 
-	font-size: 1.0625rem;
+	font-size: 1.125rem;
 
-	line-height: 1.8;
+	line-height: 1.75;
 
 }
 
@@ -1718,9 +1762,9 @@ img {
 
 .article-content li {
 
-	font-size: 1.0625rem;
+	font-size: 1.125rem;
 
-	line-height: 1.8;
+	line-height: 1.75;
 
 	color: #1a1a1a;
 
@@ -1782,6 +1826,8 @@ img {
 
 	background: var(--white);
 
+	border: 1px solid var(--border-gray);
+
 	border-radius: 20px;
 
 	padding: 2rem;
@@ -1789,6 +1835,8 @@ img {
 	margin: 2.5rem 0;
 
 	text-align: center;
+
+	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 28px rgba(15, 23, 42, 0.06);
 
 }
 
@@ -2045,6 +2093,8 @@ img {
 .article-lead img {
 	width: 100%;
 	height: auto;
+	max-height: 460px;
+	object-fit: cover;
 	border-radius: 20px;
 	display: block;
 }
@@ -2274,7 +2324,7 @@ img {
 @media (max-width: 900px) {
 
 	.article-table {
-		font-size: 0.8125rem;
+		font-size: 0.875rem;
 		display: block;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
