@@ -1781,9 +1781,11 @@ img {
 
 
 /* Links keep the text black and carry a thin accent underline instead of the
-   default full-weight one. */
-.article-content a{color:#000;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;transition:border-color .15s ease,color .15s ease}
-.article-content a:hover{color:var(--accent)}
+   default full-weight one. Scoped to prose so it never reaches card links. */
+.article-content p a,
+.article-content li a{color:#000;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;transition:border-color .15s ease,color .15s ease}
+.article-content p a:hover,
+.article-content li a:hover{color:var(--accent)}
 
 .article-content p {
 
@@ -2129,7 +2131,7 @@ img {
 .soap-example p strong{color:var(--text-dark)}
 .soap-example em{font-style:italic}
 
-/* Related posts. The grid deliberately breaks out of the 727px reading column —
+/* Related posts. The grid deliberately breaks out of the 727px reading column:
    three cards need more room than the article text does. */
 
 .article-related {
@@ -2140,21 +2142,19 @@ img {
 
 	transform: translateX(-50%);
 
-	padding-top: 2.5rem;
-
-	border-top: 1px solid var(--border-gray);
-
 }
 
 
 
 .article-related h2 {
 
-	font-size: 28px;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+	font-size: 40px;
 
 	font-weight: 600;
 
-	line-height: 34px;
+	line-height: 48px;
 
 	color: #000;
 
@@ -2183,6 +2183,8 @@ img {
 	flex-direction: column;
 
 	text-decoration: none;
+
+	border-bottom: 0;
 
 	color: inherit;
 
@@ -2230,35 +2232,21 @@ img {
 
 
 
-.related-card-byline {
+.related-card-meta {
 
-	display: flex;
+	font-family: 'Charter', Georgia, serif;
 
-	align-items: center;
+	font-weight: 400;
 
-	gap: 0.45rem;
+	font-size: 18px;
 
-	font-size: 0.8125rem;
+	line-height: 28px;
+
+	letter-spacing: 0;
 
 	color: var(--text-gray);
 
-	margin-bottom: 0.5rem;
-
-}
-
-
-
-.related-card-byline img {
-
-	width: 20px;
-
-	height: 20px;
-
-	border-radius: 50%;
-
-	object-fit: cover;
-
-	flex-shrink: 0;
+	margin-bottom: 0.35rem;
 
 }
 
@@ -2268,11 +2256,13 @@ img {
 
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-	font-size: 1.0625rem;
+	font-size: 21px;
 
 	font-weight: 700;
 
-	line-height: 1.35;
+	line-height: 33px;
+
+	letter-spacing: 0;
 
 	color: #000;
 
@@ -2292,15 +2282,19 @@ img {
 
 .related-card p {
 
-	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-family: 'Charter', Georgia, serif;
 
-	font-size: 0.9375rem;
+	font-weight: 400;
 
-	line-height: 1.5;
+	font-size: 18px;
+
+	line-height: 28px;
+
+	letter-spacing: 0;
 
 	color: var(--text-gray);
 
-	margin: 0 0 0.6rem;
+	margin: 0;
 
 	display: -webkit-box;
 
@@ -2309,18 +2303,6 @@ img {
 	-webkit-box-orient: vertical;
 
 	overflow: hidden;
-
-}
-
-
-
-.related-card-meta {
-
-	font-size: 0.8125rem;
-
-	color: var(--text-gray);
-
-	margin-top: auto;
 
 }
 
@@ -2358,7 +2340,16 @@ img {
 
 	}
 
+	.article-related h2 {
+
+		font-size: 30px;
+
+		line-height: 36px;
+
+	}
+
 }
+
 
 /* ===== Homepage "Latest from blog" teaser ===== */
 .home-blog{padding:4.5rem 2rem;background:var(--bg-light)}

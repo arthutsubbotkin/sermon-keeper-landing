@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import { AUTHORS } from '../utils/site';
 
 interface Props {
 	/** Sibling slugs from the post's `related` frontmatter. */
@@ -25,36 +24,25 @@ if (posts.length !== slugs.length) {
 	<h2>Keep reading</h2>
 	<div class="article-related-grid">
 		{
-			posts.map((p) => {
-				const author = AUTHORS[p.data.author];
-				return (
-					<a class="related-card" href={`/blog/${p.id}`}>
-						<div class="related-card-media">
-							<picture>
-								<source
-									srcset={p.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
-									type="image/webp"
-								/>
-								<img
-									src={`${p.data.heroImage}?v=2`}
-									alt=""
-									loading="lazy"
-									decoding="async"
-								/>
-							</picture>
-						</div>
-						<div class="related-card-byline">
-							<img src={author.avatar} alt="" width="20" height="20" loading="lazy" decoding="async" />
-							<span>{p.data.author}</span>
-						</div>
-						<h3>{p.data.cardTitle ?? p.data.title}</h3>
-						<p>{p.data.cardText ?? p.data.description}</p>
-						<span class="related-card-meta">
-							{p.data.cardTag ?? 'Guides'} &middot; {p.data.readingTime} min read
-						</span>
-					</a>
-				);
-			})
+			posts.map((p) => (
+				<a class="related-card" href={`/blog/${p.id}`}>
+					<div class="related-card-media">
+						<picture>
+							<source
+								srcset={p.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+								type="image/webp"
+							/>
+							<img src={`${p.data.heroImage}?v=2`} alt="" loading="lazy" decoding="async" />
+						</picture>
+					</div>
+					{/* Author, section and reading time on one dotted line. */}
+					<span class="related-card-meta">
+						{p.data.author} &middot; {p.data.cardTag ?? 'Guides'} &middot; {p.data.readingTime} min read
+					</span>
+					<h3>{p.data.cardTitle ?? p.data.title}</h3>
+					<p>{p.data.cardText ?? p.data.description}</p>
+				</a>
+			))
 		}
 	</div>
 </aside>
