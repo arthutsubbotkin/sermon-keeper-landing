@@ -19,6 +19,7 @@ const url = `${SITE.url}/blog/${slug}`;
 const author = AUTHORS[d.author];
 // Hero lives in public/ at a stable path, so the absolute URL is safe for og:image.
 const heroAbs = `${SITE.url}${d.heroImage}`;
+const socialImage = d.ogImage ? `${SITE.url}${d.ogImage}` : `${heroAbs}?v=2`;
 const heroWebp = d.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp');
 
 const iso = (x: Date) => x.toISOString().slice(0, 10);
@@ -36,6 +37,9 @@ const schemas: unknown[] = [
 ];
 if (d.howTo) schemas.push(howToSchema(d.howTo));
 if (d.faq.length) schemas.push(faqSchema(d.faq));
+for (const extra of d.extraSchemasJson ? JSON.parse(d.extraSchemasJson) : []) {
+	schemas.push(extra);
+}
 schemas.push(
 	breadcrumbSchema([
 		{ name: 'Home', item: `${SITE.url}/` },
@@ -57,10 +61,10 @@ const categoryLabel =
 	ogType="article"
 	ogTitle={d.ogTitle ?? d.title}
 	ogDescription={d.ogDescription}
-	ogImage={`${heroAbs}?v=2`}
+	ogImage={socialImage}
 	twitterTitle={d.twitterTitle ?? d.ogTitle ?? d.title}
 	twitterDescription={d.twitterDescription}
-	twitterImage={`${heroAbs}?v=2`}
+	twitterImage={socialImage}
 	publishedTime={iso(d.pubDate)}
 	modifiedTime={iso(d.updatedDate ?? d.pubDate)}
 	schemas={schemas}
@@ -123,7 +127,7 @@ const categoryLabel =
 			{
 				d.faq.length > 0 && (
 					<>
-						<h2>Frequently asked questions</h2>
+						<h2>{d.faqHeading}</h2>
 						<FAQAccordion faq={d.faq} />
 					</>
 				)
@@ -136,7 +140,7 @@ const categoryLabel =
 						text={d.finalCta.text}
 						pills={d.finalCta.pills}
 						imageAlt={d.finalCta.imageAlt}
-						href={appStoreUrl(d.utmToken, 'final')}
+						href={appStoreUrl(d.utmToken, d.finalCtaPlacement)}
 					/>
 				)
 			}

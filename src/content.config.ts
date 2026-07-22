@@ -41,6 +41,9 @@ const blog = defineCollection({
 		heroHeight: z.number().int().optional(),
 		// Older posts render the hero in .article-hero-image, newer ones in .article-lead.
 		heroStyle: z.enum(['lead', 'hero-image']).default('lead'),
+		// Social preview image. Defaults to the post's own hero, which is what we want
+		// almost always; set it only to pin a different image deliberately.
+		ogImage: z.string().optional(),
 
 		// Per-post campaign token: ct=landing_blog_<utmToken>_<placement>.
 		// Must stay unique per post — attribution in App Store Connect depends on it.
@@ -50,6 +53,10 @@ const blog = defineCollection({
 		tags: z.array(z.string()).default([]),
 		isPillar: z.boolean().default(false),
 		featured: z.boolean().default(false),
+
+		// Posts shipped with either title-case or sentence-case FAQ headings; keep each
+		// one as it was rather than normalising and changing a visible heading.
+		faqHeading: z.string().default('Frequently asked questions'),
 
 		// Drives both the visible accordion and the FAQPage JSON-LD, so the two can
 		// never drift apart (Google requires the visible answer to match the schema).
@@ -62,7 +69,7 @@ const blog = defineCollection({
 			.object({
 				name: z.string(),
 				description: z.string(),
-				totalTime: z.string(),
+				totalTime: z.string().optional(),
 				steps: z.array(z.object({ name: z.string(), text: z.string() })),
 			})
 			.optional(),
@@ -76,6 +83,14 @@ const blog = defineCollection({
 				imageAlt: z.string().optional(),
 			})
 			.optional(),
+
+		// Placement segment for the closing CTA's ct= token. Older posts shipped as
+		// "cta1"/"cta2"; keeping their original value preserves attribution history.
+		finalCtaPlacement: z.string().default('final'),
+
+		// JSON string holding any additional JSON-LD blocks a page carried (e.g. the
+		// pillar's ItemList) so nothing is silently dropped in migration.
+		extraSchemasJson: z.string().optional(),
 
 		// Exactly three sibling slugs for the "Keep reading" block.
 		related: z.array(z.string()).length(3),

@@ -8,6 +8,11 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
 	site: 'https://sermonkeeper.app',
 	trailingSlash: 'never',
+	// The migration must not alter post wording, so keep straight quotes/dashes
+	// exactly as the hand-written HTML had them.
+	markdown: {
+		smartypants: false,
+	},
 	build: {
 		format: 'directory',
 		inlineStylesheets: 'auto',
