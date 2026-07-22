@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+
+// Three newest posts. Generated from the collection so a new post surfaces on the
+// homepage automatically instead of needing a hand-edited card.
+const posts = (await getCollection('blog'))
+	.sort((a, b) =>
+		b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.data.sortWeight - b.data.sortWeight)
+	.slice(0, 3);
+---
+
+<div class="home-blog">
+	<div class="home-blog-inner">
+		<div class="home-blog-head">
+			<h2>Latest from the blog</h2>
+			<a href="/blog/">View all articles &rarr;</a>
+		</div>
+		<div class="home-blog-grid">
+			{
+				posts.map((p) => (
+					<a href={`/blog/${p.id}`} class="home-blog-card">
+						<picture>
+							<source
+								srcset={p.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+								type="image/webp"
+							/>
+							<img
+								src={`${p.data.heroImage}?v=2`}
+								alt={p.data.heroImageAlt}
+								width={p.data.heroWidth ?? 1344}
+								height={p.data.heroHeight ?? 750}
+								loading="lazy"
+								decoding="async"
+							/>
+						</picture>
+						<div class="home-blog-card-body">
+							<span class="home-blog-card-meta">
+								{p.data.cardTag ?? 'Guides'} &middot; {p.data.readingTime} min read
+							</span>
+							<h3>{p.data.cardTitle ?? p.data.title}</h3>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</div>

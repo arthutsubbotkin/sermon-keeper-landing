@@ -50,6 +50,18 @@ const blog = defineCollection({
 		utmToken: z.string(),
 
 		category: z.enum(['reviews', 'guides', 'comparisons']).default('guides'),
+		// Blog-listing card copy. The hand-written index used bespoke headlines,
+		// excerpts and tag labels rather than reusing the meta fields, so they are
+		// stored per post instead of being derived.
+		cardTitle: z.string().optional(),
+		cardText: z.string().optional(),
+		cardTag: z.string().optional(),
+		// Overrides the listing card's date line. Only needed where the card was
+		// hand-updated to show a refresh date instead of the publish date.
+		cardDate: z.string().optional(),
+		// Tiebreaker for posts sharing a pubDate; lower sorts first. Preserves the
+		// curated order of the three posts published on the same day.
+		sortWeight: z.number().default(0),
 		tags: z.array(z.string()).default([]),
 		isPillar: z.boolean().default(false),
 		featured: z.boolean().default(false),
