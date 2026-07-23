@@ -1719,7 +1719,7 @@ img {
 
 	padding-left: 1.5rem;
 
-	color: #1a1a1a;
+	color: #000;
 
 }
 
@@ -1735,7 +1735,7 @@ img {
 
 	line-height: 33px;
 
-	color: #1a1a1a;
+	color: #000;
 
 	margin-bottom: 0.25rem;
 
@@ -2005,15 +2005,13 @@ img {
 .article-credit-author{color:#000}
 .article-credit-dot{width:5px;height:5px;border-radius:50%;background:#C7CBD1;flex-shrink:0}
 
-.article-steps{margin:1.25rem 0 1.5rem;padding-left:1.4rem;display:grid;gap:0.6rem;color:var(--text-gray)}
+.article-steps{margin:1.25rem 0 1.5rem;padding-left:1.4rem;display:grid;gap:0.6rem}
 .article-steps li{line-height:1.65;padding-left:0.3rem}
-.article-steps li strong{color:#000}
 
 /* Accent-marker checklist (e.g. what SOAP stands for) */
 .article-check{list-style:none;margin:1.1rem 0 1.5rem;padding:0;display:grid;gap:0.7rem}
-.article-check li{position:relative;padding-left:1.7rem;line-height:1.6;color:var(--text-gray)}
+.article-check li{position:relative;padding-left:1.7rem;line-height:1.6}
 .article-check li::before{content:"";position:absolute;left:0;top:0.5em;width:9px;height:9px;border-radius:2px;background:var(--primary-blue)}
-.article-check li strong{color:#000}
 
 /* Worked-example callout (e.g. a full SOAP entry) */
 .soap-example{background:#F8FAFC;border:1px solid #E7ECF3;border-left:4px solid var(--primary-blue);border-radius:14px;padding:1.35rem 1.5rem;margin:1.5rem 0;display:grid;gap:0.9rem}
