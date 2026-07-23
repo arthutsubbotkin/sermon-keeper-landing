@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import ArticleSidebar from '../components/ArticleSidebar.astro';
 import ArticleCTACard from '../components/ArticleCTACard.astro';
 import StickyBar from '../components/StickyBar.astro';
 import { SITE, AUTHORS, appStoreUrl } from '../utils/site';
@@ -115,32 +116,41 @@ const categoryLabel =
 	}
 
 	<div class="article-body">
-		<div class="article-content">
-			<slot />
+		<div class="article-layout">
+			<div class="article-content">
+				<slot />
 
-			{
-				d.faq.length > 0 && (
-					<>
-						<h2>{d.faqHeading}</h2>
-						<FAQAccordion faq={d.faq} />
-					</>
-				)
-			}
+				{
+					d.faq.length > 0 && (
+						<>
+							<h2>{d.faqHeading}</h2>
+							<FAQAccordion faq={d.faq} />
+						</>
+					)
+				}
 
-			{
-				d.finalCta && (
-					<ArticleCTACard
-						heading={d.finalCta.heading}
-						text={d.finalCta.text}
-						pills={d.finalCta.pills}
-						imageAlt={d.finalCta.imageAlt}
-						href={appStoreUrl(d.utmToken, d.finalCtaPlacement)}
-					/>
-				)
-			}
+				{
+					d.finalCta && (
+						<ArticleCTACard
+							heading={d.finalCta.heading}
+							text={d.finalCta.text}
+							pills={d.finalCta.pills}
+							imageAlt={d.finalCta.imageAlt}
+							href={appStoreUrl(d.utmToken, d.finalCtaPlacement)}
+						/>
+					)
+				}
+			</div>
 
-			<RelatedPosts slugs={d.related} />
+			<ArticleSidebar
+				appHref={appStoreUrl(d.utmToken, 'sidebar')}
+				related={d.related}
+				note={d.sidebarNote}
+			/>
 		</div>
+
+		{/* Sits outside the grid so the three cards span the full column + rail width. */}
+		<RelatedPosts slugs={d.related} />
 	</div>
 
 	<StickyBar

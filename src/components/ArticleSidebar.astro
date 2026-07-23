@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import AppleIcon from './AppleIcon.astro';
+
+interface Props {
+	/** App Store href for the rail's download card, carrying its own placement token. */
+	appHref: string;
+	/** Sibling slugs from the post's `related` frontmatter; the first is promoted here. */
+	related: string[];
+	/** Optional per-article aside, set in frontmatter. */
+	note?: { heading: string; text: string };
+}
+const { appHref, related, note } = Astro.props;
+
+const all = await getCollection('blog');
+// The rail promotes one sibling; the full "Keep reading" grid still carries all three.
+const next = all.find((p) => p.id === related[0]);
+---
+
+<aside class="article-rail" aria-label="More from Sermon Keeper">
+	<div class="article-rail-inner">
+		<div class="rail-card rail-card-app">
+			{/* apple-touch-icon is the only square mark we ship; logo.png is a wide lockup. */}
+			<img
+				class="rail-app-icon"
+				src="/apple-touch-icon.png"
+				alt=""
+				width="56"
+				height="56"
+				loading="lazy"
+				decoding="async"
+			/>
+			<h3>Catch every sermon</h3>
+			<p>Record the message, take timestamped notes, and get an on-device transcript with a summary.</p>
+			<a href={appHref} class="app-store-btn app-store-btn-sm">
+				<AppleIcon />
+				Download on App Store
+			</a>
+			<span class="rail-app-note">Free 3-day trial</span>
+		</div>
+
+		{
+			next && (
+				<a class="rail-card rail-card-next" href={`/blog/${next.id}`}>
+					<span class="rail-eyebrow">Read next</span>
+					<picture>
+						<source
+							srcset={next.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+							type="image/webp"
+						/>
+						<img
+							class="rail-next-media"
+							src={`${next.data.heroImage}?v=2`}
+							alt=""
+							loading="lazy"
+							decoding="async"
+						/>
+					</picture>
+					<h3>{next.data.cardTitle ?? next.data.title}</h3>
+					<span class="rail-next-meta">{next.data.readingTime} min read</span>
+				</a>
+			)
+		}
+
+		{
+			note && (
+				<div class="rail-card rail-card-note">
+					<h3>{note.heading}</h3>
+					<p>{note.text}</p>
+				</div>
+			)
+		}
+	</div>
+</aside>

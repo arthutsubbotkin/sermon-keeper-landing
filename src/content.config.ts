@@ -105,7 +105,10 @@ const blog = defineCollection({
 		extraSchemasJson: z.string().optional(),
 
 		// Exactly three sibling slugs for the "Keep reading" block.
-		related: z.array(z.string()).length(3),
+		sidebarNote: z
+		.object({ heading: z.string(), text: z.string() })
+		.optional(),
+	related: z.array(z.string()).length(3),
 	}),
 });
 
