@@ -85,8 +85,13 @@ Also:
   phone)".
 - No em dashes. Use a colon when a label introduces what follows, a comma for an
   appositive, or a full stop when the second half stands on its own.
-- Bold run-in labels ("Clear a little storage first.") are set in Inter against
-  the Charter body; this is handled by CSS, just write them as `<strong>`.
+- **Bold only ever opens a block, never sits inside a sentence.** A run-in label
+  at the very start of a paragraph or list item is fine — "Clear a little
+  storage first.", "Step 1: Start talking about it". Emphasising a word or
+  phrase mid-sentence is not: no bolding "an **original work of authorship**",
+  no bolding a product name at the end of a recommendation. If a phrase needs
+  weight, rewrite the sentence so it lands on its own. Run-in labels are set in
+  Inter against the Charter body by CSS; just write them as `<strong>`.
 - Every article opens with a lead paragraph in `<p class="article-intro">` that
   answers the query in its first sentence.
 - Free tier wording is "Free 3-day trial" with no recording-count qualifier.
