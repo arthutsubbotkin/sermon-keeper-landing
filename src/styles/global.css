@@ -1787,6 +1787,12 @@ img {
 .article-content p a:hover,
 .article-content li a:hover{color:var(--accent)}
 
+/* House rule: bold lead-ins are set in the sans face against the serif body,
+   the way the design sets the step labels. Applies to run-in labels such as
+   "Clear a little storage first." and to the bold part of list items. */
+.article-content strong,
+.article-content b{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700}
+
 .article-content p {
 
 	margin-bottom: 24px;
@@ -1813,13 +1819,7 @@ img {
 
 
 
-.article-content strong {
-
-	font-weight: 600;
-
-	color: #1a1a1a;
-
-}
+.article-content strong{color:#000}
 
 
 
@@ -2117,13 +2117,13 @@ img {
 
 .article-steps{margin:1.25rem 0 1.5rem;padding-left:1.4rem;display:grid;gap:0.6rem;color:var(--text-gray)}
 .article-steps li{line-height:1.65;padding-left:0.3rem}
-.article-steps li strong{color:var(--text-dark)}
+.article-steps li strong{color:#000}
 
 /* Accent-marker checklist (e.g. what SOAP stands for) */
 .article-check{list-style:none;margin:1.1rem 0 1.5rem;padding:0;display:grid;gap:0.7rem}
 .article-check li{position:relative;padding-left:1.7rem;line-height:1.6;color:var(--text-gray)}
 .article-check li::before{content:"";position:absolute;left:0;top:0.5em;width:9px;height:9px;border-radius:2px;background:var(--primary-blue)}
-.article-check li strong{color:var(--text-dark)}
+.article-check li strong{color:#000}
 
 /* Worked-example callout (e.g. a full SOAP entry) */
 .soap-example{background:#F8FAFC;border:1px solid #E7ECF3;border-left:4px solid var(--primary-blue);border-radius:14px;padding:1.35rem 1.5rem;margin:1.5rem 0;display:grid;gap:0.9rem}
