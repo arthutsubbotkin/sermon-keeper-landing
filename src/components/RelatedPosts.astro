@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+	/** Sibling slugs from the post's `related` frontmatter. */
+	slugs: string[];
+}
+const { slugs } = Astro.props;
+
+const all = await getCollection('blog');
+const posts = slugs
+	.map((slug) => all.find((p) => p.id === slug))
+	.filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+// A missing slug means the cluster graph points at a post that no longer exists.
+// Fail the build rather than silently shipping a short "Keep reading" block.
+if (posts.length !== slugs.length) {
+	const missing = slugs.filter((s) => !all.some((p) => p.id === s));
+	throw new Error(`RelatedPosts: unknown slug(s): ${missing.join(', ')}`);
+}
+---
+
+<aside class="article-related">
+	<h2>Keep reading</h2>
+	<div class="article-related-grid">
+		{
+			posts.map((p) => (
+				<a class="related-card" href={`/blog/${p.id}`}>
+					<div class="related-card-media">
+						<picture>
+							<source
+								srcset={p.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+								type="image/webp"
+							/>
+							<img src={`${p.data.heroImage}?v=2`} alt="" loading="lazy" decoding="async" />
+						</picture>
+					</div>
+					{/* Author, section and reading time on one dotted line. */}
+					<span class="related-card-meta">
+						{p.data.author} &middot; {p.data.cardTag ?? 'Guides'} &middot; {p.data.readingTime} min read
+					</span>
+					<h3>{p.data.cardTitle ?? p.data.title}</h3>
+					<p>{p.data.cardText ?? p.data.description}</p>
+				</a>
+			))
+		}
+	</div>
+</aside>

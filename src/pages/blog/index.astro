@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StickyBar from '../../components/StickyBar.astro';
+import AppleIcon from '../../components/AppleIcon.astro';
+import { SITE, pageAppStoreUrl } from '../../utils/site';
+
+// Newest first. Cards are generated from the collection, so publishing a post
+// no longer means hand-editing this listing.
+const posts = (await getCollection('blog')).sort(
+	(a, b) =>
+		b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.data.sortWeight - b.data.sortWeight
+);
+
+const CATEGORY_LABEL = { reviews: 'Reviews', comparisons: 'Comparisons', guides: 'Guides' };
+
+function cardDate(d: Date): string {
+	return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+const schemas = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Blog',
+		name: 'Sermon Keeper Blog',
+		description:
+			'Practical guides on sermon note-taking, Bible journaling, and getting more from every church service.',
+		url: `${SITE.url}/blog/`,
+		publisher: {
+			'@type': 'Organization',
+			name: SITE.name,
+			url: SITE.url,
+			logo: { '@type': 'ImageObject', url: SITE.logo },
+		},
+	},
+];
+---
+
+<BaseLayout
+	title="Sermon Keeper Blog — Sermon Notes & Bible Study Guides"
+	description="Practical guides on sermon note-taking, Bible journaling, and getting more from every church service. From the makers of Sermon Keeper app."
+	canonical={`${SITE.url}/blog/`}
+	keywords="sermon notes, sermon journal, Bible journaling, church notes, sermon note-taking methods, Bible study tips"
+	ogTitle="Sermon Keeper Blog — Tips for Better Sermon Notes"
+	ogDescription="Practical guides on sermon note-taking, Bible journaling, and getting more from every church service."
+	twitterTitle="Sermon Keeper Blog — Tips for Better Sermon Notes"
+	twitterDescription="Practical guides on sermon note-taking, Bible journaling, and getting more from every church service."
+	schemas={schemas}
+	preloadFonts={false}
+	headerHref={pageAppStoreUrl('landing_blog_blog_index_header')}
+	navHref={pageAppStoreUrl('landing_blog_blog_index_nav')}
+	active="blog"
+>
+	<div class="blog-hero">
+		<h1>Sermon Keeper Blog</h1>
+		<p class="blog-hero-subtitle">
+			Tips, guides, and insights for capturing and remembering your sermons better.
+		</p>
+	</div>
+
+	<div class="blog-list">
+		<div class="blog-list-container">
+			{
+				posts.map((p) => (
+					<a href={`/blog/${p.id}`} class="blog-card">
+						<div class="blog-card-image">
+							<picture>
+								<source
+									srcset={p.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+									type="image/webp"
+								/>
+								<img
+									src={`${p.data.heroImage}?v=2`}
+									alt={p.data.cardTitle ?? p.data.title}
+									loading="lazy"
+									decoding="async"
+								/>
+							</picture>
+						</div>
+						<div class="blog-card-content">
+							<div class="blog-card-meta">
+								{p.data.cardDate ?? cardDate(p.data.pubDate)} &middot; {p.data.readingTime} min read
+							</div>
+							<h3>{p.data.cardTitle ?? p.data.title}</h3>
+							<p>{p.data.cardText ?? p.data.description}</p>
+							<span class="blog-card-tag">
+								{p.data.cardTag ?? CATEGORY_LABEL[p.data.category]}
+							</span>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</div>
+
+	<div class="cta-section">
+		<div class="cta-container">
+			<div class="cta-content">
+				<h2>Start capturing sermons today — simple, fast, and private</h2>
+				<p>Download Sermon Keeper and never miss an insight from your next sermon.</p>
+				<a href={pageAppStoreUrl('landing_blog_blog_index_cta1')} class="app-store-btn">
+					<AppleIcon />
+					Download on App Store
+				</a>
+			</div>
+			<div class="cta-image">
+				<img
+					src="/scss/image/Start capturing sermons today — simple, fast, and private.png"
+					alt="Sermon Keeper App"
+				/>
+			</div>
+		</div>
+	</div>
+
+	<StickyBar
+		slot="after-footer"
+		mobileHref={pageAppStoreUrl('landing_blog_blog_index_sticky_bar')}
+	/>
+</BaseLayout>

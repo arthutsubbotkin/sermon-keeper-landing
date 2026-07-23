@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pageAppStoreUrl, SITE } from '../utils/site';
+---
+
+<BaseLayout
+	title="Page not found | Sermon Keeper"
+	description="This page doesn't exist. Head back to the Sermon Keeper home page or browse the blog."
+	canonical={`${SITE.url}/404`}
+	preloadFonts={false}
+	headerHref={pageAppStoreUrl('landing_page')}
+	navHref={pageAppStoreUrl('landing_page')}
+>
+	<div class="article-hero" style="padding: 6rem 2rem 4rem; text-align: center;">
+		<div class="article-hero-inner" style="text-align: center;">
+			<h1 style="font-size: 4rem; margin-bottom: 1.5rem;">404</h1>
+			<p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 2rem;">
+				This page doesn't exist. Maybe it was moved or you typed the URL incorrectly.
+			</p>
+			<a href="/" class="app-store-btn" style="background: var(--primary-blue);">Go to Home</a>
+		</div>
+	</div>
+</BaseLayout>

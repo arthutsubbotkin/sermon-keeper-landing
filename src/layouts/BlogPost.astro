@@ -1,0 +1,161 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import ArticleSidebar from '../components/ArticleSidebar.astro';
+import ArticleCTACard from '../components/ArticleCTACard.astro';
+import StickyBar from '../components/StickyBar.astro';
+import { SITE, AUTHORS, appStoreUrl } from '../utils/site';
+import { blogPostingSchema, faqSchema, howToSchema, breadcrumbSchema } from '../utils/seo';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	slug: string;
+}
+const { post, slug } = Astro.props;
+const d = post.data;
+
+const url = `${SITE.url}/blog/${slug}`;
+const author = AUTHORS[d.author];
+// Hero lives in public/ at a stable path, so the absolute URL is safe for og:image.
+const heroAbs = `${SITE.url}${d.heroImage}`;
+const socialImage = d.ogImage ? `${SITE.url}${d.ogImage}` : `${heroAbs}?v=2`;
+const heroWebp = d.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+
+const iso = (x: Date) => x.toISOString().slice(0, 10);
+
+const schemas: unknown[] = [
+	blogPostingSchema({
+		headline: d.title,
+		description: d.description,
+		image: heroAbs,
+		pubDate: d.pubDate,
+		updatedDate: d.updatedDate,
+		author: d.author,
+		url,
+	}),
+];
+if (d.howTo) schemas.push(howToSchema(d.howTo));
+if (d.faq.length) schemas.push(faqSchema(d.faq));
+for (const extra of d.extraSchemasJson ? JSON.parse(d.extraSchemasJson) : []) {
+	schemas.push(extra);
+}
+schemas.push(
+	breadcrumbSchema([
+		{ name: 'Home', item: `${SITE.url}/` },
+		{ name: 'Blog', item: `${SITE.url}/blog/` },
+		{ name: d.shortTitle ?? d.title },
+	])
+);
+
+const categoryLabel =
+	d.category === 'reviews' ? 'Reviews' : d.category === 'comparisons' ? 'Comparisons' : 'Guides';
+---
+
+<BaseLayout
+	title={d.metaTitle}
+	description={d.description}
+	canonical={url}
+	keywords={d.keywords}
+	author={d.author}
+	ogType="article"
+	ogTitle={d.ogTitle ?? d.title}
+	ogDescription={d.ogDescription}
+	ogImage={socialImage}
+	twitterTitle={d.twitterTitle ?? d.ogTitle ?? d.title}
+	twitterDescription={d.twitterDescription}
+	twitterImage={socialImage}
+	publishedTime={iso(d.pubDate)}
+	modifiedTime={iso(d.updatedDate ?? d.pubDate)}
+	schemas={schemas}
+	headerHref={appStoreUrl(d.utmToken, 'header')}
+	navHref={appStoreUrl(d.utmToken, 'nav')}
+	active="blog"
+>
+	<div class="article-hero">
+		<div class="article-hero-inner">
+			<h1>{d.title}</h1>
+			{/* Single credit line: section, author, date, reading time. The section
+			    link also restores the navigation the breadcrumb used to provide. */}
+			<div class="article-credit">
+				<a class="article-credit-section" href="/blog/">{categoryLabel}</a>
+				<span class="article-credit-slash" aria-hidden="true">/</span>
+				<span class="article-credit-author">{d.author}</span>
+				<span class="article-credit-dot" aria-hidden="true"></span>
+				<span>{d.displayDate}</span>
+				<span class="article-credit-dot" aria-hidden="true"></span>
+				<span>{d.readingTime} min read</span>
+			</div>
+		</div>
+	</div>
+
+	{
+		d.heroStyle === 'lead' ? (
+			<figure class="article-lead">
+				<picture>
+					<source srcset={heroWebp} type="image/webp" />
+					<img
+						src={`${d.heroImage}?v=2`}
+						alt={d.heroImageAlt}
+						width={d.heroWidth}
+						height={d.heroHeight}
+						fetchpriority="high"
+						decoding="async"
+					/>
+				</picture>
+			</figure>
+		) : (
+			<div class="article-hero-image">
+				<picture>
+					<source srcset={heroWebp} type="image/webp" />
+					<img src={`${d.heroImage}?v=2`} alt={d.heroImageAlt} fetchpriority="high" decoding="async" />
+				</picture>
+			</div>
+		)
+	}
+
+	<div class="article-body">
+		<div class="article-layout">
+			<div class="article-content">
+				<slot />
+
+				{
+					d.faq.length > 0 && (
+						<>
+							<h2>{d.faqHeading}</h2>
+							<FAQAccordion faq={d.faq} />
+						</>
+					)
+				}
+
+				{
+					d.finalCta && (
+						<ArticleCTACard
+							heading={d.finalCta.heading}
+							text={d.finalCta.text}
+							pills={d.finalCta.pills}
+							imageAlt={d.finalCta.imageAlt}
+							href={appStoreUrl(d.utmToken, d.finalCtaPlacement)}
+						/>
+					)
+				}
+			</div>
+
+			<ArticleSidebar
+				appHref={appStoreUrl(d.utmToken, 'sidebar')}
+				related={d.related}
+				note={d.sidebarNote}
+			/>
+		</div>
+
+		{/* Sits outside the grid so the three cards span the full column + rail width. */}
+		<RelatedPosts slugs={d.related} />
+	</div>
+
+	<StickyBar
+		slot="after-footer"
+		mobileHref={appStoreUrl(d.utmToken, 'sticky_bar')}
+		desktopHref={appStoreUrl(d.utmToken, 'sticky_bar_desktop')}
+	/>
+</BaseLayout>

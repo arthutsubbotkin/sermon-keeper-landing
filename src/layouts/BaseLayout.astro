@@ -1,0 +1,130 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import { SITE } from '../utils/site';
+import '../styles/global.css';
+
+interface Props {
+	/** <title>. Keep at or under 60 rendered characters. */
+	title: string;
+	/** <meta name="description">. Keep at or under 158 characters. */
+	description: string;
+	canonical: string;
+	keywords?: string;
+	author?: string;
+	ogType?: 'website' | 'article';
+	ogTitle?: string;
+	ogDescription?: string;
+	ogImage?: string;
+	twitterTitle?: string;
+	twitterDescription?: string;
+	twitterImage?: string;
+	publishedTime?: string;
+	modifiedTime?: string;
+	/** JSON-LD objects rendered as separate ld+json blocks. */
+	schemas?: unknown[];
+	/** Preload the woff2 faces used by the LCP text. Off for light pages. */
+	preloadFonts?: boolean;
+	headerHref: string;
+	navHref: string;
+	active?: 'home' | 'blog' | null;
+}
+
+const {
+	title,
+	description,
+	canonical,
+	keywords,
+	author = SITE.name,
+	ogType = 'website',
+	ogTitle,
+	ogDescription,
+	ogImage = SITE.ogImage,
+	twitterTitle,
+	twitterDescription,
+	twitterImage,
+	publishedTime,
+	modifiedTime,
+	schemas = [],
+	preloadFonts = true,
+	headerHref,
+	navHref,
+	active = null,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="apple-itunes-app" content={`app-id=${SITE.appId}`} />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		{keywords && <meta name="keywords" content={keywords} />}
+		<meta name="author" content={author} />
+		<meta name="google-site-verification" content={SITE.gscVerification} />
+		<meta
+			name="robots"
+			content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+		/>
+		<link rel="canonical" href={canonical} />
+
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:title" content={ogTitle ?? title} />
+		<meta property="og:description" content={ogDescription ?? description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:site_name" content={SITE.name} />
+		{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+		{modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+		{modifiedTime && <meta property="og:updated_time" content={modifiedTime} />}
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={twitterTitle ?? ogTitle ?? title} />
+		<meta name="twitter:description" content={twitterDescription ?? ogDescription ?? description} />
+		<meta name="twitter:image" content={twitterImage ?? ogImage} />
+
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+		{
+			preloadFonts && (
+				<>
+					<link
+						rel="preload"
+						href="/scss/font/inter/Inter-Regular.woff2"
+						as="font"
+						type="font/woff2"
+						crossorigin
+					/>
+					<link
+						rel="preload"
+						href="/scss/font/inter/Inter-Bold.woff2"
+						as="font"
+						type="font/woff2"
+						crossorigin
+					/>
+				</>
+			)
+		}
+
+		{
+			schemas.map((schema) => (
+				<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+			))
+		}
+
+		<Analytics />
+	</head>
+	<body>
+		<Header headerHref={headerHref} navHref={navHref} active={active} />
+		<slot />
+		<Footer />
+		<slot name="after-footer" />
+	</body>
+</html>
