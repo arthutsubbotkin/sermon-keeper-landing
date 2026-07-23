@@ -5,3 +5,6 @@ dist/
 .DS_Store
 .claude/worktrees/
 Charter 210112/
+
+# Font source archive; the woff2 files under public/scss/font/charter/ are what ships
+Charter*.zip
