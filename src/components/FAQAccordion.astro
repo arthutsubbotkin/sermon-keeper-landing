@@ -23,13 +23,17 @@ const { faq } = Astro.props;
 							<line class="faq-acc-icon-bar" x1="12" y1="4" x2="12" y2="20" />
 						</svg>
 					</button>
+					{/* The inner wrapper is what the 0fr -> 1fr row transition collapses,
+					    so the answer animates to its real height rather than a guess. */}
 					<div
 						class="faq-acc-a"
 						id={`faq-a-${i + 1}`}
 						role="region"
 						aria-labelledby={`faq-q-${i + 1}`}
 					>
-						<p>{item.answer}</p>
+						<div class="faq-acc-a-inner">
+							<p>{item.answer}</p>
+						</div>
 					</div>
 				</div>
 			))}
@@ -40,12 +44,17 @@ const { faq } = Astro.props;
 <script is:inline>
 	// Open/close is driven by CSS off aria-expanded; the script only flips the attribute.
 	(function () {
-		document.querySelectorAll('.faq-acc-q').forEach(function (btn) {
-			btn.addEventListener('click', function () {
-				btn.setAttribute(
-					'aria-expanded',
-					btn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-				);
+		document.querySelectorAll('.faq-accordion').forEach(function (accordion) {
+			var buttons = accordion.querySelectorAll('.faq-acc-q');
+			buttons.forEach(function (btn) {
+				btn.addEventListener('click', function () {
+					var willOpen = btn.getAttribute('aria-expanded') !== 'true';
+					// One answer at a time: opening a question closes whichever was open.
+					buttons.forEach(function (other) {
+						other.setAttribute('aria-expanded', 'false');
+					});
+					if (willOpen) btn.setAttribute('aria-expanded', 'true');
+				});
 			});
 		});
 	})();

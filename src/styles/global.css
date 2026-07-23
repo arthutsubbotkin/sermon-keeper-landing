@@ -2378,7 +2378,7 @@ img {
 	cursor: pointer;
 	text-align: left;
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-	font-size: 1.0625rem;
+	font-size: 19px;
 	font-weight: 500;
 	line-height: 1.45;
 	color: var(--text-dark);
@@ -2403,21 +2403,35 @@ img {
 /* The vertical stroke collapses, so the plus reads as a minus when open. */
 .faq-acc-icon-bar {
 	transform-origin: center;
-	transition: transform 0.2s ease;
+	transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-acc-q[aria-expanded="true"] .faq-acc-icon-bar {
 	transform: scaleY(0);
 }
 
+/* 0fr -> 1fr animates the row to the content's own height, so the motion runs
+   the full duration instead of racing to a max-height that overshoots it. */
 .faq-acc-a {
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 0.25s ease;
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-acc-q[aria-expanded="true"] + .faq-acc-a {
-	max-height: 600px;
+	grid-template-rows: 1fr;
+}
+
+.faq-acc-a-inner {
+	overflow: hidden;
+	min-height: 0;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.faq-acc-q[aria-expanded="true"] + .faq-acc-a .faq-acc-a-inner {
+	opacity: 1;
+	transition-delay: 0.08s;
 }
 
 .faq-acc-a p {
@@ -2425,8 +2439,16 @@ img {
 	padding: 0 1.625rem 1.5rem;
 	color: var(--text-gray);
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-	font-size: 0.9375rem;
-	line-height: 1.6;
+	font-size: 1rem;
+	line-height: 1.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.faq-acc-a,
+	.faq-acc-a-inner,
+	.faq-acc-icon-bar {
+		transition: none;
+	}
 }
 
 @media (max-width: 640px) {
@@ -2437,7 +2459,7 @@ img {
 
 	.faq-acc-q {
 		padding: 1.25rem 1.125rem;
-		font-size: 1rem;
+		font-size: 17px;
 	}
 
 	.faq-acc-a p {
