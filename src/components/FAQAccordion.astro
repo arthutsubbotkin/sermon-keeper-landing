@@ -13,21 +13,14 @@ const { faq } = Astro.props;
 					<button
 						class="faq-acc-q"
 						id={`faq-q-${i + 1}`}
-						aria-expanded={i === 0 ? 'true' : 'false'}
+						aria-expanded="false"
 						aria-controls={`faq-a-${i + 1}`}
 					>
 						<span>{item.question}</span>
-						<svg
-							class="faq-acc-chevron"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2.5"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							aria-hidden="true"
-						>
-							<polyline points="6 9 12 15 18 9" />
+						{/* Plus that turns into a minus: only the vertical bar collapses. */}
+						<svg class="faq-acc-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<line x1="4" y1="12" x2="20" y2="12" />
+							<line class="faq-acc-icon-bar" x1="12" y1="4" x2="12" y2="20" />
 						</svg>
 					</button>
 					<div

@@ -665,120 +665,6 @@ img {
 
 
 
-.faq-list {
-
-	background: var(--white);
-
-	border-radius: 16px;
-
-	padding: 1rem 2rem;
-
-}
-
-
-
-.faq-item {
-
-	padding: 1.25rem 0;
-
-	border-bottom: 1px solid var(--border-gray);
-
-}
-
-
-
-.faq-item:last-child {
-
-	border-bottom: none;
-
-}
-
-
-
-.faq-question {
-
-	font-size: 18px;
-
-	font-weight: 500;
-
-	color: #0C2882;
-
-	cursor: pointer;
-
-	padding-right: 2rem;
-
-	position: relative;
-
-}
-
-
-
-.faq-question::after {
-
-	content: '';
-
-	position: absolute;
-
-	right: 0;
-
-	top: 50%;
-
-	transform: translateY(-50%);
-
-	width: 20px;
-
-	height: 20px;
-
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230C2882' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
-
-	background-size: contain;
-
-	background-repeat: no-repeat;
-
-	transition: transform 0.3s ease;
-
-}
-
-
-
-.faq-question.expanded::after {
-
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230C2882' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
-
-}
-
-
-
-.faq-answer {
-
-	max-height: 0;
-
-	overflow: hidden;
-
-	margin-top: 0;
-
-	font-size: 0.9375rem;
-
-	color: #0C2882;
-
-	line-height: 1.6;
-
-	transition: max-height 0.3s ease, margin-top 0.3s ease;
-
-}
-
-
-
-.faq-question.expanded + .faq-answer {
-
-	max-height: 200px;
-
-	margin-top: 0.75rem;
-
-}
-
-
-
 /* CTA Section */
 
 .cta-section {
@@ -2460,21 +2346,25 @@ img {
 	color: var(--text-dark);
 }
 
-/* ===== FAQ accordion ===== */
+/* ===== FAQ accordion =====
+   Reference layout: separate white cards on a light ground, a plus that becomes
+   a minus. The panel carries the ground itself, so the block looks the same in a
+   white article body as it does inside the already-light homepage section. */
 .faq-accordion {
-	background: var(--white);
-	border: 1px solid var(--border-gray);
-	border-radius: 16px;
-	padding: 0 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	background: var(--bg-light);
+	border: none;
+	border-radius: 24px;
+	padding: 1rem;
 	margin: 1.5rem 0 2.5rem;
 }
 
 .faq-acc-item {
-	border-bottom: 1px solid var(--border-gray);
-}
-
-.faq-acc-item:last-child {
-	border-bottom: none;
+	background: var(--white);
+	border: none;
+	border-radius: 18px;
 }
 
 .faq-acc-q {
@@ -2482,33 +2372,42 @@ img {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 1rem;
+	gap: 1.5rem;
 	background: none;
 	border: none;
 	cursor: pointer;
 	text-align: left;
-	font-family: inherit;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 	font-size: 1.0625rem;
-	font-weight: 600;
-	color: #0C2882;
-	padding: 1.25rem 0;
+	font-weight: 500;
+	line-height: 1.45;
+	color: var(--text-dark);
+	padding: 1.5rem 1.625rem;
 }
 
 .faq-acc-q:focus-visible {
 	outline: 2px solid var(--primary-blue);
-	outline-offset: 3px;
-	border-radius: 6px;
+	outline-offset: 2px;
+	border-radius: 18px;
 }
 
-.faq-acc-chevron {
-	width: 20px;
-	height: 20px;
+.faq-acc-icon {
+	width: 22px;
+	height: 22px;
 	flex-shrink: 0;
+	stroke: currentColor;
+	stroke-width: 1.75;
+	stroke-linecap: round;
+}
+
+/* The vertical stroke collapses, so the plus reads as a minus when open. */
+.faq-acc-icon-bar {
+	transform-origin: center;
 	transition: transform 0.2s ease;
 }
 
-.faq-acc-q[aria-expanded="true"] .faq-acc-chevron {
-	transform: rotate(180deg);
+.faq-acc-q[aria-expanded="true"] .faq-acc-icon-bar {
+	transform: scaleY(0);
 }
 
 .faq-acc-a {
@@ -2522,10 +2421,28 @@ img {
 }
 
 .faq-acc-a p {
-	margin: 0 0 1.25rem;
+	margin: 0;
+	padding: 0 1.625rem 1.5rem;
 	color: var(--text-gray);
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 	font-size: 0.9375rem;
 	line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+	.faq-accordion {
+		border-radius: 20px;
+		padding: 0.625rem;
+	}
+
+	.faq-acc-q {
+		padding: 1.25rem 1.125rem;
+		font-size: 1rem;
+	}
+
+	.faq-acc-a p {
+		padding: 0 1.125rem 1.25rem;
+	}
 }
 
 /* ===== Desktop sticky CTA (centered pill) ===== */
@@ -2897,14 +2814,6 @@ img {
 	.feature-card h3 {
 
 		font-size: 24px;
-
-	}
-
-
-
-	.faq-list {
-
-		padding: 0.5rem 1rem;
 
 	}
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeBlogTeaser from '../components/HomeBlogTeaser.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
 import { pageAppStoreUrl } from '../utils/site';
 
 const schemas = [
@@ -154,6 +155,46 @@ const schemas = [
   }
  }
 ];
+// Homepage FAQ, rendered with the same accordion the articles use.
+const HOME_FAQ = [
+ {
+  "question": "What is Sermon Keeper?",
+  "answer": "An iOS app that records sermons, adds timestamps to your notes, and gives you automatic transcription with summary."
+ },
+ {
+  "question": "Is Sermon Keeper free?",
+  "answer": "Free 3-day trial. Then $6.99/month or $64.99/year for unlimited recordings and transcriptions."
+ },
+ {
+  "question": "What languages are supported?",
+  "answer": "English and Spanish — both the app and AI transcription."
+ },
+ {
+  "question": "What Bible version is used?",
+  "answer": "King James Version (KJV) for now. More translations coming soon."
+ },
+ {
+  "question": "Can I share my notes?",
+  "answer": "Yes — export via email or plain text."
+ },
+ {
+  "question": "Best app to record sermons on iPhone?",
+  "answer": "Sermon Keeper is built specifically for church — with timestamped notes, Bible verses, and AI summaries."
+ },
+ {
+  "question": "Will I lose my recordings?",
+  "answer": "No — everything syncs to iCloud automatically."
+ },
+ {
+  "question": "Do I need an account?",
+  "answer": "No sign-up required. Just download and start recording."
+ },
+ {
+  "question": "Is my data secure?",
+  "answer": "Yes — all recordings and notes stay on your device and sync only to your personal iCloud. We don't have access to your data."
+ }
+];
+
 const BODY_TOP = `<!-- Hero Section -->
 
 	<div class="hero-section">
@@ -300,96 +341,6 @@ const BODY_TOP = `<!-- Hero Section -->
 
 
 
-	<!-- FAQ Section -->
-
-	<div class="faq-section">
-
-		<div class="faq-container">
-
-			<h2>Frequently Asked Questions</h2>
-
-			<div class="faq-list">
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(0)">What is Sermon Keeper?</p>
-
-					<p class="faq-answer">An iOS app that records sermons, adds timestamps to your notes, and gives you automatic transcription with summary.</p>
-
-				</div>
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(1)">Is Sermon Keeper free?</p>
-
-					<p class="faq-answer">Free 3-day trial. Then $6.99/month or $64.99/year for unlimited recordings and transcriptions.</p>
-
-				</div>
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(2)">What languages are supported?</p>
-
-					<p class="faq-answer">English and Spanish — both the app and AI transcription.</p>
-
-				</div>
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(3)">What Bible version is used?</p>
-
-					<p class="faq-answer">King James Version (KJV) for now. More translations coming soon.</p>
-
-				</div>
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(4)">Can I share my notes?</p>
-
-					<p class="faq-answer">Yes — export via email or plain text.</p>
-
-				</div>
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(5)">Best app to record sermons on iPhone?</p>
-
-					<p class="faq-answer">Sermon Keeper is built specifically for church — with timestamped notes, Bible verses, and AI summaries.</p>
-
-				</div>
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(6)">Will I lose my recordings?</p>
-
-					<p class="faq-answer">No — everything syncs to iCloud automatically.</p>
-
-				</div>
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(7)">Do I need an account?</p>
-
-					<p class="faq-answer">No sign-up required. Just download and start recording.</p>
-
-				</div>
-
-				<div class="faq-item">
-
-					<p class="faq-question" onclick="toggleFaq(8)">Is my data secure?</p>
-
-					<p class="faq-answer">Yes — all recordings and notes stay on your device and sync only to your personal iCloud. We don't have access to your data.</p>
-
-				</div>
-
-			</div>
-
-		</div>
-
-	</div>
-
-
-
 	`;
 const BODY_BOTTOM = `<!-- CTA Section -->
 
@@ -440,18 +391,15 @@ const BODY_BOTTOM = `<!-- CTA Section -->
 	active="home"
 >
 	<Fragment set:html={BODY_TOP} />
+
+	<div class="faq-section">
+		<div class="faq-container">
+			<h2>Frequently Asked Questions</h2>
+			<FAQAccordion faq={HOME_FAQ} />
+		</div>
+	</div>
+
 	<HomeBlogTeaser />
 	<Fragment set:html={BODY_BOTTOM} />
 
-	{/*
-		The homepage FAQ markup carries inline onclick="toggleFaq(i)" handlers and
-		lives inside the set:html body, which does not execute scripts — so this
-		global has to be declared here or the answers never open.
-	*/}
-	<script is:inline>
-		function toggleFaq(index) {
-			const questions = document.querySelectorAll('.faq-question');
-			questions[index].classList.toggle('expanded');
-		}
-	</script>
 </BaseLayout>
