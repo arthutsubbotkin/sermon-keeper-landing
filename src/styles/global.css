@@ -2987,6 +2987,15 @@ img {
 
 	}
 
+	/* One persistent app surface per breakpoint: where the rail's app card is
+	   visible, suppress the desktop sticky pill so the two never stack. */
+
+	.sticky-cta-desktop {
+
+		display: none !important;
+
+	}
+
 }
 
 

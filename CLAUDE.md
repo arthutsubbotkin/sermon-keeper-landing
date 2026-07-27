@@ -42,6 +42,39 @@ Below 1220px the rail is hidden.
 Never hand-write a FAQ section in the body: the layout builds one from `faq[]`.
 Four articles once carried both and rendered the section twice.
 
+## CTAs and promo density
+
+One goal, repeated sparingly, in as few formats as possible. The conversion goal
+is single, download the app, so every promo points there; what is capped is the
+number of interruptions and the number of visual formats doing that one job.
+Multiple *different* offers competing for attention convert worse than one goal
+repeated (Unbounce: ~266% worse), so this is a conversion rule, not just tidiness.
+
+In-body app CTAs, counting the inline CTA and the final card together:
+
+- Short article (< 1500 words): 2 — one inline CTA mid-article, one final card.
+- Long article (≥ 1500 words): 3 — up to two inline CTAs, one final card.
+- The final card (`finalCta` frontmatter) is always present, always last, counts
+  as one. Every article has it; `digital-vs-paper` was the one that lacked it.
+- Never two promos in the same H2 section or back to back.
+
+Formats are two, not three. A lightweight inline `ArticleCTA` mid-article and one
+rich `ArticleCTACard` at the end. There is no third app-promo format: the
+`ArticleBanner` strip is not an app CTA. The component still exists, but if a
+banner is used it carries a *different* goal (a link to a related article), never
+another download button. A content-relevant lead magnet is a separate offer and
+is allowed alongside the budget, e.g. the SOAP PDF download in
+`soap-bible-study-method`.
+
+Persistent chrome is one app surface per breakpoint, never stacked:
+
+- ≥ 1220px: the rail's app card is the only one; `.sticky-cta-desktop` is hidden.
+- 768–1219px: no rail, so the desktop sticky pill shows.
+- < 768px: the bottom sticky bar.
+
+Trimming a CTA drops its placement token from the funnel; it never renames a
+surviving one (see the App Store placement note under SEO).
+
 ## Key CSS classes
 
 - `.article-layout` — the column + rail grid; `--col`, `--gap`, `--rail`, `--stack`
