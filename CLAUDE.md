@@ -56,7 +56,10 @@ In-body app CTAs, counting the inline CTA and the final card together:
 - Long article (≥ 1500 words): 3 — up to two inline CTAs, one final card.
 - The final card (`finalCta` frontmatter) is always present, always last, counts
   as one. Every article has it; `digital-vs-paper` was the one that lacked it.
-- Never two promos in the same H2 section or back to back.
+- Never two promos in the same H2 section or back to back. This spacing rule
+  covers *every* promo block, the lead magnet included: an app CTA must not sit
+  in the section immediately before or after it. `soap-bible-study-method` once
+  had the app CTA butting straight up against the SOAP PDF section.
 
 Formats are two, not three. A lightweight inline `ArticleCTA` mid-article and one
 rich `ArticleCTACard` at the end. There is no third app-promo format: the
@@ -64,7 +67,9 @@ rich `ArticleCTACard` at the end. There is no third app-promo format: the
 banner is used it carries a *different* goal (a link to a related article), never
 another download button. A content-relevant lead magnet is a separate offer and
 is allowed alongside the budget, e.g. the SOAP PDF download in
-`soap-bible-study-method`.
+`soap-bible-study-method`. "Alongside the budget" means it does not count toward
+the app-CTA cap, not that it is exempt from spacing: it still must not stack
+against another promo.
 
 Persistent chrome is one app surface per breakpoint, never stacked:
 
