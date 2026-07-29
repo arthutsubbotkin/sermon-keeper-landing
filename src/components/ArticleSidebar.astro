@@ -19,20 +19,26 @@ const next = all.find((p) => p.id === related[0]);
 <aside class="article-rail" aria-label="More from Sermon Keeper">
 	<div class="article-rail-inner">
 		<div class="rail-card rail-banner">
-			{/* Illustration is a flat export from the design; it already carries the
-			    app icon, the churchgoers, and the recording card. */}
-			<picture>
-				<source srcset="/scss/image/blog/banner/rail-illus.webp" type="image/webp" />
+			<div class="rail-banner-hero">
+				{/* Concentric rings drawn inline so they stay crisp at any size. */}
+				<svg class="rail-banner-rings" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+					<circle cx="150" cy="150" r="34" stroke="#3E7AF5" stroke-opacity="0.55" />
+					<circle cx="150" cy="150" r="58" stroke="#3E7AF5" stroke-opacity="0.42" />
+					<circle cx="150" cy="150" r="82" stroke="#3E7AF5" stroke-opacity="0.30" />
+					<circle cx="150" cy="150" r="106" stroke="#3E7AF5" stroke-opacity="0.20" />
+					<circle cx="150" cy="150" r="130" stroke="#3E7AF5" stroke-opacity="0.12" />
+					<circle cx="150" cy="150" r="150" stroke="#3E7AF5" stroke-opacity="0.07" />
+				</svg>
 				<img
-					class="rail-banner-illus"
-					src="/scss/image/blog/banner/rail-illus.png"
+					class="rail-banner-logo"
+					src="/apple-touch-icon.png"
 					alt=""
-					width="620"
-					height="360"
+					width="72"
+					height="72"
 					loading="lazy"
 					decoding="async"
 				/>
-			</picture>
+			</div>
 			<h3>Remember every sermon</h3>
 			<p>Record the message, capture timestamped notes, and get an AI transcript with a summary the moment the service ends.</p>
 			<a href={appHref} class="rail-banner-btn">Try free for 3 days</a>

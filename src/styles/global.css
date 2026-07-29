@@ -3215,34 +3215,56 @@ img {
 /* Rail promo banner (from the mockup): illustration on a cream card, headline,
    subtext, one black pill. Rules sit after .rail-card so they win on h3/p. */
 .rail-banner {
-	background: #FFF2D0;
-	padding: 1.25rem 1.25rem 1.5rem;
+	background: #B8CFFF;
+	padding: 2rem 1.5rem;
 	text-align: center;
+	overflow: hidden;
 }
 
-.rail-banner-illus {
-	display: block;
-	width: calc(100% + 0.5rem);
+/* Logo on a bed of concentric rings, per the mockup. */
+.rail-banner-hero {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.rail-banner-rings {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	max-width: none;
 	height: auto;
-	margin: -0.25rem -0.25rem 0.75rem;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
+
+.rail-banner-logo {
+	position: relative;
+	display: block;
+	width: 72px;
+	height: 72px;
+	border-radius: 18px;
 }
 
 .rail-banner h3 {
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-	font-size: 1.5rem;
+	font-size: 1.75rem;
 	font-weight: 700;
-	line-height: 1.15;
+	line-height: 1.12;
 	letter-spacing: -0.02em;
 	color: #171717;
-	margin: 0 0 0.5rem;
+	margin: 0 0 0.625rem;
 }
 
 .rail-banner p {
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 	font-size: 0.9375rem;
 	line-height: 1.5;
-	color: #3F3C34;
-	margin: 0 0 1.25rem;
+	color: #3C4257;
+	margin: 0 0 1.5rem;
 }
 
 .rail-banner-btn {
