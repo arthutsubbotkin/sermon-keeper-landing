@@ -8,15 +8,15 @@ const { mobileHref, desktopHref } = Astro.props;
 ---
 
 <!-- Sticky mobile CTA bar -->
-<a class="sticky-cta" id="stickyCta" href={mobileHref} aria-label="Start free with Sermon Keeper">
+<a class="sticky-cta" id="stickyCta" href={mobileHref} aria-label="Try free for 3 days with Sermon Keeper">
 	<span class="sticky-cta-left">
 		<img class="sticky-cta-icon" src="/apple-touch-icon.png" alt="" width="40" height="40" />
 		<span class="sticky-cta-text">
 			<strong>Sermon Keeper</strong>
-			<span>Free trial</span>
+			<span>AI sermon notes</span>
 		</span>
 	</span>
-	<span class="sticky-cta-btn">Start free</span>
+	<span class="sticky-cta-btn">Try free for 3 days</span>
 </a>
 
 <!-- Sticky desktop CTA bar (centered pill, appears after 30% scroll) -->
@@ -26,7 +26,7 @@ const { mobileHref, desktopHref } = Astro.props;
 			class="sticky-cta-desktop"
 			id="stickyCtaDesktop"
 			href={desktopHref}
-			aria-label="Start free with Sermon Keeper"
+			aria-label="Try free for 3 days with Sermon Keeper"
 		>
 			<img
 				class="sticky-cta-desktop-icon"
@@ -35,8 +35,8 @@ const { mobileHref, desktopHref } = Astro.props;
 				width="32"
 				height="32"
 			/>
-			<span class="sticky-cta-desktop-text">Sermon Keeper — Free trial</span>
-			<span class="sticky-cta-desktop-btn">Start free</span>
+			<span class="sticky-cta-desktop-text">Sermon Keeper</span>
+			<span class="sticky-cta-desktop-btn">Try free for 3 days</span>
 		</a>
 	)
 }
