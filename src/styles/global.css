@@ -1827,6 +1827,125 @@ img {
 }
 
 
+/* ===== Illustrated app banner (Figma 128:1716 wide / 131:1856 stacked) ===== */
+.banner-cta {
+	display: flex;
+	align-items: stretch;
+	gap: 1rem;
+	background: #B8CFFF;
+	border-radius: 24px;
+	overflow: hidden;
+	margin: 2.5rem 0;
+}
+
+.banner-cta-body {
+	flex: 1 1 auto;
+	align-self: center;
+	padding: 2.5rem;
+}
+
+.banner-cta-body h3 {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	color: #171717;
+	margin: 0 0 0.75rem;
+}
+
+.banner-cta-body p {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #3C4257;
+	margin: 0 0 1.5rem;
+	max-width: 44ch;
+}
+
+.banner-cta-btn {
+	display: inline-block;
+	background: #000;
+	color: var(--white);
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 1rem;
+	font-weight: 600;
+	padding: 0.9375rem 2rem;
+	border-radius: 999px;
+	transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.banner-cta-btn:hover {
+	transform: translateY(-1px);
+	background: #171717;
+}
+
+.banner-cta-media {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.banner-cta-illus {
+	display: block;
+}
+
+.banner-cta-illus img {
+	display: block;
+	height: auto;
+}
+
+.banner-cta-illus-wide img {
+	width: 340px;
+}
+
+.banner-cta-illus-tall {
+	display: none;
+}
+
+/* Stacked layout: illustration on top, centred text, full-width button. */
+@media (max-width: 700px) {
+	.banner-cta {
+		flex-direction: column;
+		gap: 0;
+		text-align: center;
+	}
+
+	.banner-cta-illus-wide {
+		display: none;
+	}
+
+	.banner-cta-illus-tall {
+		display: block;
+		width: 100%;
+		padding: 1.5rem 1.5rem 0;
+	}
+
+	.banner-cta-illus-tall img {
+		width: 100%;
+	}
+
+	.banner-cta-body {
+		padding: 1rem 1.5rem 2rem;
+	}
+
+	.banner-cta-body h3 {
+		font-size: 1.75rem;
+	}
+
+	.banner-cta-body p {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.banner-cta-btn {
+		display: block;
+		width: 100%;
+	}
+}
+
+
 
 .article-cta-final {
 
@@ -2019,11 +2138,11 @@ img {
 /* ===== Author byline ===== */
 /* One-line credit: section in the accent colour, then author, date and reading
    time separated by dots. Replaces the avatar byline. */
-.article-credit{display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem;margin-top:18px;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:1rem;line-height:1.5;color:#000}
+.article-credit{display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem;margin-top:18px;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:1rem;line-height:1.5;color:var(--text-gray)}
 .article-credit-section{color:var(--accent);text-decoration:none;font-weight:500}
 .article-credit-section:hover{text-decoration:underline}
 .article-credit-slash{color:var(--text-gray)}
-.article-credit-author{color:#000}
+.article-credit-author{color:var(--text-gray)}
 .article-credit-dot{width:5px;height:5px;border-radius:50%;background:#C7CBD1;flex-shrink:0}
 
 .article-steps{margin:1.25rem 0 1.5rem;padding-left:1.4rem;display:grid;gap:0.6rem}
