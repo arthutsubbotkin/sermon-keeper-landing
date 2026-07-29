@@ -1830,6 +1830,9 @@ img {
 /* ===== Illustrated app banner (Figma 128:1716 wide / 131:1856 stacked) ===== */
 .banner-cta {
 	display: flex;
+	/* Media is first in the DOM so the stacked layout puts it on top; row-reverse
+	   then places text left and illustration right on wide screens, per the mockup. */
+	flex-direction: row-reverse;
 	align-items: stretch;
 	gap: 1rem;
 	background: #B8CFFF;
