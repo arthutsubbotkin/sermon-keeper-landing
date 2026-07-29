@@ -2301,6 +2301,20 @@ img {
 	display: block;
 }
 
+/* Mobile hero image: inset from the edges like the body, softer corners. */
+@media (max-width: 767px) {
+	.article-lead,
+	.article-hero-image {
+		padding-left: 1.25rem;
+		padding-right: 1.25rem;
+	}
+
+	.article-lead img,
+	.article-hero-image img {
+		border-radius: 16px;
+	}
+}
+
 .article-banner {
 	margin: 2.5rem 0;
 }
@@ -3071,54 +3085,56 @@ img {
 
 
 
-.rail-card-app {
-
-	background: #FAF7EF;
-
-}
-
-
-
-.rail-app-icon {
-
-	display: block;
-
-	width: 56px;
-
-	height: 56px;
-
-	border-radius: 14px;
-
-	margin-bottom: 1rem;
-
-}
-
-
-
-.rail-card-app .app-store-btn {
-
-	width: 100%;
-
-	justify-content: center;
-
-}
-
-
-
-.rail-app-note {
-
-	display: block;
-
-	margin-top: 0.75rem;
-
-	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
-	font-size: 0.8125rem;
-
-	color: var(--text-gray);
-
+/* Rail promo banner (from the mockup): illustration on a cream card, headline,
+   subtext, one black pill. Rules sit after .rail-card so they win on h3/p. */
+.rail-banner {
+	background: #FFF2D0;
+	padding: 1.25rem 1.25rem 1.5rem;
 	text-align: center;
+}
 
+.rail-banner-illus {
+	display: block;
+	width: calc(100% + 0.5rem);
+	height: auto;
+	margin: -0.25rem -0.25rem 0.75rem;
+}
+
+.rail-banner h3 {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+	color: #171717;
+	margin: 0 0 0.5rem;
+}
+
+.rail-banner p {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 0.9375rem;
+	line-height: 1.5;
+	color: #3F3C34;
+	margin: 0 0 1.25rem;
+}
+
+.rail-banner-btn {
+	display: block;
+	width: 100%;
+	background: #000;
+	color: var(--white);
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	padding: 0.875rem 1rem;
+	border-radius: 999px;
+	text-align: center;
+	transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.rail-banner-btn:hover {
+	transform: translateY(-1px);
+	background: #171717;
 }
 
 
