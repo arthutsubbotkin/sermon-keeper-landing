@@ -1886,7 +1886,7 @@ img {
 .banner-cta-media {
 	flex: 0 0 auto;
 	display: flex;
-	align-items: flex-end;
+	align-items: flex-start;
 	justify-content: center;
 }
 
@@ -1901,6 +1901,7 @@ img {
 
 .banner-cta-illus-wide img {
 	width: 340px;
+	margin: 1.5rem 2rem 0 0;
 }
 
 .banner-cta-illus-tall {
