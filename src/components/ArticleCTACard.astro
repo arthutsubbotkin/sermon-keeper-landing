@@ -12,15 +12,17 @@ const { href } = Astro.props;
 
 <div class="final-banner">
 	<div class="final-banner-media" aria-hidden="true">
-		{/* TODO: swap for the exact iPhone mockup export from Figma (Frame 2147236926). */}
-		<img
-			src="/scss/image/recordyoursermons.png"
-			alt=""
-			width="1139"
-			height="802"
-			loading="lazy"
-			decoding="async"
-		/>
+		<picture>
+			<source srcset="/scss/image/blog/banner/phone.webp" type="image/webp" />
+			<img
+				src="/scss/image/blog/banner/phone.png"
+				alt=""
+				width="337"
+				height="607"
+				loading="lazy"
+				decoding="async"
+			/>
+		</picture>
 	</div>
 	<div class="final-banner-body">
 		<h3>Keep every sermon</h3>

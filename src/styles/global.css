@@ -1885,30 +1885,45 @@ img {
 
 /* ===== Final banner (Figma 128:...): phone left, features right ===== */
 .final-banner {
+	position: relative;
 	display: flex;
 	align-items: center;
-	gap: 2rem;
+	min-height: 440px;
 	background: #B8CFFF;
 	border-radius: 24px;
 	padding: 2.5rem;
+	padding-left: calc(40% + 1.5rem);
 	margin: 2.5rem 0;
 	overflow: hidden;
 }
 
+/* The phone is positioned absolutely so it can be taller than the banner and
+   bleed off the bottom edge; overflow: hidden crops it. */
 .final-banner-media {
-	flex: 0 0 42%;
+	position: absolute;
+	left: 2rem;
+	top: 0;
+	bottom: 0;
+	width: 38%;
 	display: flex;
+	align-items: flex-start;
 	justify-content: center;
 }
 
+/* Top corners rounded to hide the sliver of screenshot background in the crop. */
 .final-banner-media img {
+	position: relative;
+	top: 2rem;
 	width: 100%;
-	max-width: 320px;
+	max-width: 340px;
 	height: auto;
+	border-top-left-radius: 42px;
+	border-top-right-radius: 42px;
 }
 
 .final-banner-body {
 	flex: 1 1 auto;
+	min-width: 0;
 }
 
 .final-banner-body h3 {
@@ -1933,8 +1948,8 @@ img {
 .final-banner-features {
 	list-style: none;
 	display: grid;
-	gap: 0.875rem;
-	margin: 0 0 1.75rem;
+	gap: 0.5rem;
+	margin: 0 0 1.5rem;
 	padding: 0;
 }
 
@@ -1963,7 +1978,7 @@ img {
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 	font-size: 1rem;
 	font-weight: 600;
-	padding: 0.9375rem 2rem;
+	padding: 1rem 3.5rem;
 	border-radius: 999px;
 	transition: transform 0.15s ease, background 0.15s ease;
 }
@@ -1975,14 +1990,21 @@ img {
 
 @media (max-width: 760px) {
 	.final-banner {
-		flex-direction: column;
-		align-items: stretch;
-		gap: 1.5rem;
+		display: block;
+		min-height: 0;
 		padding: 1.75rem;
+		padding-left: 1.75rem;
 	}
 
 	.final-banner-media {
-		flex-basis: auto;
+		position: static;
+		width: auto;
+		margin: 0 0 1.25rem;
+	}
+
+	.final-banner-media img {
+		top: 0;
+		max-width: 240px;
 	}
 
 	.final-banner-body h3 {
