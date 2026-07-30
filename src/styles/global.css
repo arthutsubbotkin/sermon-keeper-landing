@@ -1883,6 +1883,119 @@ img {
 	background: #171717;
 }
 
+/* ===== Final banner (Figma 128:...): phone left, features right ===== */
+.final-banner {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	background: #B8CFFF;
+	border-radius: 24px;
+	padding: 2.5rem;
+	margin: 2.5rem 0;
+	overflow: hidden;
+}
+
+.final-banner-media {
+	flex: 0 0 42%;
+	display: flex;
+	justify-content: center;
+}
+
+.final-banner-media img {
+	width: 100%;
+	max-width: 320px;
+	height: auto;
+}
+
+.final-banner-body {
+	flex: 1 1 auto;
+}
+
+.final-banner-body h3 {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 2rem;
+	font-weight: 600;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	color: #171717;
+	margin: 0 0 0.625rem;
+}
+
+.final-banner-body > p {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #3C4257;
+	margin: 0 0 1.5rem;
+	max-width: 42ch;
+}
+
+.final-banner-features {
+	list-style: none;
+	display: grid;
+	gap: 0.875rem;
+	margin: 0 0 1.75rem;
+	padding: 0;
+}
+
+.final-banner-features li {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 1.0625rem;
+	font-weight: 500;
+	color: #171717;
+}
+
+.final-banner-ic {
+	flex-shrink: 0;
+	width: 1.75rem;
+	font-size: 1.25rem;
+	line-height: 1;
+	text-align: center;
+}
+
+.final-banner-btn {
+	display: inline-block;
+	background: #000;
+	color: var(--white);
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-size: 1rem;
+	font-weight: 600;
+	padding: 0.9375rem 2rem;
+	border-radius: 999px;
+	transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.final-banner-btn:hover {
+	transform: translateY(-1px);
+	background: #171717;
+}
+
+@media (max-width: 760px) {
+	.final-banner {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1.5rem;
+		padding: 1.75rem;
+	}
+
+	.final-banner-media {
+		flex-basis: auto;
+	}
+
+	.final-banner-body h3 {
+		font-size: 1.625rem;
+	}
+
+	.final-banner-btn {
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+}
+
 .banner-cta-media {
 	flex: 0 0 auto;
 	display: flex;

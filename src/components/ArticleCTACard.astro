@@ -1,6 +1,4 @@
 ---
-import AppleIcon from './AppleIcon.astro';
-
 interface Props {
 	heading: string;
 	text: string;
@@ -8,32 +6,31 @@ interface Props {
 	pills?: string[];
 	imageAlt?: string;
 }
-const {
-	heading,
-	text,
-	href,
-	pills = ['Free 3-day trial', 'On-device & private', 'Built for church'],
-	imageAlt = 'Sermon Keeper app recording a Sunday service with timestamped notes',
-} = Astro.props;
-const shot = '/scss/image/blog/best-sermon-notes-apps/scr1';
+// Only href is used now; the banner copy is fixed from the mockup.
+const { href } = Astro.props;
 ---
 
-<div class="article-cta-card">
-	<div class="cta-card-media">
-		<picture>
-			<source srcset={`${shot}.webp`} type="image/webp" />
-			<img src={`${shot}.jpg`} alt={imageAlt} width="462" height="1000" loading="lazy" decoding="async" />
-		</picture>
+<div class="final-banner">
+	<div class="final-banner-media" aria-hidden="true">
+		{/* TODO: swap for the exact iPhone mockup export from Figma (Frame 2147236926). */}
+		<img
+			src="/scss/image/recordyoursermons.png"
+			alt=""
+			width="1139"
+			height="802"
+			loading="lazy"
+			decoding="async"
+		/>
 	</div>
-	<div class="cta-card-body">
-		<h3>{heading}</h3>
-		<p>{text}</p>
-		<ul class="cta-pills">
-			{pills.map((p) => <li>✓ {p}</li>)}
+	<div class="final-banner-body">
+		<h3>Keep every sermon</h3>
+		<p>Record, transcribe, and revisit any message, all from your iPhone. Free for 3 days.</p>
+		<ul class="final-banner-features">
+			<li><span class="final-banner-ic">🎙️</span> One-tap recording</li>
+			<li><span class="final-banner-ic">⏱️</span> Timestamped notes</li>
+			<li><span class="final-banner-ic">✨</span> AI transcript &amp; summary</li>
+			<li><span class="final-banner-ic">🔒</span> Private, on-device</li>
 		</ul>
-		<a href={href} class="app-store-btn app-store-btn-sm">
-			<AppleIcon />
-			Download on App Store
-		</a>
+		<a href={href} class="final-banner-btn">Try free for 3 days</a>
 	</div>
 </div>
