@@ -52,10 +52,12 @@ const schemas = [
 	active="blog"
 >
 	<div class="blog-hero">
-		<h1>Sermon Keeper Blog</h1>
-		<p class="blog-hero-subtitle">
-			Tips, guides, and insights for capturing and remembering your sermons better.
-		</p>
+		<div class="blog-hero-inner">
+			<h1>Sermon Keeper Blog</h1>
+			<p class="blog-hero-subtitle">
+				Tips, guides, and insights for capturing and remembering your sermons better.
+			</p>
+		</div>
 	</div>
 
 	<div class="blog-list">
@@ -79,13 +81,10 @@ const schemas = [
 						</div>
 						<div class="blog-card-content">
 							<div class="blog-card-meta">
-								{p.data.cardDate ?? cardDate(p.data.pubDate)} &middot; {p.data.readingTime} min read
+								{p.data.cardTag ?? CATEGORY_LABEL[p.data.category]} &middot; {p.data.cardDate ?? cardDate(p.data.pubDate)}
 							</div>
 							<h3>{p.data.cardTitle ?? p.data.title}</h3>
 							<p>{p.data.cardText ?? p.data.description}</p>
-							<span class="blog-card-tag">
-								{p.data.cardTag ?? CATEGORY_LABEL[p.data.category]}
-							</span>
 						</div>
 					</a>
 				))

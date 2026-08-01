@@ -19,10 +19,7 @@ const { headerHref, navHref, active = null } = Astro.props;
 		</a>
 		<nav class="header-nav">
 			<a href="/" class={active === 'home' ? 'active' : undefined}>Home</a>
-			<a href="/blog/" class={active === 'blog' ? 'active' : undefined}>Blog</a>
-			<a href={headerHref} class="header-download-btn"
-				><AppleIcon style="width:16px;height:16px;fill:white;vertical-align:middle;margin-right:4px" />Download App</a
-			>
+			<a href="/blog/" class={active === 'blog' ? 'header-blog-btn active' : 'header-blog-btn'}>Blog</a>
 		</nav>
 		<a href={navHref} class="header-download-mobile"><AppleIcon />Download App</a>
 		<button class="burger-menu" onclick="toggleMenu()" aria-label="Menu">

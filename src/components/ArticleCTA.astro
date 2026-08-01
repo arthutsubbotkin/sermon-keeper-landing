@@ -54,30 +54,38 @@ const base = '/scss/image/blog/banner';
 			</div>
 		</div>
 	) : (
-		<div class="article-cta">
-			<h3>{heading}</h3>
-			<p>{text}</p>
-			<a
-				href={href}
-				class="app-store-btn app-store-btn-sm"
-				download={download ? true : undefined}
-			>
-				<svg
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					xmlns="http://www.w3.org/2000/svg"
-					aria-hidden="true"
-				>
-					<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-					<polyline points="7 10 12 15 17 10" />
-					<line x1="12" y1="15" x2="12" y2="3" />
-				</svg>
-				{label}
-			</a>
-		</div>
+		<div class="banner-cta">
+				<div class="banner-cta-media" aria-hidden="true">
+					<picture class="banner-cta-illus banner-cta-illus-wide">
+						<source srcset={`${base}/banner-desktop.webp`} type="image/webp" />
+						<img
+							src={`${base}/banner-desktop.png`}
+							alt=""
+							width="760"
+							height="620"
+							loading="lazy"
+							decoding="async"
+						/>
+					</picture>
+					<picture class="banner-cta-illus banner-cta-illus-tall">
+						<source srcset={`${base}/banner-mobile.webp`} type="image/webp" />
+						<img
+							src={`${base}/banner-mobile.png`}
+							alt=""
+							width="760"
+							height="442"
+							loading="lazy"
+							decoding="async"
+						/>
+					</picture>
+				</div>
+				<div class="banner-cta-body">
+					<h3>{heading}</h3>
+					<p>{text}</p>
+					<a href={href} class="banner-cta-btn" download={download ? true : undefined}>
+						{label}
+					</a>
+				</div>
+			</div>
 	)
 }

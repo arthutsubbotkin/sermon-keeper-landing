@@ -1007,6 +1007,26 @@ img {
 
 
 
+.header-blog-btn {
+	display: inline-flex;
+	align-items: center;
+	background: var(--white);
+	color: #0C2882 !important;
+	border: 1.5px solid #0C2882;
+	padding: 0.5rem 1.25rem;
+	border-radius: 20px;
+	font-size: 0.875rem !important;
+	font-weight: 600;
+	white-space: nowrap;
+	flex-shrink: 0;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+.header-blog-btn:hover {
+	background: #0C2882;
+	color: var(--white) !important;
+}
+
 .header-download-mobile {
 
 	display: none;
@@ -1292,37 +1312,30 @@ img {
 /* Blog Hero */
 
 .blog-hero {
-
 	padding: 4rem 2rem 2rem;
-
-	text-align: center;
-
+	text-align: left;
 	background: var(--white);
-
 }
 
-
+.blog-hero-inner {
+	max-width: 1140px;
+	margin: 0 auto;
+}
 
 .blog-hero h1 {
-
-	font-size: 2.5rem;
-
+	font-size: clamp(36px, 10.5vw, 52px);
+	font-weight: 600;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	color: #000;
 	margin-bottom: 0.75rem;
-
 }
 
-
-
 .blog-hero-subtitle {
-
 	font-size: 1.125rem;
-
 	color: var(--text-gray);
-
 	max-width: 600px;
-
-	margin: 0 auto;
-
+	margin: 0;
 }
 
 
@@ -1340,75 +1353,38 @@ img {
 
 
 .blog-list-container {
-
-	max-width: 900px;
-
+	max-width: 1140px;
 	margin: 0 auto;
-
-	display: flex;
-
-	flex-direction: column;
-
-	gap: 1.5rem;
-
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 2.75rem 2rem;
 }
-
-
 
 .blog-card {
-
 	display: flex;
-
-	gap: 2rem;
-
-	padding: 2rem;
-
-	background: var(--bg-light);
-
-	border-radius: 20px;
-
-	transition: transform 0.2s;
-
+	flex-direction: column;
+	background: transparent;
+	transition: transform 0.2s ease;
 	cursor: pointer;
-
-	align-items: center;
-
 }
-
-
 
 .blog-card:hover {
-
-	transform: translateY(-2px);
-
+	transform: translateY(-4px);
 }
-
-
 
 .blog-card-image {
-
-	width: 200px;
-
-	min-width: 200px;
-
-	height: 140px;
-
-	border-radius: 12px;
-
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	border-radius: 16px;
 	overflow: hidden;
-
+	margin-bottom: 1rem;
+	background: var(--bg-light);
 }
 
-
-
 .blog-card-image img {
-
 	width: 100%;
-
 	height: 100%;
-
 	object-fit: cover;
-
 }
 
 
@@ -1422,33 +1398,32 @@ img {
 
 
 .blog-card-meta {
-
-	font-size: 0.8125rem;
-
+	font-size: 0.875rem;
 	color: var(--text-gray);
-
-	margin-bottom: 0.5rem;
-
+	margin-bottom: 0.625rem;
 }
 
 
 
 .blog-card-content h3 {
-
 	font-size: 1.375rem;
-
+	font-weight: 600;
+	line-height: 1.25;
+	letter-spacing: -0.01em;
+	color: var(--text-dark);
 	margin-bottom: 0.5rem;
-
 }
 
 
 
 .blog-card-content p {
-
-	font-size: 0.9375rem;
-
+	font-size: 1rem;
+	line-height: 1.55;
 	color: var(--text-gray);
-
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 
@@ -1875,12 +1850,33 @@ img {
 	font-weight: 600;
 	padding: 0.9375rem 2rem;
 	border-radius: 999px;
+	white-space: nowrap;
 	transition: transform 0.15s ease, background 0.15s ease;
 }
 
 .banner-cta-btn:hover {
 	transform: translateY(-1px);
 	background: #171717;
+}
+
+/* "Winner" badge next to the top pick in roundup headings. */
+.winner-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
+	vertical-align: middle;
+	margin-left: 0.6rem;
+	padding: 0.4em 0.75em;
+	background: #FEF3C7;
+	color: #92400E;
+	border: 1px solid #FCD34D;
+	font-size: 0.6875rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	border-radius: 999px;
+	white-space: nowrap;
+	line-height: 1;
 }
 
 /* ===== Final banner (Figma 128:...): phone left, features right ===== */
@@ -1892,7 +1888,7 @@ img {
 	background: #B8CFFF;
 	border-radius: 24px;
 	padding: 2.5rem;
-	padding-left: calc(40% + 1.5rem);
+	padding-left: calc(45% + 2rem);
 	margin: 2.5rem 0;
 	overflow: hidden;
 }
@@ -1901,24 +1897,24 @@ img {
    bleed off the bottom edge; overflow: hidden crops it. */
 .final-banner-media {
 	position: absolute;
-	left: 2rem;
+	left: 0.5rem;
 	top: 0;
 	bottom: 0;
-	width: 38%;
+	width: 45%;
 	display: flex;
-	align-items: flex-start;
+	align-items: flex-end;
 	justify-content: center;
 }
 
-/* Top corners rounded to hide the sliver of screenshot background in the crop. */
+/* Transparent PNG with the floating card + soft shadow baked in, so no corner
+   rounding or background masking is needed. Anchored to the bottom with a small
+   negative margin so the phone bleeds off the banner's bottom edge. */
 .final-banner-media img {
 	position: relative;
-	top: 2rem;
 	width: 100%;
-	max-width: 340px;
+	max-width: 320px;
 	height: auto;
-	border-top-left-radius: 42px;
-	border-top-right-radius: 42px;
+	margin-bottom: -1.5rem;
 }
 
 .final-banner-body {
@@ -1990,21 +1986,29 @@ img {
 
 @media (max-width: 760px) {
 	.final-banner {
-		display: block;
+		display: flex;
+		flex-direction: column;
 		min-height: 0;
 		padding: 1.75rem;
-		padding-left: 1.75rem;
+		padding-bottom: 0;
+	}
+
+	.final-banner-body {
+		order: 1;
 	}
 
 	.final-banner-media {
+		order: 2;
 		position: static;
 		width: auto;
-		margin: 0 0 1.25rem;
+		margin: 1.5rem 0 0;
+		align-items: center;
+		overflow: hidden;
 	}
 
 	.final-banner-media img {
-		top: 0;
-		max-width: 240px;
+		max-width: 300px;
+		margin-bottom: -3.5rem;
 	}
 
 	.final-banner-body h3 {
@@ -2929,7 +2933,7 @@ img {
 
 		min-width: auto;
 
-		height: 160px;
+		aspect-ratio: 16 / 10;
 
 	}
 
