@@ -3539,8 +3539,8 @@ img {
 
 .rev{border:1px solid #E5E7EB;border-radius:20px;padding:2rem;margin:1.5rem 0 2.5rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 30px rgba(15,23,42,.05);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
 .rev p.rev-tag{font-family:'Inter',sans-serif;color:#6B7280;font-size:1.0625rem;margin:0 0 1.25rem}
-.rev-hero{background:#B8CFFF;border-radius:14px;height:360px;display:flex;align-items:center;justify-content:center;margin:0 0 1.5rem;overflow:hidden}
-.rev-hero img{max-height:340px;width:auto;display:block;margin:0}
+.rev-hero{background:#3E7AF5;border-radius:14px;margin:0 0 1.5rem;overflow:hidden;line-height:0}
+.rev-hero img{width:100%;height:auto;display:block;margin:0}
 .rev-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1rem 0;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;margin-bottom:1.25rem}
 .rev-meta .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:#9CA3AF;margin-bottom:.25rem}
 .rev-meta .val{font-weight:600;color:#000;font-size:.95rem}
@@ -3563,4 +3563,4 @@ img {
 .rev-act a.rev-btn:hover{border-color:#9CA3AF;color:#000}
 .rev-act a.rev-btn.primary{background:#0C2882;color:#fff;border-color:#0C2882}
 .rev-when{margin-left:auto;color:#9CA3AF;font-size:.85rem}
-@media(max-width:640px){.rev-meta{grid-template-columns:1fr 1fr}.rev-cols,.rev-boxes{grid-template-columns:1fr}.rev{padding:1.5rem}.rev-hero{height:300px}}
+@media(max-width:640px){.rev-meta{grid-template-columns:1fr 1fr}.rev-cols,.rev-boxes{grid-template-columns:1fr}.rev{padding:1.5rem}}
