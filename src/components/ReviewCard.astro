@@ -1,0 +1,67 @@
+---
+interface Props {
+	rank: number;
+	name: string;
+	id: string;
+	tagline: string;
+	score: string;
+	pricing: string;
+	platforms: string;
+	bestForMeta: string;
+	like: string[];
+	know: string[];
+	bestFor: string;
+	skipIf: string;
+	/** App Store URL. Rendered filled (primary) only when `winner` is set. */
+	appStore?: string;
+	/** Secondary link (official site, or a "Built into iPhone" link for defaults). */
+	site?: string;
+	siteLabel?: string;
+	hero?: string;
+	heroAlt?: string;
+	winner?: boolean;
+}
+const {
+	rank, name, id, tagline, score, pricing, platforms, bestForMeta,
+	like, know, bestFor, skipIf, appStore, site, siteLabel = 'Visit site',
+	hero, heroAlt = '', winner = false,
+} = Astro.props;
+---
+
+<h2 id={id}>{rank}. {name}{winner && <span class="winner-badge">&#9733; Winner</span>}</h2>
+
+<div class="rev">
+	<p class="rev-tag">{tagline}</p>
+	{hero && (
+		<div class="rev-hero">
+			<img src={hero} alt={heroAlt} width="938" height="1256" loading="lazy" decoding="async" />
+		</div>
+	)}
+	<div class="rev-meta">
+		<div><div class="lbl">Our score</div><div class="val">{score}<span class="u">/10</span></div></div>
+		<div><div class="lbl">Pricing</div><div class="val">{pricing}</div></div>
+		<div><div class="lbl">Platforms</div><div class="val">{platforms}</div></div>
+		<div><div class="lbl">Best for</div><div class="val">{bestForMeta}</div></div>
+	</div>
+	<div class="rev-cols">
+		<div class="rev-like">
+			<h4>What we like</h4>
+			<ul>{like.map((item) => <li>{item}</li>)}</ul>
+		</div>
+		<div class="rev-know">
+			<h4>What to know</h4>
+			<ul>{know.map((item) => <li>{item}</li>)}</ul>
+		</div>
+	</div>
+	<div class="rev-boxes">
+		<div class="rev-box box-for"><div class="bl">Best for</div>{bestFor}</div>
+		<div class="rev-box box-skip"><div class="bl">Skip if</div>{skipIf}</div>
+	</div>
+	<div class="rev-act">
+		{appStore && (
+			<a class:list={['rev-btn', { primary: winner }]} href={appStore}>App Store &rarr;</a>
+		)}
+		{site && <a class="rev-btn" href={site}>{siteLabel} &rarr;</a>}
+		<span class="rev-when">Last reviewed: August 2026</span>
+	</div>
+</div>

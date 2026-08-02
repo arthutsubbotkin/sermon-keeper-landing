@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import ArticleCTA from '../../components/ArticleCTA.astro';
 import ArticleBanner from '../../components/ArticleBanner.astro';
+import ReviewCard from '../../components/ReviewCard.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -17,7 +18,7 @@ const { Content } = await render(post);
 
 // Components the MDX bodies can use inline, so mid-article CTAs and the divider
 // banner stay where the original hand-written HTML had them.
-const components = { ArticleCTA, ArticleBanner };
+const components = { ArticleCTA, ArticleBanner, ReviewCard };
 ---
 
 <BlogPost post={post} slug={post.id}>

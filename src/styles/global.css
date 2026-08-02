@@ -3526,3 +3526,41 @@ img {
 	margin-bottom: 0;
 
 }
+
+
+/* ===== App-review cards + comparison table (blog roundups) ===== */
+.cmp{width:100%;border-collapse:collapse;background:#F8FAFC;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;font-size:.95rem;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;margin:1.5rem 0}
+.cmp th,.cmp td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid #E5E7EB;vertical-align:top;color:#000}
+.cmp thead th{background:#F2F4F7;color:#374151;font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+.cmp tbody tr:last-child td{border-bottom:0}
+.cmp .rk{color:#3E7AF5;font-weight:600;width:1.5rem}
+.cmp .nm{font-weight:600;color:#000;white-space:nowrap}
+.cmp .sc{font-weight:600}
+
+.rev{border:1px solid #E5E7EB;border-radius:20px;padding:2rem;margin:1.5rem 0 2.5rem;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 30px rgba(15,23,42,.05);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
+.rev p.rev-tag{font-family:'Inter',sans-serif;color:#6B7280;font-size:1.0625rem;margin:0 0 1.25rem}
+.rev-hero{background:#B8CFFF;border-radius:14px;height:360px;display:flex;align-items:center;justify-content:center;margin:0 0 1.5rem;overflow:hidden}
+.rev-hero img{max-height:340px;width:auto;display:block;margin:0}
+.rev-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1rem 0;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;margin-bottom:1.25rem}
+.rev-meta .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:#9CA3AF;margin-bottom:.25rem}
+.rev-meta .val{font-weight:600;color:#000;font-size:.95rem}
+.rev-meta .val .u{color:#9CA3AF;font-weight:400}
+.rev-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2rem;margin-bottom:1.25rem}
+.rev-cols h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin:0 0 .6rem;font-weight:600;font-family:'Inter',sans-serif}
+.rev-like h4{color:#15803D}
+.rev-know h4{color:#B45309}
+.rev-cols ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.rev-cols li{position:relative;padding-left:1.4rem;font-size:.95rem;line-height:1.45;color:#374151;font-family:'Inter',sans-serif;margin:0}
+.rev-like li::before{content:"+";position:absolute;left:0;color:#16A34A;font-weight:600}
+.rev-know li::before{content:"\2013";position:absolute;left:0;color:#9CA3AF;font-weight:600}
+.rev-boxes{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.rev-box{border-radius:12px;padding:1rem 1.15rem;font-size:.95rem;line-height:1.45;color:#374151;font-family:'Inter',sans-serif}
+.rev-box .bl{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:#6B7280;margin-bottom:.35rem}
+.box-for{background:#F0FDF4;border:1px solid #DCFCE7}
+.box-skip{background:#F8FAFC;border:1px solid #E5E7EB}
+.rev-act{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.rev-act a.rev-btn{display:inline-block;border:1px solid #D1D5DB;border-radius:999px;padding:.55rem 1.1rem;font-size:.9rem;font-weight:600;color:#000;text-decoration:none;background:#fff;border-bottom:1px solid #D1D5DB}
+.rev-act a.rev-btn:hover{border-color:#9CA3AF;color:#000}
+.rev-act a.rev-btn.primary{background:#0C2882;color:#fff;border-color:#0C2882}
+.rev-when{margin-left:auto;color:#9CA3AF;font-size:.85rem}
+@media(max-width:640px){.rev-meta{grid-template-columns:1fr 1fr}.rev-cols,.rev-boxes{grid-template-columns:1fr}.rev{padding:1.5rem}.rev-hero{height:300px}}
