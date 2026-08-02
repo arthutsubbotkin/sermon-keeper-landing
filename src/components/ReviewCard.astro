@@ -12,7 +12,7 @@ interface Props {
 	know: string[];
 	bestFor: string;
 	skipIf: string;
-	/** App Store URL. Rendered filled (primary) only when `winner` is set. */
+	/** App Store URL. Rendered filled (primary) when `winner` or `primaryCta` is set. */
 	appStore?: string;
 	/** Secondary link (official site, or a "Built into iPhone" link for defaults). */
 	site?: string;
@@ -20,11 +20,14 @@ interface Props {
 	hero?: string;
 	heroAlt?: string;
 	winner?: boolean;
+	/** Fill the App Store button without awarding the "Winner" badge — used for our
+	 *  own app in roundups (e.g. "best free") where it isn't the category winner. */
+	primaryCta?: boolean;
 }
 const {
 	rank, name, id, tagline, score, pricing, platforms, bestForMeta,
 	like, know, bestFor, skipIf, appStore, site, siteLabel = 'Visit site',
-	hero, heroAlt = '', winner = false,
+	hero, heroAlt = '', winner = false, primaryCta = false,
 } = Astro.props;
 ---
 
@@ -59,7 +62,7 @@ const {
 	</div>
 	<div class="rev-act">
 		{appStore && (
-			<a class:list={['rev-btn', { primary: winner }]} href={appStore}>App Store &rarr;</a>
+			<a class:list={['rev-btn', { primary: winner || primaryCta }]} href={appStore}>App Store &rarr;</a>
 		)}
 		{site && <a class="rev-btn" href={site}>{siteLabel} &rarr;</a>}
 		<span class="rev-when">Last reviewed: August 2026</span>

@@ -1011,19 +1011,19 @@ img {
 	display: inline-flex;
 	align-items: center;
 	background: var(--white);
-	color: #0C2882 !important;
-	border: 1.5px solid #0C2882;
+	color: var(--primary-blue) !important;
+	border: 1.5px solid var(--primary-blue);
 	padding: 0.5rem 1.25rem;
 	border-radius: 20px;
-	font-size: 0.875rem !important;
-	font-weight: 600;
+	font-size: 0.9375rem !important;
+	font-weight: 500;
 	white-space: nowrap;
 	flex-shrink: 0;
 	transition: background 0.15s ease, color 0.15s ease;
 }
 
 .header-blog-btn:hover {
-	background: #0C2882;
+	background: var(--primary-blue);
 	color: var(--white) !important;
 }
 
