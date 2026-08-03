@@ -21,7 +21,6 @@ const { headerHref, navHref, active = null } = Astro.props;
 			<a href="/" class={active === 'home' ? 'active' : undefined}>Home</a>
 			<a href="/blog/" class={active === 'blog' ? 'header-blog-btn active' : 'header-blog-btn'}>Blog</a>
 		</nav>
-		<a href={navHref} class="header-download-mobile"><AppleIcon />Download App</a>
 		<button class="burger-menu" onclick="toggleMenu()" aria-label="Menu">
 			<span></span><span></span><span></span>
 		</button>
