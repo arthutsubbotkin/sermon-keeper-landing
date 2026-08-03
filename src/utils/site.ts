@@ -3,7 +3,7 @@ export const SITE = {
 	name: 'Sermon Keeper',
 	email: 'hello@sermonkeeper.app',
 	logo: 'https://sermonkeeper.app/apple-touch-icon.png',
-	ogImage: 'https://sermonkeeper.app/scss/image/og-image.png',
+	ogImage: 'https://sermonkeeper.app/scss/image/og-image.jpg',
 	gaId: 'G-M8FJDVHNCY',
 	gscVerification: 'GzWm1GYrAg1L0JO-iXAhefw8FZXLoDcHjCJSepGntPg',
 	appId: '6758739935',

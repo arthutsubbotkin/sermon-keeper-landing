@@ -1027,6 +1027,34 @@ img {
 	color: var(--white) !important;
 }
 
+.header-download-desktop {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	background: #0C2882;
+	color: var(--white) !important;
+	border: 1.5px solid #0C2882;
+	padding: 0.5rem 1.25rem;
+	border-radius: 20px;
+	font-size: 0.9375rem !important;
+	font-weight: 500;
+	white-space: nowrap;
+	flex-shrink: 0;
+	text-decoration: none;
+	transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.header-download-desktop:hover {
+	background: var(--primary-blue);
+	border-color: var(--primary-blue);
+}
+
+.header-download-desktop svg {
+	width: 15px;
+	height: 15px;
+	fill: currentColor;
+}
+
 .header-download-mobile {
 
 	display: none;
@@ -3563,4 +3591,4 @@ img {
 .rev-act a.rev-btn:hover{border-color:#9CA3AF;color:#000}
 .rev-act a.rev-btn.primary{background:#0C2882;color:#fff;border-color:#0C2882}
 .rev-when{margin-left:auto;color:#9CA3AF;font-size:.85rem}
-@media(max-width:640px){.rev-meta{grid-template-columns:1fr 1fr}.rev-cols,.rev-boxes{grid-template-columns:1fr}.rev{padding:1.5rem}}
+@media(max-width:640px){.rev-meta{grid-template-columns:1fr 1fr}.rev-cols,.rev-boxes{grid-template-columns:1fr}.rev{padding:1.5rem}.cmp{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}

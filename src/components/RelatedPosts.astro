@@ -29,7 +29,7 @@ if (posts.length !== slugs.length) {
 					<div class="related-card-media">
 						<picture>
 							<source
-								srcset={p.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+								srcset={`${p.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}?v=2`}
 								type="image/webp"
 							/>
 							<img src={`${p.data.heroImage}?v=2`} alt="" loading="lazy" decoding="async" />

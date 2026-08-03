@@ -60,11 +60,25 @@ const {
 		<div class="rev-box box-for"><div class="bl">Best for</div>{bestFor}</div>
 		<div class="rev-box box-skip"><div class="bl">Skip if</div>{skipIf}</div>
 	</div>
+	{/* Competitor links open in a new tab so the reader's session stays on the site;
+	    our own card (winner/primaryCta) keeps the default same-tab navigation. */}
 	<div class="rev-act">
 		{appStore && (
-			<a class:list={['rev-btn', { primary: winner || primaryCta }]} href={appStore}>App Store &rarr;</a>
+			<a
+				class:list={['rev-btn', { primary: winner || primaryCta }]}
+				href={appStore}
+				target={winner || primaryCta ? undefined : '_blank'}
+				rel={winner || primaryCta ? undefined : 'noopener'}
+			>App Store &rarr;</a>
 		)}
-		{site && <a class="rev-btn" href={site}>{siteLabel} &rarr;</a>}
+		{site && (
+			<a
+				class="rev-btn"
+				href={site}
+				target={winner || primaryCta ? undefined : '_blank'}
+				rel={winner || primaryCta ? undefined : 'noopener'}
+			>{siteLabel} &rarr;</a>
+		)}
 		<span class="rev-when">Last reviewed: August 2026</span>
 	</div>
 </div>

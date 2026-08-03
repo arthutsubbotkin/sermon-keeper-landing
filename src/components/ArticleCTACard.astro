@@ -6,8 +6,16 @@ interface Props {
 	pills?: string[];
 	imageAlt?: string;
 }
-// Only href is used now; the banner copy is fixed from the mockup.
-const { href } = Astro.props;
+// Per-article heading/text/pills inside the mockup's banner layout; the button
+// and the fallback feature list stay fixed.
+const DEFAULT_FEATURES = [
+	{ ic: '🎙️', label: 'One-tap recording' },
+	{ ic: '⏱️', label: 'Timestamped notes' },
+	{ ic: '✨', label: 'AI transcript & summary' },
+	{ ic: '🔒', label: 'Notes sync via your iCloud' },
+];
+const { href, heading, text, pills } = Astro.props;
+const features = pills?.length ? pills.map((p) => ({ ic: '✓', label: p })) : DEFAULT_FEATURES;
 ---
 
 <div class="final-banner">
@@ -25,13 +33,12 @@ const { href } = Astro.props;
 		</picture>
 	</div>
 	<div class="final-banner-body">
-		<h3>Keep every sermon</h3>
-		<p>Record, transcribe, and revisit any message, all from your iPhone. Free for 3 days.</p>
+		<h3>{heading}</h3>
+		<p>{text}</p>
 		<ul class="final-banner-features">
-			<li><span class="final-banner-ic">🎙️</span> One-tap recording</li>
-			<li><span class="final-banner-ic">⏱️</span> Timestamped notes</li>
-			<li><span class="final-banner-ic">✨</span> AI transcript &amp; summary</li>
-			<li><span class="final-banner-ic">🔒</span> Notes sync via your iCloud</li>
+			{features.map((f) => (
+				<li><span class="final-banner-ic">{f.ic}</span> {f.label}</li>
+			))}
 		</ul>
 		<a href={href} class="final-banner-btn">Try free for 3 days</a>
 	</div>

@@ -50,7 +50,7 @@ const next = all.find((p) => p.id === related[0]);
 					<span class="rail-eyebrow">Read next</span>
 					<picture>
 						<source
-							srcset={next.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+							srcset={`${next.data.heroImage.replace(/\.(jpg|jpeg|png)$/i, '.webp')}?v=2`}
 							type="image/webp"
 						/>
 						<img

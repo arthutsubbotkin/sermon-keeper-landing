@@ -8,8 +8,8 @@ ogDescription: "Snap a photo of any Bible page and get a study card in about 30 
 twitterTitle: "SOAP Bible Study App: Scan a Verse, Get a Journal in 30 Seconds"
 twitterDescription: "Snap a photo of any Bible page and get a complete study card in about 30 seconds."
 pubDate: 2026-05-13
-updatedDate: 2026-07-04
-displayDate: "May 13, 2026"
+updatedDate: 2026-08-02
+displayDate: "Updated August 2, 2026"
 readingTime: 8
 author: "Daniel Osei"
 heroImage: "/scss/image/blog/photos/soap-bible-study-app.jpg"
@@ -26,7 +26,7 @@ faq:
   - question: "Can I edit the card after the app creates it?"
     answer: "No. The card is finished when it's generated. You can save it to your library, copy it as text, or share it. If the result isn't what you wanted, the simplest thing is to scan again or pick a different verse from the page."
   - question: "Does the photo of my Bible leave the phone?"
-    answer: "No. Text recognition happens on your phone, so the photo of the page stays local. Only the recognized verse reference is sent to generate the card."
+    answer: "Usually not. Text recognition happens on your phone (iOS Vision), and what's sent to build the card is the recognized text, not the image. If a photo is too blurry to read on-device, it's sent securely to our AI for better recognition instead."
   - question: "Which Bible translations does the scanner work with?"
     answer: "Any translation. The scanner reads the verse reference, not a specific translation's text. Tested translations include KJV, NIV, ESV, NLT, NASB, CSB and NKJV in English, the Russian Synodal Bible, and Reina-Valera in Spanish. As long as the page shows a recognizable reference like 'John 3:16' or '1 Cor 13:4', the app can identify the passage."
   - question: "Can the app make up a verse that does not exist?"
@@ -38,7 +38,8 @@ faq:
 finalCtaPlacement: "cta2"
 finalCta:
   heading: "Start Free with Sermon Keeper"
-  text: "Snap any Bible page, get a complete study card in about thirty seconds. Any translation, English & Spanish, photo stays on your phone. 3 free cards included."
+  text: "Snap any Bible page, get a complete study card in about thirty seconds. Any translation, English & Spanish. 3 free cards included."
+  pills: ["Scan any Bible page", "Full SOAP card in ~30 seconds", "English & Spanish", "No account needed"]
 cardText: "Snap a photo of any Bible page, pick a verse, and Sermon Keeper gives you a study card in about thirty seconds: Scripture, word study, context, observation, meaning, application, cross-references, and a prayer."
 cardTag: "Features"
 related:
@@ -77,7 +78,7 @@ Four taps, start to finish:
 
 From the shutter tap to the finished card the run is roughly half a minute. A "Reading the page → Finding verses → Building your study" progress screen keeps you company while it works. The card itself isn't editable inside the app. If it isn't quite what you wanted, scan again or pick a different verse from the page.
 
-<img src="../scss/image/blog/photos/soap-bible-study-app-flow.png" alt="Sermon Keeper Scan Scripture flow: action sheet, camera, analyzing screen, verse picker, finished study card" style="display:block;max-width:100%;width:100%;height:auto;margin:2rem auto;border-radius:16px;" />
+<img src="/scss/image/blog/photos/soap-bible-study-app-flow.png" alt="Sermon Keeper Scan Scripture flow: action sheet, camera, analyzing screen, verse picker, finished study card" style="display:block;max-width:100%;width:100%;height:auto;margin:2rem auto;border-radius:16px;" />
 
 ## What's in a Study Card
 
@@ -142,9 +143,9 @@ The scanner reads the verse reference on the page, not the translation's exact w
 
 An ESV in the morning and a Reina-Valera in the evening both work without changing settings. The Scripture printed on the card matches the translation of the page you scanned.
 
-### The photo stays on your phone
+### The photo usually stays on your phone
 
-Text recognition usually happens on your device (iOS Vision), so most of the time only the verse reference itself (something like "Acts 23:2") leaves the device to fetch the study material. If a photo is too blurry to read on-device, it's sent securely to our AI for better recognition. Your notes in the margins, the bookmark from your grandmother, the receipt you forgot to take out. All of that stays private to you.
+Text recognition usually happens right on your device (iOS Vision), and what leaves the phone is the recognized text needed to identify the passage and build your study card — not the photo itself. If a page is too blurry to read on-device, the photo is sent securely to our AI for better recognition instead.
 
 ### It won't make up a verse
 

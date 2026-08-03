@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeBlogTeaser from '../components/HomeBlogTeaser.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import { pageAppStoreUrl } from '../utils/site';
+import { faqSchema } from '../utils/seo';
 
 const schemas = [
  {
@@ -44,7 +45,7 @@ const schemas = [
    "English and Spanish support",
    "No account required"
   ],
-  "screenshot": "https://sermonkeeper.app/scss/image/og-image.png",
+  "screenshot": "https://sermonkeeper.app/scss/image/og-image.jpg",
   "installUrl": "https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&ct=landing_page&mt=8",
   "author": {
    "@type": "Organization",
@@ -59,84 +60,6 @@ const schemas = [
   "inLanguage": [
    "en",
    "es"
-  ]
- },
- {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-   {
-    "@type": "Question",
-    "name": "What is Sermon Keeper?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Sermon Keeper is an iOS app that records sermons, adds timestamps to your notes, autocompletes Bible verses, and gives you automatic AI-powered transcription with a summary and key points."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Is Sermon Keeper free?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Free 3-day trial. Then $6.99/month or $64.99/year for unlimited recordings and transcriptions."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "What languages are supported?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "English and Spanish — both the app interface and AI transcription work in both languages."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "What Bible version is used?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "King James Version (KJV) for now. More translations are coming soon."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Can I share my notes?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Yes — you can export your sermon notes and transcription via email or plain text to share with your Bible study group or friends."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "What is the best app to record sermons on iPhone?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Sermon Keeper is built specifically for church — with timestamped notes, automatic Bible verse lookup, and AI-powered transcription with summary. Unlike general recording apps, it is designed around the sermon experience."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Will I lose my recordings?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "No — your notes sync to your personal iCloud automatically, so they're backed up to your own account."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Do I need an account to use Sermon Keeper?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "No sign-up required. Just download from the App Store and start recording your first sermon immediately."
-    }
-   },
-   {
-    "@type": "Question",
-    "name": "Is my data secure?",
-    "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Your notes sync through your own personal iCloud, not our servers. The audio you record is sent to our server only to generate the transcript, then deleted afterward. Sermon Keeper does not sell any user information."
-    }
-   }
   ]
  },
  {
@@ -164,7 +87,7 @@ const HOME_FAQ = [
  },
  {
   "question": "Is Sermon Keeper free?",
-  "answer": "Free 3-day trial. Then $6.99/month or $64.99/year for unlimited recordings and transcriptions."
+  "answer": "Free 3-day trial on the yearly plan, then $6.99/month or $64.99/year for unlimited recordings and transcriptions."
  },
  {
   "question": "What languages are supported?",
@@ -184,7 +107,7 @@ const HOME_FAQ = [
  },
  {
   "question": "Will I lose my recordings?",
-  "answer": "No — everything syncs to iCloud automatically."
+  "answer": "No — recordings live on your device, and your notes sync to your personal iCloud automatically."
  },
  {
   "question": "Do I need an account?",
@@ -195,6 +118,9 @@ const HOME_FAQ = [
   "answer": "Your notes sync through your own personal iCloud, not our servers. The audio you record is sent to our server only to create the transcript, then deleted. We don't sell your data."
  }
 ];
+// FAQPage schema is generated from the same HOME_FAQ the visible accordion renders,
+// so the two can never drift (Google drops FAQ rich results when they do).
+schemas.splice(1, 0, faqSchema(HOME_FAQ));
 
 const BODY_TOP = `<!-- Hero Section -->
 
@@ -212,7 +138,7 @@ const BODY_TOP = `<!-- Hero Section -->
 
 			</p>
 
-			<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_page&amp;mt=8" class="app-store-btn">
+			<a href="${pageAppStoreUrl('landing_home_hero')}" class="app-store-btn">
 
 				<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
 
@@ -240,7 +166,7 @@ const BODY_TOP = `<!-- Hero Section -->
 
 					<p>Tap once to start recording. Your sermon is captured in high quality audio, ready for notes and transcription.</p>
 
-					<img src="scss/image/recordyoursermons.png" alt="Record your sermons" />
+					<img src="scss/image/recordyoursermons.webp" alt="Record your sermons" loading="lazy" decoding="async" />
 
 				</div>
 
@@ -250,7 +176,7 @@ const BODY_TOP = `<!-- Hero Section -->
 
 					<p>Add notes anytime during recording. Each note saves the exact timestamp for easy reference later.</p>
 
-					<img src="scss/image/timestampyournotes.png" alt="Timestamp your notes" />
+					<img src="scss/image/timestampyournotes.webp" alt="Timestamp your notes" loading="lazy" decoding="async" />
 
 				</div>
 
@@ -260,7 +186,7 @@ const BODY_TOP = `<!-- Hero Section -->
 
 					<p>Type any reference like John 3:16 and instantly see the full verse text in a beautiful card.</p>
 
-					<img src="scss/image/autocomplete.png" alt="Autocomplete Bible verses" />
+					<img src="scss/image/autocomplete.webp" alt="Autocomplete Bible verses" loading="lazy" decoding="async" />
 
 				</div>
 
@@ -270,7 +196,7 @@ const BODY_TOP = `<!-- Hero Section -->
 
 					<p>After recording, get automatic speech-to-text transcription with organized summary and key points.</p>
 
-					<img src="scss/image/AI-powered transcription.png" alt="AI-powered transcription" />
+					<img src="scss/image/AI-powered transcription.webp" alt="AI-powered transcription" loading="lazy" decoding="async" />
 
 				</div>
 
@@ -294,7 +220,7 @@ const BODY_TOP = `<!-- Hero Section -->
 
 				<div class="struggle-card">
 
-					<img src="scss/image/busy-church-goers.png" alt="Busy church-goers" />
+					<img src="scss/image/busy-church-goers.webp" alt="Busy church-goers" loading="lazy" decoding="async" />
 
 					<div class="struggle-card-content">
 
@@ -308,7 +234,7 @@ const BODY_TOP = `<!-- Hero Section -->
 
 				<div class="struggle-card">
 
-					<img src="scss/image/bible-study-groups.png" alt="Bible study groups" />
+					<img src="scss/image/bible-study-groups.webp" alt="Bible study groups" loading="lazy" decoding="async" />
 
 					<div class="struggle-card-content">
 
@@ -322,7 +248,7 @@ const BODY_TOP = `<!-- Hero Section -->
 
 				<div class="struggle-card">
 
-					<img src="scss/image/new-believers.png" alt="New believers" />
+					<img src="scss/image/new-believers.webp" alt="New believers" loading="lazy" decoding="async" />
 
 					<div class="struggle-card-content">
 
@@ -351,11 +277,11 @@ const BODY_BOTTOM = `<!-- CTA Section -->
 
 			<div class="cta-content">
 
-				<h2>Start capturing sermons today — simple, fast, and private</h2>
+				<h2>Start capturing sermons today — simple, fast, and yours</h2>
 
 				<p>Download Sermon Keeper and never miss an insight from your next sermon.</p>
 
-				<a href="https://apps.apple.com/app/apple-store/id6758739935?pt=128512327&amp;ct=landing_page&amp;mt=8" class="app-store-btn">
+				<a href="${pageAppStoreUrl('landing_home_final')}" class="app-store-btn">
 
 				<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
 
@@ -367,7 +293,7 @@ const BODY_BOTTOM = `<!-- CTA Section -->
 
 			<div class="cta-image">
 
-				<img src="scss/image/Start capturing sermons today — simple, fast, and private.png" alt="Sermon Keeper App" />
+				<img src="scss/image/Start capturing sermons today — simple, fast, and private.webp" alt="Sermon Keeper App" loading="lazy" decoding="async" />
 
 			</div>
 
@@ -383,12 +309,12 @@ const BODY_BOTTOM = `<!-- CTA Section -->
 	keywords="sermon notes app, sermon recording app, church notes app, Bible study app, sermon transcription, AI sermon notes, iPhone sermon app, record sermons, timestamped notes, KJV Bible app, Christian app, church app iOS"
 	ogTitle="Sermon Keeper - AI-Powered Sermon Notes for iOS"
 	ogDescription="Record sermons, take timestamped notes, and get automatic transcription with summary. Works in English and Spanish."
-	ogImage="https://sermonkeeper.app/scss/image/og-image.png"
+	ogImage="https://sermonkeeper.app/scss/image/og-image.jpg"
 	twitterTitle="Sermon Keeper - AI-Powered Sermon Notes for iOS"
 	twitterDescription="Record sermons, take timestamped notes, and get automatic transcription with summary. Works in English and Spanish."
 	schemas={schemas}
-	headerHref={pageAppStoreUrl('landing_page')}
-	navHref={pageAppStoreUrl('landing_page')}
+	headerHref={pageAppStoreUrl('landing_home_header')}
+	navHref={pageAppStoreUrl('landing_home_nav')}
 	active="home"
 >
 	<Fragment set:html={BODY_TOP} />

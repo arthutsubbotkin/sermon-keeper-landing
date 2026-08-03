@@ -19,7 +19,7 @@ Sermon Keeper is an iOS app for church-going Christians who want to capture, rem
 
 ## Pricing
 
-- Free 3-day trial
+- Free 3-day trial (on the yearly plan)
 - $6.99/month or $64.99/year for unlimited recordings and transcriptions
 
 ## Who It's For
