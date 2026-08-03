@@ -1,18 +1,22 @@
 ---
 import { getCollection } from 'astro:content';
 
-// Three newest posts. Generated from the collection so a new post surfaces on the
-// homepage automatically instead of needing a hand-edited card.
-const posts = (await getCollection('blog'))
+// Pin the pillar (the site's highest-intent, best-converting page) as the first
+// card so the homepage always passes authority to it, then fill with the two
+// newest posts. A new post still surfaces automatically.
+const all = await getCollection('blog');
+const pillar = all.find((p) => p.id === 'best-sermon-notes-apps');
+const newest = all
+	.filter((p) => p.id !== 'best-sermon-notes-apps')
 	.sort((a, b) =>
-		b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.data.sortWeight - b.data.sortWeight)
-	.slice(0, 3);
+		b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.data.sortWeight - b.data.sortWeight);
+const posts = (pillar ? [pillar, ...newest] : newest).slice(0, 3);
 ---
 
 <div class="home-blog">
 	<div class="home-blog-inner">
 		<div class="home-blog-head">
-			<h2>Latest from the blog</h2>
+			<h2>From our blog</h2>
 			<a href="/blog/">View all articles &rarr;</a>
 		</div>
 		<div class="home-blog-grid">
