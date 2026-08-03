@@ -3556,6 +3556,19 @@ img {
 }
 
 
+/* ===== Desktop "scan to install" QR modal ===== */
+.qr-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.qr-modal[hidden]{display:none}
+.qr-modal-backdrop{position:absolute;inset:0;background:rgba(12,40,130,.45);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.qr-modal-card{position:relative;background:#fff;border-radius:20px;padding:2rem 2rem 1.75rem;max-width:340px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(15,23,42,.25);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
+.qr-modal-close{position:absolute;top:.6rem;right:.85rem;background:none;border:0;font-size:1.7rem;line-height:1;color:#9CA3AF;cursor:pointer;padding:.25rem}
+.qr-modal-close:hover{color:#111827}
+.qr-modal-card h3{font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:600;color:#000;margin:0 0 .5rem}
+.qr-modal-card p{font-size:.95rem;color:#6B7280;margin:0 0 1.25rem;line-height:1.45}
+.qr-modal-img{width:200px;height:200px;display:block;margin:0 auto 1.25rem;border:1px solid #E5E7EB;border-radius:14px;padding:.5rem;background:#fff}
+.qr-modal-btn{display:inline-block;background:#0C2882;color:#fff;font-weight:600;font-size:.95rem;text-decoration:none;padding:.7rem 1.5rem;border-radius:999px;transition:background .15s ease}
+.qr-modal-btn:hover{background:var(--primary-blue)}
+
 /* ===== Plain PDF/file download card (distinct from the app-promo banner) ===== */
 .dl-cta{display:flex;align-items:center;gap:1.25rem;background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:1.25rem 1.5rem;margin:2rem 0;box-shadow:0 1px 2px rgba(15,23,42,.04)}
 .dl-cta-icon{width:56px;height:auto;flex-shrink:0}

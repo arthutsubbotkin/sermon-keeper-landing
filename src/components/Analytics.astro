@@ -15,9 +15,10 @@ const { gaId } = SITE;
 		s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
 		document.head.appendChild(s);
 		window.dataLayer = window.dataLayer || [];
-		function gtag() {
+		// Exposed on window so other inline scripts (e.g. the QR modal) can log events.
+		window.gtag = function gtag() {
 			dataLayer.push(arguments);
-		}
+		};
 		gtag('js', new Date());
 		gtag('config', gaId);
 	}

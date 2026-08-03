@@ -1,0 +1,82 @@
+---
+import { pageAppStoreUrl } from '../utils/site';
+// Desktop readers can't tap-install, so on desktop any tap on our own App Store
+// link opens this QR instead of navigating. Mobile taps fall straight through to
+// the store. All interactions are logged to GA4.
+const storeHref = pageAppStoreUrl('landing_qr_button');
+---
+
+<div class="qr-modal" id="qrModal" hidden>
+	<div class="qr-modal-backdrop" data-qr-close></div>
+	<div class="qr-modal-card" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+		<button class="qr-modal-close" type="button" data-qr-close aria-label="Close">&times;</button>
+		<h3 id="qrModalTitle">Get Sermon Keeper on your iPhone</h3>
+		<p>Point your phone camera at the code to open it in the App Store.</p>
+		<img
+			class="qr-modal-img"
+			src="/scss/image/app-qr.svg"
+			alt="QR code to download Sermon Keeper on the App Store"
+			width="200"
+			height="200"
+		/>
+		<a
+			class="qr-modal-btn"
+			id="qrModalStore"
+			data-no-qr
+			href={storeHref}
+			target="_blank"
+			rel="noopener"
+		>
+			Open the App Store &rarr;
+		</a>
+	</div>
+</div>
+
+<script is:inline>
+	(function () {
+		var modal = document.getElementById('qrModal');
+		if (!modal) return;
+		// Only intercept on a true desktop pointer; touch devices go straight to the store.
+		function desktop() {
+			return (
+				window.matchMedia('(min-width: 768px)').matches &&
+				window.matchMedia('(pointer: fine)').matches
+			);
+		}
+		function track(name, params) {
+			if (window.gtag) window.gtag('event', name, params || {});
+		}
+		function open(src) {
+			modal.hidden = false;
+			document.body.style.overflow = 'hidden';
+			track('qr_modal_open', { source: src || '' });
+		}
+		function close() {
+			modal.hidden = true;
+			document.body.style.overflow = '';
+		}
+		document.addEventListener('click', function (e) {
+			var t = e.target;
+			if (!t || !t.closest) return;
+			if (t.closest('[data-qr-close]')) {
+				close();
+				return;
+			}
+			// Match only OUR app link (id6758739935) so competitor App Store links pass through.
+			var a = t.closest('a[href*="id6758739935"]');
+			if (a && !a.hasAttribute('data-no-qr') && desktop()) {
+				e.preventDefault();
+				open(a.getAttribute('href'));
+			}
+		});
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && !modal.hidden) close();
+		});
+		var storeBtn = document.getElementById('qrModalStore');
+		if (storeBtn) {
+			storeBtn.addEventListener('click', function () {
+				track('qr_appstore_click');
+			});
+		}
+	})();
+</script>

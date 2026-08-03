@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import AppQrModal from '../components/AppQrModal.astro';
 import { SITE } from '../utils/site';
 import '../styles/global.css';
 
@@ -126,5 +127,6 @@ const {
 		<slot />
 		<Footer />
 		<slot name="after-footer" />
+		<AppQrModal />
 	</body>
 </html>
