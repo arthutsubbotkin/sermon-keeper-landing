@@ -3556,6 +3556,16 @@ img {
 }
 
 
+/* ===== Plain PDF/file download card (distinct from the app-promo banner) ===== */
+.dl-cta{display:flex;align-items:center;gap:1.25rem;background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:1.25rem 1.5rem;margin:2rem 0;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.dl-cta-icon{width:56px;height:auto;flex-shrink:0}
+.dl-cta-body{flex:1;min-width:0}
+.dl-cta-body h3{font-family:'Inter',-apple-system,sans-serif;font-size:1.15rem;font-weight:600;color:#000;margin:0 0 .3rem;line-height:1.25}
+.dl-cta-body p{font-family:'Inter',-apple-system,sans-serif;font-size:.95rem;color:#6B7280;margin:0;line-height:1.45}
+.dl-cta-btn{flex-shrink:0;display:inline-block;background:#111827;color:#fff;font-family:'Inter',-apple-system,sans-serif;font-weight:600;font-size:.95rem;text-decoration:none;padding:.7rem 1.5rem;border-radius:999px;white-space:nowrap;transition:background .15s ease}
+.dl-cta-btn:hover{background:#000}
+@media(max-width:640px){.dl-cta{flex-direction:column;align-items:flex-start}.dl-cta-btn{width:100%;text-align:center}}
+
 /* ===== App-review cards + comparison table (blog roundups) ===== */
 .cmp{width:100%;border-collapse:collapse;background:#F8FAFC;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;font-size:.95rem;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;margin:1.5rem 0}
 .cmp th,.cmp td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid #E5E7EB;vertical-align:top;color:#000}

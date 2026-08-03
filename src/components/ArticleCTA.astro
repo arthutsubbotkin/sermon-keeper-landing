@@ -54,38 +54,25 @@ const base = '/scss/image/blog/banner';
 			</div>
 		</div>
 	) : (
-		<div class="banner-cta">
-				<div class="banner-cta-media" aria-hidden="true">
-					<picture class="banner-cta-illus banner-cta-illus-wide">
-						<source srcset={`${base}/banner-desktop.webp`} type="image/webp" />
-						<img
-							src={`${base}/banner-desktop.png`}
-							alt=""
-							width="760"
-							height="620"
-							loading="lazy"
-							decoding="async"
-						/>
-					</picture>
-					<picture class="banner-cta-illus banner-cta-illus-tall">
-						<source srcset={`${base}/banner-mobile.webp`} type="image/webp" />
-						<img
-							src={`${base}/banner-mobile.png`}
-							alt=""
-							width="760"
-							height="442"
-							loading="lazy"
-							decoding="async"
-						/>
-					</picture>
-				</div>
-				<div class="banner-cta-body">
-					<h3>{heading}</h3>
-					<p>{text}</p>
-					<a href={href} class="banner-cta-btn" download={download ? true : undefined}>
-						{label}
-					</a>
-				</div>
+		/* Plain file-download card: a compact row with a PDF icon, kept visually
+		   distinct from the illustrated app-promo banner so the two never look alike. */
+		<div class="dl-cta">
+			<img
+				class="dl-cta-icon"
+				src="/scss/image/pdf-icon.webp"
+				alt="PDF"
+				width="56"
+				height="69"
+				loading="lazy"
+				decoding="async"
+			/>
+			<div class="dl-cta-body">
+				<h3>{heading}</h3>
+				<p>{text}</p>
 			</div>
+			<a href={href} class="dl-cta-btn" download={download ? true : undefined}>
+				{label}
+			</a>
+		</div>
 	)
 }
