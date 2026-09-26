@@ -3623,3 +3623,6 @@ img {
 .article-content figure.article-shot figcaption{font-family:'Inter',-apple-system,sans-serif;font-size:.9rem;line-height:1.4;color:#6B7280;margin-top:.75rem}
 .article-content .article-fineprint{font-size:.8rem;line-height:1.5;color:#6B7280;margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid #E5E7EB}
 .article-content .article-fineprint p{margin:0 0 .6rem}
+.article-content blockquote{margin:1.75rem 0;padding:1rem 1.25rem;border-left:4px solid var(--primary-blue);background:#EFF6FF;border-radius:0 12px 12px 0;font-style:italic;color:#1F2937}
+.article-content blockquote p{margin:0}
+.article-content blockquote cite{display:block;margin-top:.5rem;font-style:normal;font-size:.9rem;color:#6B7280}
