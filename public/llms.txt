@@ -24,8 +24,8 @@ Sermon Keeper is an iOS app for church-going Christians who want to capture, rem
 
 ## Pricing
 
-- Free: one sermon (or one Bible-page scan) a month, no account needed
-- Unlimited: $6.99/month or $64.99/year, with a 3-day free trial on the yearly plan
+- Free 3-day trial (yearly plan), no account needed
+- Plans: $6.99/month or $64.99/year
 
 ## Who It's For
 
