@@ -26,7 +26,7 @@ const BODY = `<!-- Article Hero -->
 		<div class="article-hero-inner">
 			<div class="article-breadcrumb"><a href="/">Home</a> &rarr; Terms of Service</div>
 			<h1>Terms of Service for Sermon Keeper</h1>
-			<div class="article-meta">Last updated: February 25, 2026</div>
+			<div class="article-meta">Last updated: September 25, 2026</div>
 		</div>
 	</div>
 
@@ -39,52 +39,78 @@ const BODY = `<!-- Article Hero -->
 			<h2>1. About the Service</h2>
 
 			<p>Sermon Keeper is a mobile application that allows you to:</p>
+
 			<ul>
 				<li>Record sermons and add timestamped notes</li>
 				<li>Get AI-powered transcription and summaries</li>
+				<li>Generate scripture study cards from photos of Bible pages (Scan Scripture)</li>
 				<li>Automatically link Bible verses</li>
-				<li>Store and organize your sermon recordings</li>
+				<li>Store, organize, and group your recordings and study cards into folders</li>
+				<li>Receive optional reminders before and after your weekly service</li>
 			</ul>
 
-			<h2>2. Account</h2>
+			<h2>2. No Account Required</h2>
 
-			<p>To use certain features, you may sign in using Sign in with Apple. You are responsible for maintaining the security of your account and for all activities that occur under your account.</p>
+			<p>Sermon Keeper does not require you to create an account or sign in. Your recordings, notes, and study cards are stored on your device and, if you have iCloud enabled, synced through your own iCloud account under Apple's terms. Your subscription is tied to the Apple ID you purchase it with.</p>
+
+			<p>You are responsible for the security of your device and your Apple ID.</p>
 
 			<h2>3. Subscription and Payments</h2>
 
-			<p><strong>Free Plan</strong></p>
+			<h3>Free Plan</h3>
+
 			<ul>
-				<li>3 sermon recordings in total</li>
-				<li>Full transcription and summary features within the limit</li>
+				<li>One creation per calendar month, shared across all ways of creating: recording a sermon, uploading an audio file, and Scan Scripture</li>
+				<li>The allowance resets at the start of each calendar month</li>
+				<li>Full transcription, summary, and study card features within that limit</li>
 			</ul>
 
-			<p><strong>Paid Plans</strong></p>
+			<h3>Paid Plans</h3>
+
 			<ul>
 				<li>Monthly: $6.99 per month</li>
 				<li>Yearly: $64.99 per year</li>
 			</ul>
 
-			<p><strong>Billing</strong></p>
+			<p>Prices are shown in your local currency and may vary by region. The price you will be charged is always displayed before you confirm the purchase.</p>
+
+			<h3>Free Trial</h3>
+
+			<p>The yearly plan may be offered with a free trial. The length of the trial — three days, or seven days in some offers — is shown on the purchase screen before you confirm.</p>
+
+			<p>The monthly plan is not offered with a trial.</p>
+
+			<p>You are not charged during the trial. When it ends, the subscription renews automatically at the yearly price unless you cancel at least 24 hours before the trial ends.</p>
+
+			<p>Free trials are provided by Apple and are available once per Apple ID for this subscription. If you have already used a trial, you may be offered the subscription without one, and you will be charged immediately on purchase.</p>
+
+			<h3>Billing</h3>
+
 			<ul>
 				<li>Payments are processed by Apple through In-App Purchase</li>
 				<li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period</li>
 				<li>Your Apple ID account will be charged for renewal within 24 hours prior to the end of the current period</li>
 			</ul>
 
-			<p><strong>How to Cancel</strong></p>
-			<p>Go to Settings &rarr; Apple ID &rarr; Subscriptions &rarr; Sermon Keeper &rarr; Cancel Subscription</p>
+			<h3>How to Cancel</h3>
 
-			<p><strong>Refunds</strong></p>
-			<p>All refund requests are handled by Apple. To request a refund, visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">https://reportaproblem.apple.com</a></p>
+			<p>Go to Settings → Apple ID → Subscriptions → Sermon Keeper → Cancel Subscription. Cancelling stops future renewals; you keep access until the end of the period you have already paid for.</p>
+
+			<h3>Refunds</h3>
+
+			<p>All refund requests are handled by Apple. To request a refund, visit <a href="https://reportaproblem.apple.com">https://reportaproblem.apple.com</a></p>
 
 			<h2>4. How Your Data Is Processed</h2>
 
-			<p>To provide transcription and summary features, your data is processed as follows:</p>
+			<p>To provide transcription, summary, and study card features, your data is processed as follows:</p>
+
 			<ul>
-				<li><strong>Audio recordings</strong> are temporarily uploaded to secure cloud storage solely for the purpose of transcription. Audio files are automatically deleted from cloud storage after processing is complete.</li>
-				<li><strong>Transcription</strong> is performed by a third-party speech-to-text service. Your audio is transmitted to their servers for processing.</li>
-				<li><strong>AI summaries</strong> are generated by a third-party AI service. Only the transcribed text (not audio) is sent for summarization.</li>
-				<li><strong>Original recordings and notes</strong> remain stored locally on your device under your control.</li>
+				<li>Audio recordings are temporarily uploaded to secure cloud storage solely for the purpose of transcription. Audio files are automatically deleted from cloud storage after processing is complete.</li>
+				<li>Transcription is performed by a third-party speech-to-text service. Your audio is transmitted to their servers for processing.</li>
+				<li>AI summaries are generated by a third-party AI service. Only the transcribed text (not audio) is sent for summarization.</li>
+				<li>Bible page photos (Scan Scripture) are temporarily sent to our processing servers and to a third-party AI service to identify the scripture and generate a study card. Photos are not retained on our servers after processing.</li>
+				<li>Original recordings, photos, and notes remain stored locally on your device under your control.</li>
+				<li>Anonymous usage data and crash diagnostics may be collected to help us improve the App. This data is not linked to your identity.</li>
 			</ul>
 
 			<p>We do not sell, share, or use your data for advertising purposes. Third-party services process your data solely to provide the App's features.</p>
@@ -92,6 +118,7 @@ const BODY = `<!-- Article Hero -->
 			<h2>5. Acceptable Use</h2>
 
 			<p>You agree NOT to:</p>
+
 			<ul>
 				<li>Use the App for any illegal purpose</li>
 				<li>Record content without proper consent from others</li>
@@ -105,9 +132,9 @@ const BODY = `<!-- Article Hero -->
 			<h2>6. Your Content</h2>
 
 			<ul>
-				<li>You own all recordings, notes, and content you create</li>
+				<li>You own all recordings, notes, photos, and content you create</li>
 				<li>We do not claim ownership of your content</li>
-				<li>You grant us permission to process your content solely to provide the service (transcription, summaries, etc.)</li>
+				<li>You grant us permission to process your content solely to provide the service (transcription, summaries, study cards, etc.)</li>
 				<li>You are responsible for backing up your own data</li>
 			</ul>
 
@@ -116,17 +143,19 @@ const BODY = `<!-- Article Hero -->
 			<p>The App is provided "as is" without warranties of any kind.</p>
 
 			<p>We do NOT guarantee:</p>
+
 			<ul>
-				<li>100% accuracy of transcriptions or summaries</li>
+				<li>100% accuracy of transcriptions, summaries, or scripture identification</li>
 				<li>Uninterrupted or error-free service</li>
 				<li>That the App will meet all your requirements</li>
 			</ul>
 
-			<p>AI-generated content may contain errors. Always verify important information.</p>
+			<p>AI-generated content may contain errors. Always verify important information, including scripture references.</p>
 
 			<h2>8. Limitation of Liability</h2>
 
 			<p>To the maximum extent permitted by law:</p>
+
 			<ul>
 				<li>We are not liable for any indirect, incidental, or consequential damages</li>
 				<li>We are not liable for loss of data, recordings, or content</li>
@@ -135,10 +164,12 @@ const BODY = `<!-- Article Hero -->
 
 			<h2>9. Termination</h2>
 
-			<p><strong>By You</strong></p>
+			<h3>By You</h3>
+
 			<p>You may stop using the App at any time. Delete the App to remove all local data.</p>
 
-			<p><strong>By Us</strong></p>
+			<h3>By Us</h3>
+
 			<p>We may suspend or terminate your access if you violate these Terms. We will try to notify you, but are not required to do so.</p>
 
 			<h2>10. Changes to Terms</h2>
@@ -157,7 +188,7 @@ const BODY = `<!-- Article Hero -->
 
 			<p><strong>Email:</strong> <a href="mailto:hello@sermonkeeper.app">hello@sermonkeeper.app</a></p>
 
-			<p>These Terms of Service are effective as of February 25, 2026.</p>
+			<p>These Terms of Service are effective as of September 25, 2026.</p>
 
 		</div>
 	</div>`;

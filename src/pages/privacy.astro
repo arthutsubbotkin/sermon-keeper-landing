@@ -26,7 +26,7 @@ const BODY = `<!-- Article Hero -->
 		<div class="article-hero-inner">
 			<div class="article-breadcrumb"><a href="/">Home</a> &rarr; Privacy Policy</div>
 			<h1>Privacy Policy for Sermon Keeper</h1>
-			<div class="article-meta">Last updated: February 25, 2026</div>
+			<div class="article-meta">Last updated: September 25, 2026</div>
 		</div>
 	</div>
 
@@ -41,21 +41,26 @@ const BODY = `<!-- Article Hero -->
 			<h2>1. Information We Collect</h2>
 
 			<p><strong>Information You Provide</strong></p>
+
 			<ul>
-				<li><strong>Account Information:</strong> When you sign in with Apple, we receive your email address (which may be hidden by Apple's relay service)</li>
 				<li><strong>Audio Recordings:</strong> Sermon recordings you create or upload</li>
+				<li><strong>Photos of Bible Pages:</strong> Photos you take or select from your library to generate scripture study cards</li>
 				<li><strong>Notes:</strong> Text notes you add during or after recordings</li>
-				<li><strong>Recording Details:</strong> Titles, dates, and other metadata you provide</li>
+				<li><strong>Recording Details:</strong> Titles, dates, folders, and other metadata you provide</li>
+				<li><strong>Service Schedule:</strong> The day and time of your weekly service, if you choose to answer the setup questions. This is kept on your device and used only to schedule reminders.</li>
 			</ul>
 
 			<p><strong>Information Collected Automatically</strong></p>
+
 			<ul>
 				<li><strong>Device Information:</strong> Device model, operating system version</li>
 				<li><strong>App Settings:</strong> Language preference, subscription status</li>
-				<li><strong>Usage Data:</strong> App interactions for providing the service</li>
+				<li><strong>Usage Data:</strong> Anonymous app interactions used to improve the App</li>
+				<li><strong>Crash Diagnostics:</strong> Anonymized crash reports used to fix bugs</li>
 			</ul>
 
 			<p><strong>Information We Do NOT Collect</strong></p>
+
 			<ul>
 				<li>Precise location data</li>
 				<li>Contacts or address book</li>
@@ -64,56 +69,67 @@ const BODY = `<!-- Article Hero -->
 				<li>Sensitive personal information</li>
 			</ul>
 
-			<h2>2. How We Use Your Information</h2>
+			<h2>2. No Account Required</h2>
+
+			<p>Sermon Keeper does not ask you to create an account, sign in, or give us an email address. There is no login, and we hold no profile for you. Your subscription is tied to the Apple ID you buy it with, and Apple does not share your identity with us.</p>
+
+			<h2>3. How We Use Your Information</h2>
 
 			<p>We use your information to:</p>
+
 			<ul>
 				<li>Provide transcription of your audio recordings</li>
 				<li>Generate AI-powered summaries of sermons</li>
+				<li>Generate scripture study cards from photos of Bible pages</li>
 				<li>Display Bible verse text when you reference scripture</li>
-				<li>Manage your account and subscription</li>
-				<li>Improve and maintain the App</li>
+				<li>Schedule reminders on your device before and after your service</li>
+				<li>Manage your subscription</li>
+				<li>Diagnose crashes and improve the App</li>
 			</ul>
 
 			<p>We do NOT use your data for:</p>
+
 			<ul>
 				<li>Training AI models</li>
 				<li>Selling to third parties</li>
 				<li>Advertising or marketing purposes</li>
 			</ul>
 
-			<h2>3. Third-Party Services</h2>
+			<h2>4. Third-Party Services</h2>
 
-			<p>To provide our services, we share data with third-party providers for audio transcription, AI summary generation, Bible verse retrieval, and authentication/payments. These providers are located in the USA and process your data according to their own privacy policies.</p>
+			<p>To provide our services, we share data with third-party providers for audio transcription, AI summary generation, scripture study card generation, anonymous analytics, crash reporting, and payments. These providers are located in the USA and process your data according to their own privacy policies.</p>
 
 			<p>Third-party services used by the App do not use your data for training their AI models.</p>
 
-			<h2>4. Data Storage and Processing</h2>
+			<h2>5. Data Storage and Processing</h2>
 
 			<ul>
 				<li><strong>Local Storage:</strong> Your recordings and notes are stored on your device</li>
 				<li><strong>iCloud:</strong> If enabled, data syncs via Apple iCloud under Apple's privacy practices</li>
-				<li><strong>Cloud Processing:</strong> Audio recordings are temporarily uploaded to secure cloud storage solely for transcription purposes. Audio files are automatically deleted from cloud storage after processing is complete. We do not retain your audio on our servers.</li>
+				<li><strong>Cloud Processing:</strong> Audio recordings and Bible page photos are temporarily uploaded to secure cloud storage solely for processing. Files are automatically deleted from cloud storage after processing is complete. We do not retain your audio or photos on our servers.</li>
 				<li><strong>Text Processing:</strong> Transcribed text is temporarily sent to a third-party AI service to generate summaries. The text is not stored on our servers after processing.</li>
+				<li><strong>Reminders:</strong> Scheduled and delivered by your own device. The times are not sent to us.</li>
 			</ul>
 
 			<p>When you delete the App, all local data is permanently removed from your device.</p>
 
-			<h2>5. Data Security</h2>
+			<h2>6. Data Security</h2>
 
 			<p>We protect your information by:</p>
+
 			<ul>
 				<li>Using secure connections (HTTPS) for all data transfers</li>
-				<li>Automatically deleting audio files from cloud storage after processing</li>
+				<li>Automatically deleting audio files and photos from cloud storage after processing</li>
 				<li>Relying on iOS built-in security for local storage</li>
 				<li>Not permanently storing sensitive data on our servers</li>
 			</ul>
 
 			<p>However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.</p>
 
-			<h2>6. Your Rights</h2>
+			<h2>7. Your Rights</h2>
 
 			<p>You have the right to:</p>
+
 			<ul>
 				<li><strong>Access:</strong> Request information about your data</li>
 				<li><strong>Delete:</strong> Remove your data by deleting the App</li>
@@ -123,21 +139,21 @@ const BODY = `<!-- Article Hero -->
 
 			<p>To exercise these rights, contact us at <a href="mailto:hello@sermonkeeper.app">hello@sermonkeeper.app</a></p>
 
-			<h2>7. Children's Privacy</h2>
+			<h2>8. Children's Privacy</h2>
 
 			<p>Sermon Keeper does not knowingly collect personal information from children under 13 years of age. If you believe a child under 13 has provided us with personal information, please contact us and we will delete it.</p>
 
-			<h2>8. Changes to This Policy</h2>
+			<h2>9. Changes to This Policy</h2>
 
 			<p>We may update this Privacy Policy from time to time. Changes will be posted within the App with an updated "Last updated" date. Continued use of the App after changes means you accept the updated policy.</p>
 
-			<h2>9. Contact Us</h2>
+			<h2>10. Contact Us</h2>
 
 			<p>If you have questions or concerns about this Privacy Policy, please contact us:</p>
 
 			<p><strong>Email:</strong> <a href="mailto:hello@sermonkeeper.app">hello@sermonkeeper.app</a></p>
 
-			<p>This Privacy Policy is effective as of February 25, 2026.</p>
+			<p>This Privacy Policy is effective as of September 25, 2026.</p>
 
 		</div>
 	</div>`;
