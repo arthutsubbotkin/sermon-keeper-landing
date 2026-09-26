@@ -19,6 +19,11 @@ interface Props {
 	siteLabel?: string;
 	hero?: string;
 	heroAlt?: string;
+	/** Intrinsic size of `hero`, so the layout reserves the right box. */
+	heroWidth?: number;
+	heroHeight?: number;
+	/** Shown as "Last reviewed: …". Bump only on cards that were actually re-reviewed. */
+	reviewed?: string;
 	winner?: boolean;
 	/** Fill the App Store button without awarding the "Winner" badge — used for our
 	 *  own app in roundups (e.g. "best free") where it isn't the category winner. */
@@ -27,7 +32,8 @@ interface Props {
 const {
 	rank, name, id, tagline, score, pricing, platforms, bestForMeta,
 	like, know, bestFor, skipIf, appStore, site, siteLabel = 'Visit site',
-	hero, heroAlt = '', winner = false, primaryCta = false,
+	hero, heroAlt = '', heroWidth = 960, heroHeight = 720, reviewed = 'August 2026',
+	winner = false, primaryCta = false,
 } = Astro.props;
 ---
 
@@ -37,7 +43,7 @@ const {
 	<p class="rev-tag">{tagline}</p>
 	{hero && (
 		<div class="rev-hero">
-			<img src={hero} alt={heroAlt} width="1320" height="720" loading="lazy" decoding="async" />
+			<img src={hero} alt={heroAlt} width={heroWidth} height={heroHeight} loading="lazy" decoding="async" />
 		</div>
 	)}
 	<div class="rev-meta">
@@ -75,6 +81,6 @@ const {
 				rel={winner || primaryCta ? undefined : 'noopener'}
 			>{siteLabel} &rarr;</a>
 		)}
-		<span class="rev-when">Last reviewed: August 2026</span>
+		<span class="rev-when">Last reviewed: {reviewed}</span>
 	</div>
 </div>

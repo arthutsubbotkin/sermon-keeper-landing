@@ -3616,3 +3616,8 @@ img {
 .rev-act a.rev-btn.primary{background:#0C2882;color:#fff;border-color:#0C2882}
 .rev-when{margin-left:auto;color:#9CA3AF;font-size:.85rem}
 @media(max-width:640px){.rev-meta{grid-template-columns:1fr 1fr}.rev-cols,.rev-boxes{grid-template-columns:1fr}.rev{padding:1.5rem}.cmp{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+
+/* ===== Real app screenshots inside articles ===== */
+.article-content figure.article-shot{margin:2.25rem auto;max-width:300px;text-align:center}
+.article-content figure.article-shot img{width:100%;height:auto;display:block;margin:0;border-radius:28px;border:1px solid #E5E7EB;box-shadow:0 10px 30px rgba(15,23,42,.08)}
+.article-content figure.article-shot figcaption{font-family:'Inter',-apple-system,sans-serif;font-size:.9rem;line-height:1.4;color:#6B7280;margin-top:.75rem}

@@ -1,17 +1,22 @@
 # Sermon Keeper
 
-> AI-powered sermon notes app for iOS. Record the sermon live, take timestamped notes, autocomplete Bible verses (offline KJV), and get an AI transcript with a summary and key points. Built specifically for churchgoers.
+> AI-powered sermon notes app for iOS. Record the sermon live, take timestamped notes, autocomplete Bible verses in seven translations (offline), and get an AI transcript with a summary and key points. Built specifically for churchgoers.
 
 ## About
 
-Sermon Keeper is an iOS app for church-going Christians who want to capture, remember, and reflect on sermons. It combines audio recording, timestamped note-taking, Bible verse autocomplete, and AI transcription in one simple app — designed to be used during a live service. You can record even with no internet in the sanctuary and transcribe once you're back online.
+Sermon Keeper is an iOS app for church-going Christians who want to capture, remember, and reflect on sermons. It combines audio recording (live, or an uploaded audio file), timestamped note-taking, Bible verse autocomplete, and AI transcription in one simple app — designed to be used during a live service. You can record even with no internet in the sanctuary and transcribe once you're back online.
 
 ## Key Features
 
-- One-tap sermon recording in high-quality audio
+- One-tap sermon recording, up to 3 hours per recording
+- Upload an existing audio file (MP3, M4A, WAV) instead of recording live
 - Timestamped notes — each note saves the exact moment in the sermon so you can jump back to it
-- Bible verse autocomplete — type a reference like John 3:16 and see the full verse (works offline for KJV)
-- AI transcription with an organized summary and key points (cloud-based; the audio is deleted after transcription)
+- Bible verse autocomplete — type a reference like John 3:16 and see the full verse; seven complete translations are built in and work offline: KJV, NASB 1995, ESV, NKJV, NIV 1984, WEB, Reina-Valera 1909
+- Translation matching — after transcription, verses are shown in the translation the preacher actually read aloud (English translations)
+- AI transcription with an organized summary and key points (cloud-based; the audio is deleted after transcription). If a recording contains no sermon, the app says so instead of inventing a summary
+- Reminders: one before your service and a recap of the sermon three days later, set from when your service is
+- Folders with custom icons, and PDF export with selectable, searchable text
+- Photo of a slide: text from a projector slide is recognized on the device and added to your notes
 - SOAP study cards — scan a Bible page and get a Scripture / Observation / Application / Prayer journal in about 30 seconds
 - iCloud sync — your notes sync through your own personal iCloud, not our servers
 - Works in English and Spanish
@@ -19,8 +24,8 @@ Sermon Keeper is an iOS app for church-going Christians who want to capture, rem
 
 ## Pricing
 
-- Free 3-day trial (on the yearly plan)
-- $6.99/month or $64.99/year for unlimited recordings and transcriptions
+- Free: one sermon (or one Bible-page scan) a month, no account needed
+- Unlimited: $6.99/month or $64.99/year, with a 3-day free trial on the yearly plan
 
 ## Who It's For
 
@@ -52,8 +57,8 @@ Sermon Keeper is an iOS app for church-going Christians who want to capture, rem
 
 ## Technical Details
 
-- Platform: iOS (iPhone; runs on iPad)
-- Bible Version: King James Version (KJV), more translations coming
+- Platform: iPhone, iOS 17+ (runs on iPad)
+- Bible translations: KJV, NASB 1995, ESV, NKJV, NIV 1984, WEB, Reina-Valera 1909 — all bundled, all offline
 - Recording: works offline in the sanctuary; the audio is uploaded for transcription once you're online, then deleted from our server
 - Notes storage: your notes sync through your personal iCloud, not our servers
 - Languages: English, Spanish

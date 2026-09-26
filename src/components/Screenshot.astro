@@ -1,0 +1,17 @@
+---
+// A real app screen inside an article: shown at phone size, centered, with a caption.
+// Files live in /scss/image/blog/app/ as 800px-wide WebP.
+interface Props {
+	src: string;
+	alt: string;
+	caption?: string;
+	width?: number;
+	height?: number;
+}
+const { src, alt, caption, width = 800, height = 1739 } = Astro.props;
+---
+
+<figure class="article-shot">
+	<img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+	{caption && <figcaption>{caption}</figcaption>}
+</figure>
