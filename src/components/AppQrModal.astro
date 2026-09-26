@@ -1,9 +1,25 @@
 ---
+import QRCode from 'qrcode';
 import { pageAppStoreUrl } from '../utils/site';
 // Desktop readers can't tap-install, so on desktop any tap on our own App Store
 // link opens this QR instead of navigating. Mobile taps fall straight through to
 // the store. All interactions are logged to GA4.
-const storeHref = pageAppStoreUrl('landing_qr_button');
+interface Props {
+	/** Campaign prefix of the page, e.g. `landing_blog_best_apps`. The QR and the
+	 *  modal's button append `_qr` / `_qr_button`, so an install from a desktop
+	 *  scan is still credited to the article that sent it. */
+	campaign?: string;
+}
+const { campaign = 'landing' } = Astro.props;
+const qrTarget = pageAppStoreUrl(`${campaign}_qr`);
+const storeHref = pageAppStoreUrl(`${campaign}_qr_button`);
+// Built at build time, so every page ships its own code — no runtime library.
+const qrSvg = await QRCode.toString(qrTarget, {
+	type: 'svg',
+	errorCorrectionLevel: 'M',
+	margin: 1,
+	color: { dark: '#0C2882', light: '#ffffff00' },
+});
 ---
 
 <div class="qr-modal" id="qrModal" hidden>
@@ -12,12 +28,11 @@ const storeHref = pageAppStoreUrl('landing_qr_button');
 		<button class="qr-modal-close" type="button" data-qr-close aria-label="Close">&times;</button>
 		<h3 id="qrModalTitle">Get Sermon Keeper on your iPhone</h3>
 		<p>Point your phone camera at the code to open it in the App Store.</p>
-		<img
+		<div
 			class="qr-modal-img"
-			src="/scss/image/app-qr.svg"
-			alt="QR code to download Sermon Keeper on the App Store"
-			width="200"
-			height="200"
+			role="img"
+			aria-label="QR code to download Sermon Keeper on the App Store"
+			set:html={qrSvg}
 		/>
 		<a
 			class="qr-modal-btn"
@@ -46,6 +61,10 @@ const storeHref = pageAppStoreUrl('landing_qr_button');
 		function track(name, params) {
 			if (window.gtag) window.gtag('event', name, params || {});
 		}
+		function campaignOf(href) {
+			var m = /[?&]ct=([^&]+)/.exec(href || '');
+			return m ? decodeURIComponent(m[1]) : '';
+		}
 		function open(src) {
 			modal.hidden = false;
 			document.body.style.overflow = 'hidden';
@@ -64,9 +83,21 @@ const storeHref = pageAppStoreUrl('landing_qr_button');
 			}
 			// Match only OUR app link (id6758739935) so competitor App Store links pass through.
 			var a = t.closest('a[href*="id6758739935"]');
-			if (a && !a.hasAttribute('data-no-qr') && desktop()) {
+			if (!a || a.hasAttribute('data-no-qr')) return;
+			var href = a.getAttribute('href');
+			var isDesktop = desktop();
+			// One event per "I want the app" tap, on every device, carrying the page
+			// and the campaign token — the reader → App Store step of the funnel,
+			// per article. Beacon so it survives the jump to the store on mobile.
+			track('app_store_click', {
+				ct: campaignOf(href),
+				page_path: location.pathname,
+				device: isDesktop ? 'desktop' : 'mobile',
+				transport_type: 'beacon',
+			});
+			if (isDesktop) {
 				e.preventDefault();
-				open(a.getAttribute('href'));
+				open(href);
 			}
 		});
 		document.addEventListener('keydown', function (e) {
@@ -75,7 +106,7 @@ const storeHref = pageAppStoreUrl('landing_qr_button');
 		var storeBtn = document.getElementById('qrModalStore');
 		if (storeBtn) {
 			storeBtn.addEventListener('click', function () {
-				track('qr_appstore_click');
+				track('qr_appstore_click', { page_path: location.pathname, transport_type: 'beacon' });
 			});
 		}
 	})();

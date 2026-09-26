@@ -30,6 +30,9 @@ interface Props {
 	headerHref: string;
 	navHref: string;
 	active?: 'home' | 'blog' | null;
+	/** Campaign prefix for this page's desktop QR (e.g. `landing_blog_best_apps`),
+	 *  so installs from a scan are credited to the page that showed it. */
+	campaign?: string;
 }
 
 const {
@@ -52,6 +55,7 @@ const {
 	headerHref,
 	navHref,
 	active = null,
+	campaign = 'landing',
 } = Astro.props;
 ---
 
@@ -127,6 +131,6 @@ const {
 		<slot />
 		<Footer />
 		<slot name="after-footer" />
-		<AppQrModal />
+		<AppQrModal campaign={campaign} />
 	</body>
 </html>
