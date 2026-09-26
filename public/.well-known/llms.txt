@@ -43,6 +43,7 @@ Sermon Keeper is an iOS app for church-going Christians who want to capture, rem
 - Apps That Detect Bible Verses Automatically: https://sermonkeeper.app/blog/bible-verse-detection-apps
 - How to Remember Sermons Better: https://sermonkeeper.app/blog/how-to-remember-sermons
 - How to Read Bible References (chapters, verses, all 66 abbreviations): https://sermonkeeper.app/blog/how-to-read-bible-references
+- Bible Versions Explained (KJV, NKJV, NASB, ESV, NIV compared, with a chart): https://sermonkeeper.app/blog/bible-versions-explained
 - How to Take Sermon Notes (5 methods that work): https://sermonkeeper.app/blog/how-to-take-sermon-notes
 - Digital vs Paper Sermon Notes: https://sermonkeeper.app/blog/digital-vs-paper-sermon-notes
 - Is It Legal to Record a Church Sermon: https://sermonkeeper.app/blog/is-it-legal-to-record-sermons

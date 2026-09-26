@@ -3621,3 +3621,5 @@ img {
 .article-content figure.article-shot{margin:2.25rem auto;max-width:300px;text-align:center}
 .article-content figure.article-shot img{width:100%;height:auto;display:block;margin:0;border-radius:28px;border:1px solid #E5E7EB;box-shadow:0 10px 30px rgba(15,23,42,.08)}
 .article-content figure.article-shot figcaption{font-family:'Inter',-apple-system,sans-serif;font-size:.9rem;line-height:1.4;color:#6B7280;margin-top:.75rem}
+.article-content .article-fineprint{font-size:.8rem;line-height:1.5;color:#6B7280;margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid #E5E7EB}
+.article-content .article-fineprint p{margin:0 0 .6rem}
