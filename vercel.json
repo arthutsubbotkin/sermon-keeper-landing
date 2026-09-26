@@ -1,7 +1,16 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap-index.xml" }
+  "redirects": [
+    { "source": "/blog/best-sermon-apps", "destination": "/blog/best-sermon-notes-apps", "permanent": true },
+    { "source": "/blog/best-sermon-notes-app", "destination": "/blog/best-sermon-notes-apps", "permanent": true },
+    { "source": "/blog/best-sermon-spg-app", "destination": "/blog/best-sermon-notes-apps", "permanent": true },
+    { "source": "/blog/best-sermon-transcription-app", "destination": "/blog/best-ai-sermon-transcription-app", "permanent": true },
+    { "source": "/blog/is-is-legal-to-record-sermons", "destination": "/blog/is-it-legal-to-record-sermons", "permanent": true },
+    { "source": "/blog/soap-method-bible-study", "destination": "/blog/soap-bible-study-method", "permanent": true },
+    { "source": "/blog/soap-study-method", "destination": "/blog/soap-bible-study-method", "permanent": true },
+    { "source": "/blog/soap-affb-study-method", "destination": "/blog/soap-bible-study-method", "permanent": true },
+    { "source": "/blog/soap-bildung", "destination": "/blog/soap-bible-study-method", "permanent": true },
+    { "source": "/blog/soap-sermonkeeper.app", "destination": "/blog/soap-bible-study-method", "permanent": true }
   ],
   "headers": [
     {
