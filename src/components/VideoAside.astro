@@ -1,0 +1,45 @@
+---
+/** Text on the left, a phone-shaped video on the right. Stacks on mobile,
+ *  video under the text. Tap to play with sound; the first play is sent to
+ *  GA as `video_play` so we can see whether readers watch it. */
+interface Props {
+	src: string;
+	poster: string;
+	caption?: string;
+	/** Name sent with the GA event. */
+	name: string;
+	width?: number;
+	height?: number;
+}
+const { src, poster, caption, name, width = 720, height = 1280 } = Astro.props;
+---
+
+<div class="video-aside">
+	<div class="video-aside-text"><slot /></div>
+	<figure class="video-aside-media">
+		<video
+			src={src}
+			poster={poster}
+			width={width}
+			height={height}
+			controls
+			playsinline
+			preload="none"
+			data-video-name={name}
+		></video>
+		{caption && <figcaption>{caption}</figcaption>}
+	</figure>
+</div>
+
+<script>
+	document.querySelectorAll<HTMLVideoElement>('video[data-video-name]').forEach((v) => {
+		v.addEventListener(
+			'play',
+			() => {
+				const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+				w.gtag?.('event', 'video_play', { video_name: v.dataset.videoName, page_path: location.pathname });
+			},
+			{ once: true }
+		);
+	});
+</script>
