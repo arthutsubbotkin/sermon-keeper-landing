@@ -65,10 +65,13 @@ const qrSvg = await QRCode.toString(qrTarget, {
 			var m = /[?&]ct=([^&]+)/.exec(href || '');
 			return m ? decodeURIComponent(m[1]) : '';
 		}
+		function slug() {
+			return location.pathname.replace(/^\/blog\//, '').replace(/^\/$/, 'home') || 'home';
+		}
 		function open(src) {
 			modal.hidden = false;
 			document.body.style.overflow = 'hidden';
-			track('qr_modal_open', { source: src || '' });
+			track('qr_modal_open', { source: src || '', ct: campaignOf(src), page_path: location.pathname, article: slug() });
 		}
 		function close() {
 			modal.hidden = true;
@@ -92,6 +95,7 @@ const qrSvg = await QRCode.toString(qrTarget, {
 			track('app_store_click', {
 				ct: campaignOf(href),
 				page_path: location.pathname,
+				article: slug(),
 				device: isDesktop ? 'desktop' : 'mobile',
 				transport_type: 'beacon',
 			});
@@ -106,7 +110,7 @@ const qrSvg = await QRCode.toString(qrTarget, {
 		var storeBtn = document.getElementById('qrModalStore');
 		if (storeBtn) {
 			storeBtn.addEventListener('click', function () {
-				track('qr_appstore_click', { page_path: location.pathname, transport_type: 'beacon' });
+				track('qr_appstore_click', { page_path: location.pathname, article: slug(), transport_type: 'beacon' });
 			});
 		}
 	})();

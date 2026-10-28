@@ -4,7 +4,7 @@ export const SITE = {
 	email: 'hello@sermonkeeper.app',
 	logo: 'https://sermonkeeper.app/apple-touch-icon.png',
 	ogImage: 'https://sermonkeeper.app/scss/image/og-image.jpg',
-	gaId: 'G-M8FJDVHNCY',
+	gaId: 'G-G5X7TV8P56',
 	gscVerification: 'GzWm1GYrAg1L0JO-iXAhefw8FZXLoDcHjCJSepGntPg',
 	appId: '6758739935',
 	appStoreListing: 'https://apps.apple.com/app/apple-store/id6758739935',

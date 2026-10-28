@@ -1,7 +1,9 @@
 ---
 import { SITE } from '../utils/site';
-// Same GA4 property and the same ?disable_analytics opt-out the legacy pages used —
-// carried over verbatim so existing traffic reporting is unaffected.
+// Web stream of the Sermon Keeper GA4 property (since Oct 2026), with the same
+// ?disable_analytics opt-out the legacy pages used. Enhanced measurement already
+// sends `scroll` at 90%, so our own depth event is `scroll_depth` (25/50/75/100)
+// and the two never double-count.
 const { gaId } = SITE;
 ---
 
@@ -21,5 +23,26 @@ const { gaId } = SITE;
 		};
 		gtag('js', new Date());
 		gtag('config', gaId);
+
+		var marks = [25, 50, 75, 100];
+		var sent = {};
+		var slug = location.pathname.replace(/^\/blog\//, '').replace(/^\/$/, 'home') || 'home';
+		function depthCheck() {
+			var h = document.documentElement.scrollHeight - window.innerHeight;
+			var pct = h > 0 ? (window.scrollY / h) * 100 : 100;
+			for (var i = 0; i < marks.length; i++) {
+				var m = marks[i];
+				if (pct >= m - 1 && !sent[m]) {
+					sent[m] = true;
+					gtag('event', 'scroll_depth', { depth: m, page_path: location.pathname, article: slug });
+				}
+			}
+		}
+		var queued = false;
+		window.addEventListener('scroll', function () {
+			if (queued) return;
+			queued = true;
+			setTimeout(function () { queued = false; depthCheck(); }, 250);
+		}, { passive: true });
 	}
 </script>
