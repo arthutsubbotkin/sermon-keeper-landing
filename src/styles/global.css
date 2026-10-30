@@ -19,6 +19,7 @@
 	--bg-light: #F8FAFC;
 
 	--bg-blue-light: #EFF6FF;
+	--bg-banner: #E3EDFF;
 
 	--border-gray: #E5E7EB;
 	--accent: #3E7AF5;
@@ -1838,7 +1839,7 @@ img {
 	flex-direction: row-reverse;
 	align-items: stretch;
 	gap: 1rem;
-	background: #B8CFFF;
+	background: var(--bg-banner);
 	border-radius: 24px;
 	overflow: hidden;
 	margin: 2.5rem 0;
@@ -1913,7 +1914,7 @@ img {
 	display: flex;
 	align-items: center;
 	min-height: 440px;
-	background: #B8CFFF;
+	background: var(--bg-banner);
 	border-radius: 24px;
 	padding: 2.5rem;
 	padding-left: calc(45% + 2rem);
@@ -3382,7 +3383,7 @@ img {
 /* Rail promo banner (from the mockup): illustration on a cream card, headline,
    subtext, one black pill. Rules sit after .rail-card so they win on h3/p. */
 .rail-banner {
-	background: #B8CFFF;
+	background: var(--bg-banner);
 	padding: 2rem 1.5rem;
 	text-align: center;
 	overflow: hidden;
