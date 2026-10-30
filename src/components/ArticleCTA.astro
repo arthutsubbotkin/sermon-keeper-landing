@@ -5,8 +5,9 @@ interface Props {
 	href: string;
 	/** Button label, used only by the plain download variant. */
 	label?: string;
-	/** 'apple' renders the illustrated app banner; 'download' the plain PDF card. */
-	icon?: 'apple' | 'download';
+	/** 'apple' renders the illustrated app banner; 'download' the plain PDF card;
+	    'short' a one-row app card for the first screen. */
+	icon?: 'apple' | 'download' | 'short';
 	/** Set for file downloads so the browser saves rather than navigates. */
 	download?: boolean;
 }
@@ -16,7 +17,27 @@ const base = '/scss/image/blog/banner';
 ---
 
 {
-	icon === 'apple' ? (
+	icon === 'short' ? (
+		/* Compact app card for the first screen: icon, one line, button. Same row
+		   layout as the PDF card so it stays small above the fold. */
+		<div class="dl-cta app-short-cta">
+			<img
+				class="dl-cta-icon app-short-icon"
+				src="/apple-touch-icon.png"
+				alt="Sermon Keeper app icon"
+				width="56"
+				height="56"
+				decoding="async"
+			/>
+			<div class="dl-cta-body">
+				<h3>{heading}</h3>
+				<p>{text}</p>
+			</div>
+			<a href={href} class="dl-cta-btn">
+				Start free trial
+			</a>
+		</div>
+	) : icon === 'apple' ? (
 		/* App promo: the illustrated banner from the mockup (Figma 128:1716 desktop,
 		   131:1856 mobile). Heading and text stay per-article; the button is fixed. */
 		<div class="banner-cta">

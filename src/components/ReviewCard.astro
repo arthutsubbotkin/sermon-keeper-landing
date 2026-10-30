@@ -4,7 +4,10 @@ interface Props {
 	name: string;
 	id: string;
 	tagline: string;
-	score: string;
+	/** Our 0–10 score. Omit it and pass `rating` to show the App Store rating instead. */
+	score?: string;
+	/** App Store rating as published, e.g. "4.9 (13.8M ratings)". */
+	rating?: string;
 	pricing: string;
 	platforms: string;
 	bestForMeta: string;
@@ -30,7 +33,7 @@ interface Props {
 	primaryCta?: boolean;
 }
 const {
-	rank, name, id, tagline, score, pricing, platforms, bestForMeta,
+	rank, name, id, tagline, score, rating, pricing, platforms, bestForMeta,
 	like, know, bestFor, skipIf, appStore, site, siteLabel = 'Visit site',
 	hero, heroAlt = '', heroWidth = 1320, heroHeight = 720, reviewed = 'August 2026',
 	winner = false, primaryCta = false,
@@ -47,7 +50,11 @@ const {
 		</div>
 	)}
 	<div class="rev-meta">
-		<div><div class="lbl">Our score</div><div class="val">{score}<span class="u">/10</span></div></div>
+		{score ? (
+			<div><div class="lbl">Our score</div><div class="val">{score}<span class="u">/10</span></div></div>
+		) : (
+			<div><div class="lbl">App Store rating</div><div class="val">{rating}</div></div>
+		)}
 		<div><div class="lbl">Pricing</div><div class="val">{pricing}</div></div>
 		<div><div class="lbl">Platforms</div><div class="val">{platforms}</div></div>
 		<div><div class="lbl">Best for</div><div class="val">{bestForMeta}</div></div>
