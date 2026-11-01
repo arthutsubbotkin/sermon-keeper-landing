@@ -1,0 +1,40 @@
+---
+/* Slim site-wide promo for the January reading plan. Ships hidden in every page;
+   the inline script shows it only from Dec 1 2026 to Jan 31 2027 (visitor's local
+   date), so it switches itself on and off without a redeploy. Closing it is
+   remembered per browser. Add ?season_banner=1 to any URL to preview it early. */
+---
+
+<div class="season-banner" id="seasonBanner" hidden>
+	<a href="/blog/bible-reading-plan-2027" class="season-banner-link" data-ct="landing_banner_newyear_2027">
+		Start 2027 in the Word: <span>free Bible reading plan</span> →
+	</a>
+	<button type="button" class="season-banner-close" aria-label="Close">×</button>
+</div>
+
+<script is:inline>
+	(function () {
+		var el = document.getElementById('seasonBanner');
+		if (!el) return;
+		var KEY = 'season_banner_2027_closed';
+		var now = new Date();
+		var inSeason = now >= new Date(2026, 11, 1) && now < new Date(2027, 1, 1);
+		var forced = /[?&]season_banner=1/.test(location.search);
+		var closed = false;
+		try { closed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+		var onTarget = location.pathname.replace(/\/$/, '') === '/blog/bible-reading-plan-2027';
+		if (!forced && (!inSeason || closed || onTarget)) return;
+		el.hidden = false;
+		el.querySelector('.season-banner-close').addEventListener('click', function () {
+			el.hidden = true;
+			try { localStorage.setItem(KEY, '1'); } catch (e) {}
+		});
+		el.querySelector('.season-banner-link').addEventListener('click', function () {
+			if (window.gtag) window.gtag('event', 'promo_click', {
+				ct: 'landing_banner_newyear_2027',
+				page_path: location.pathname,
+				transport_type: 'beacon',
+			});
+		});
+	})();
+</script>

@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import AppQrModal from '../components/AppQrModal.astro';
+import SeasonBanner from '../components/SeasonBanner.astro';
 import { SITE } from '../utils/site';
 import '../styles/global.css';
 
@@ -127,6 +128,7 @@ const {
 		<Analytics />
 	</head>
 	<body>
+		<SeasonBanner />
 		<Header headerHref={headerHref} navHref={navHref} active={active} />
 		<slot />
 		<Footer />
