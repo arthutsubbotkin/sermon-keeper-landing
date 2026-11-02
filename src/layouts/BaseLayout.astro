@@ -137,5 +137,27 @@ const {
 		<Footer />
 		<slot name="after-footer" />
 		<AppQrModal campaign={campaign} />
+		<script is:inline>
+			// Muted looping clips: Safari in Low Power Mode refuses autoplay and shows its own play button.
+			// Try again as each clip comes into view and on every tap (a tap counts as permission to play).
+			(function () {
+				var vids = [].slice.call(document.querySelectorAll('video[autoplay]'));
+				if (!vids.length) return;
+				function go(v) {
+					v.muted = true;
+					var p = v.play();
+					if (p && p.catch) p.catch(function () {});
+				}
+				if ('IntersectionObserver' in window) {
+					var io = new IntersectionObserver(function (es) {
+						es.forEach(function (e) { if (e.isIntersecting && e.target.paused) go(e.target); });
+					}, { rootMargin: '200px 0px' });
+					vids.forEach(function (v) { io.observe(v); });
+				}
+				function wake() { vids.forEach(function (v) { if (v.paused) go(v); }); }
+				document.addEventListener('touchend', wake, { passive: true, capture: true });
+				document.addEventListener('click', wake, true);
+			})();
+		</script>
 	</body>
 </html>

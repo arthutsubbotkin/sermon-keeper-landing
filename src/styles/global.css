@@ -382,6 +382,11 @@ img {
 	display: inline-flex;
 }
 
+/* blog and other pages without a hero: no Get App in the pill, the page's own banners and sticky bar sell */
+.header-island.header-pinned .header-nav a.island-btn {
+	display: none;
+}
+
 @media (max-width: 1024px) {
 	.header-island .header {
 		gap: 48px;
@@ -3803,3 +3808,10 @@ body {
 .season-banner-link{color:#111827;text-decoration:none;font-weight:500}
 .season-banner-link span{text-decoration:underline;text-underline-offset:3px;font-weight:600}
 .season-banner-close{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;border:0;font-size:1.35rem;line-height:1;color:#4B5563;cursor:pointer;padding:.25rem .5rem}
+
+/* autoplay clips never show Safari's play button (Low Power Mode): the poster stays a plain picture until they play */
+video[autoplay]::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
+video[autoplay]::-webkit-media-controls { display: none !important; }
+
+/* no rubber-band past the footer (or above the header) on iPhone: the white page canvas showed through */
+html, body { overscroll-behavior-y: none; }
