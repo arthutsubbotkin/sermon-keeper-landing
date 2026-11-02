@@ -44,5 +44,48 @@ const { gaId } = SITE;
 			queued = true;
 			setTimeout(function () { queued = false; depthCheck(); }, 250);
 		}, { passive: true });
+
+		// Every other tap on the site, so we can see what people press: `ui_click` with the button's text
+		// (`label`), the block it sits in (`section`) and where it leads. App Store links are left out:
+		// they already send `app_store_click` with their own ct. FAQ questions send `faq_toggle`.
+		function sectionOf(el) {
+			if (el.closest('.mobile-nav, .mobile-nav-overlay')) return 'mobile_menu';
+			if (el.closest('footer')) return 'footer';
+			if (el.closest('header, .header-section')) return 'header';
+			var s = el.closest('[data-track-section], section, .home-blog, article, aside');
+			if (!s) return 'page';
+			return s.getAttribute('data-track-section') || s.id || (s.className && String(s.className).split(' ')[0]) || s.tagName.toLowerCase();
+		}
+		function labelOf(el) {
+			var h = el.querySelector && el.querySelector('h3');
+			var t = el.getAttribute('data-track') || el.getAttribute('aria-label') || (h && h.textContent) || el.textContent || '';
+			return t.replace(/\s+/g, ' ').trim().slice(0, 100) || String(el.className) || el.tagName.toLowerCase();
+		}
+		document.addEventListener('click', function (e) {
+			var t = e.target;
+			if (!t || !t.closest) return;
+			var q = t.closest('summary');
+			if (q) {
+				var d = q.closest('details');
+				// the click lands before the item flips, so an open item is being closed
+				gtag('event', 'faq_toggle', { question: labelOf(q), action: d && d.open ? 'close' : 'open', section: sectionOf(q), page_path: location.pathname, article: slug });
+				return;
+			}
+			var el = t.closest('a[href], button, [onclick]');
+			if (!el) return;
+			var href = el.getAttribute('href') || '';
+			if (/id6758739935/.test(href)) return;
+			var type = !href ? 'button' : href.charAt(0) === '#' ? 'anchor' : /^mailto:/.test(href) ? 'email'
+				: (el.host && el.host !== location.host) ? 'outbound' : 'internal';
+			gtag('event', 'ui_click', {
+				label: type === 'email' ? 'email' : labelOf(el),
+				section: sectionOf(el),
+				link_type: type,
+				link_url: href,
+				page_path: location.pathname,
+				article: slug,
+				transport_type: 'beacon',
+			});
+		}, true);
 	}
 </script>

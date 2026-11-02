@@ -150,3 +150,6 @@ Also:
 - Image naming matches article slug: `<slug>.jpg`
 - All new articles must be added to `sitemap.xml` and `blog/index.html`
 - After changes: resubmit sitemap in Google Search Console
+
+## Статус проекта
+В конце каждой задачи или сессии обнови STATUS.md: что сделано, принятые решения, что ждёт Артура, что дальше. Дату — в строку «Обновлено».

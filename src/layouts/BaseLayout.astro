@@ -31,6 +31,8 @@ interface Props {
 	headerHref: string;
 	navHref: string;
 	active?: 'home' | 'blog' | null;
+	/** Floating pill header over a full-bleed hero (homepage). */
+	headerIsland?: boolean;
 	/** Campaign prefix for this page's desktop QR (e.g. `landing_blog_best_apps`),
 	 *  so installs from a scan are credited to the page that showed it. */
 	campaign?: string;
@@ -56,6 +58,7 @@ const {
 	headerHref,
 	navHref,
 	active = null,
+	headerIsland = false,
 	campaign = 'landing',
 } = Astro.props;
 ---
@@ -129,7 +132,7 @@ const {
 	</head>
 	<body>
 		<SeasonBanner />
-		<Header headerHref={headerHref} navHref={navHref} active={active} />
+		<Header headerHref={headerHref} navHref={navHref} active={active} island={headerIsland} />
 		<slot />
 		<Footer />
 		<slot name="after-footer" />

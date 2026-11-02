@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinalBanner from '../../components/FinalBanner.astro';
 import StickyBar from '../../components/StickyBar.astro';
-import AppleIcon from '../../components/AppleIcon.astro';
 import { SITE, pageAppStoreUrl } from '../../utils/site';
 
 // Newest first. Cards are generated from the collection, so publishing a post
@@ -93,24 +93,7 @@ const schemas = [
 		</div>
 	</div>
 
-	<div class="cta-section">
-		<div class="cta-container">
-			<div class="cta-content">
-				<h2>Start capturing sermons today — simple, fast, and yours</h2>
-				<p>Download Sermon Keeper and never miss an insight from your next sermon.</p>
-				<a href={pageAppStoreUrl('landing_blog_blog_index_cta1')} class="app-store-btn">
-					<AppleIcon />
-					Download on App Store
-				</a>
-			</div>
-			<div class="cta-image">
-				<img
-					src="/scss/image/Start capturing sermons today — simple, fast, and private.webp"
-					alt="Sermon Keeper App"
-				/>
-			</div>
-		</div>
-	</div>
+	<FinalBanner ct="landing_blog_blog_index_cta1" blog />
 
 	<StickyBar
 		slot="after-footer"

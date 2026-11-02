@@ -7,13 +7,14 @@ interface Props {
 const { mobileHref, desktopHref } = Astro.props;
 ---
 
-<!-- Sticky mobile CTA bar -->
+<!-- Sticky mobile CTA: a small floating banner. The logo already sits in the header, so the left side is
+     the homepage's 3D note icon and one line about what you get instead of the app name. -->
 <a class="sticky-cta" id="stickyCta" href={mobileHref} aria-label="Start a free trial of Sermon Keeper">
 	<span class="sticky-cta-left">
-		<img class="sticky-cta-icon" src="/apple-touch-icon.png" alt="" width="40" height="40" />
+		<img class="sticky-cta-icon" src="/scss/image/home/p-note.webp" alt="" width="256" height="256" />
 		<span class="sticky-cta-text">
-			<strong>Sermon Keeper</strong>
-			<span>AI sermon notes</span>
+			<strong>Keep every sermon</strong>
+			<span>Notes, summary, verses</span>
 		</span>
 	</span>
 	<span class="sticky-cta-btn">Start free trial</span>
@@ -30,25 +31,27 @@ const { mobileHref, desktopHref } = Astro.props;
 		>
 			<img
 				class="sticky-cta-desktop-icon"
-				src="/apple-touch-icon.png"
+				src="/scss/image/home/p-note.webp"
 				alt=""
-				width="32"
-				height="32"
+				width="256"
+				height="256"
 			/>
-			<span class="sticky-cta-desktop-text">Sermon Keeper</span>
+			<span class="sticky-cta-desktop-text">Keep every sermon<span> · Notes, summary, verses</span></span>
 			<span class="sticky-cta-desktop-btn">Start free trial</span>
 		</a>
 	)
 }
 
 <script is:inline>
-	// Mobile bar shows immediately; desktop pill appears after 30% scroll. Both hide at the footer.
+	// Mobile bar shows immediately; desktop pill appears after 30% scroll. Both hide at the footer and while the
+	// blue closing banner (which has its own button) is on screen.
 	(function () {
 		var mobileBar = document.getElementById('stickyCta');
 		var desktopBar = document.getElementById('stickyCtaDesktop');
 		var footer = document.querySelector('.footer-section');
 		if (!footer) return;
 		var footerVisible = false;
+		var seen = new Map();
 		function update() {
 			if (mobileBar) mobileBar.classList.toggle('is-hidden', footerVisible);
 			if (desktopBar) {
@@ -58,15 +61,18 @@ const { mobileHref, desktopHref } = Astro.props;
 			}
 		}
 		if ('IntersectionObserver' in window) {
-			new IntersectionObserver(
+			var io = new IntersectionObserver(
 				function (entries) {
 					entries.forEach(function (e) {
-						footerVisible = e.isIntersecting;
+						seen.set(e.target, e.isIntersecting);
 					});
+					footerVisible = Array.from(seen.values()).some(Boolean);
 					update();
 				},
 				{ rootMargin: '0px 0px -72px 0px' }
-			).observe(footer);
+			);
+			io.observe(footer);
+			document.querySelectorAll('.h-final').forEach(function (el) { io.observe(el); });
 		}
 		var ticking = false;
 		window.addEventListener(

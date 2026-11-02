@@ -8,18 +8,27 @@ interface Props {
 	navHref: string;
 	/** Which top-level nav item is current. */
 	active?: 'home' | 'blog' | null;
+	/** Floating pill over a full-bleed hero, with links to the homepage sections (after sugar.no). */
+	island?: boolean;
 }
-const { headerHref, navHref, active = null } = Astro.props;
+const { headerHref, navHref, active = null, island = false } = Astro.props;
+// Every page wears the homepage's island pill. On the homepage it floats over the hero and sticks once the
+// hero button is gone; on every other page it is pinned to the top from the start and links back to the
+// homepage sections.
+const base = island ? '' : '/';
 ---
 
-<div class="header-section">
+<div class:list={['header-section', 'header-island', { 'is-stuck header-pinned': !island }]}>
 	<div class="header">
 		<a href="/">
-			<img class="header-logo" src="/scss/image/logo.png" alt="Sermon Keeper" />
+			<img class="header-logo" src="/scss/image/logo-2026@3x.png" width="180" height="42" alt="Sermon Keeper" />
 		</a>
 		<nav class="header-nav">
-			<a href="/" class={active === 'home' ? 'active' : undefined}>Home</a>
-			<a href="/blog" class={active === 'blog' ? 'header-blog-btn active' : 'header-blog-btn'}>Blog</a>
+			<a href={`${base}#features`}>Features</a>
+			<a href={`${base}#how`}>How it works</a>
+			<a href={`${base}#faq`}>FAQ</a>
+			<a href="/blog" class={active === 'blog' ? 'active' : undefined}>Blog</a>
+			<a href={headerHref} class="island-btn"><AppleIcon />Get App</a>
 		</nav>
 		<button class="burger-menu" onclick="toggleMenu()" aria-label="Menu">
 			<span></span><span></span><span></span>
@@ -27,9 +36,15 @@ const { headerHref, navHref, active = null } = Astro.props;
 	</div>
 </div>
 <div class="mobile-nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
-<nav class="mobile-nav" id="mobileNav">
-	<a href="/" class={active === 'home' ? 'active' : undefined}>Home</a>
-	<a href="/blog" class={active === 'blog' ? 'active' : undefined}>Blog</a>
+<nav class="mobile-nav" id="mobileNav" aria-label="Menu">
+	<div class="mobile-nav-top">
+		<a href="/"><img src="/scss/image/logo-2026@3x.png" width="180" height="42" alt="Sermon Keeper" /></a>
+		<button class="mobile-nav-close" onclick="toggleMenu()" aria-label="Close menu"><span></span><span></span></button>
+	</div>
+	<a href={`${base}#features`} class="mobile-nav-link" onclick="toggleMenu()">Features</a>
+	<a href={`${base}#how`} class="mobile-nav-link" onclick="toggleMenu()">How it works</a>
+	<a href={`${base}#faq`} class="mobile-nav-link" onclick="toggleMenu()">FAQ</a>
+	<a href="/blog" class="mobile-nav-link">Blog</a>
 	<a href={navHref} class="mobile-nav-download">
 		<AppleIcon />
 		Download App
@@ -37,6 +52,26 @@ const { headerHref, navHref, active = null } = Astro.props;
 </nav>
 
 <script is:inline>
+	document.addEventListener('DOMContentLoaded', function () {
+		// Island header: stick to the top with its own App Store button once the hero button is out of view.
+		var bar = document.querySelector('.header-island');
+		var cta = document.querySelector('[data-hero-cta]');
+		if (!bar || !cta || !('IntersectionObserver' in window)) return;
+		new IntersectionObserver(function (es) {
+			var stuck = !es[0].isIntersecting && es[0].boundingClientRect.top < 0;
+			if (stuck) {
+				bar.classList.remove('is-leaving');
+				bar.classList.add('is-stuck');
+			} else if (bar.classList.contains('is-stuck')) {
+				// slide up out of view first (CSS island-out), then drop back into place over the hero
+				bar.classList.add('is-leaving');
+			}
+		}).observe(cta);
+		bar.addEventListener('animationend', function (e) {
+			if (e.animationName !== 'island-out') return;
+			bar.classList.remove('is-stuck', 'is-leaving');
+		});
+	});
 	function toggleMenu() {
 		document.querySelector('.burger-menu').classList.toggle('open');
 		document.getElementById('mobileNav').classList.toggle('open');

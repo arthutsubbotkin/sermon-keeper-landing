@@ -1,19 +1,49 @@
 ---
-import { SITE } from '../utils/site';
+import AppleIcon from './AppleIcon.astro';
+import { SITE, pageAppStoreUrl } from '../utils/site';
+const year = new Date().getFullYear();
 ---
 
-<div class="footer-section">
+<!-- dark footer after sugar.no: logo and contact on top, the App Store button, then rights and legal links -->
+<footer class="footer-section">
 	<div class="footer">
-		<div class="footer-logo">
-			<img src="/scss/image/logo.png" alt="Sermon Keeper" />
+		<div class="footer-top">
+			<a href="/" class="footer-logo"><img src="/scss/image/logo-2026-white.svg" alt="Sermon Keeper" width="181" height="42" /></a>
+			<a href={`mailto:${SITE.email}`} class="footer-mail" data-copy={SITE.email}>{SITE.email}</a>
 		</div>
-		<div class="footer-links">
-			<a href="/about">About</a>
-			<a href="/privacy">Privacy Policy</a>
-			<a href="/terms">Terms of Service</a>
-		</div>
-		<div class="footer-right">
-			<a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+		<a href={pageAppStoreUrl('landing_footer')} class="footer-btn"><AppleIcon />Download on the App Store</a>
+		<div class="footer-bottom">
+			<span>© {year} Sermon Keeper. All rights reserved</span>
+			<nav class="footer-links">
+				<a href="/about">About</a>
+				<a href="/privacy">Privacy Policy</a>
+				<a href="/terms">Terms of Service</a>
+			</nav>
 		</div>
 	</div>
-</div>
+</footer>
+
+<script>
+	// mailto opens nothing on a computer without a mail app, so the click also copies the address
+	// and says so; on a phone the mail app still opens as before
+	const copyText = (text: string) => {
+		// the old route works where the clipboard API is missing or refused
+		const t = document.createElement('textarea');
+		t.value = text;
+		t.style.cssText = 'position:fixed;opacity:0';
+		document.body.appendChild(t);
+		t.select();
+		document.execCommand('copy');
+		t.remove();
+	};
+	document.querySelectorAll<HTMLAnchorElement>('[data-copy]').forEach((a) => {
+		a.addEventListener('click', () => {
+			const email = a.dataset.copy!;
+			if (navigator.clipboard) navigator.clipboard.writeText(email).catch(() => copyText(email));
+			else copyText(email);
+			a.style.minWidth = a.offsetWidth + 'px';
+			a.textContent = 'Email copied';
+			setTimeout(() => (a.textContent = email), 1800);
+		});
+	});
+</script>
